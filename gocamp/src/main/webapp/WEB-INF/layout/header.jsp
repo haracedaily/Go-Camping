@@ -32,17 +32,18 @@
 padding:10px;
 width:100vw;
 height:70px;
+clear:both;
 }
 #hometag{
 font-size:30pt;
-float:left;
+clear:both;
 }
 #main-menu{
-align-content: end;
+clear:both;
 
 }
 #menuals{
-float:right;
+clear:both;
 }
 #menuals a{
 font-size : 20pt;
@@ -73,10 +74,10 @@ font-size : 20pt;
 	<nav class="site-nav" id="menu_container">
 		<div class="container">
 			<div class="site-navigation">
+				<div id="main-menu">
 				<a href="index.html" class="logo m-0" id="hometag">Home
 				<span
 					class="text-primary">.</span></a>
-				<div id="main-menu">
 					<ul
 						class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu" id="menuals">
 						<li><a href="index.html">Location</a></li>
@@ -91,11 +92,11 @@ font-size : 20pt;
 							</ul>
 						</li>
 					</ul>
-				</div>
 				<a href="#"
 					class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none"
 					data-toggle="collapse" data-target="#main-navbar"> <span></span>
 				</a>
+				</div>
 
 			</div>
 		</div>
