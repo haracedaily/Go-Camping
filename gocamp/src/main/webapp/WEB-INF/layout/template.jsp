@@ -24,8 +24,7 @@
       	<tiles:insertAttribute name="header"></tiles:insertAttribute>
         <!-- Section-->
        <tiles:insertAttribute name="body"></tiles:insertAttribute>
-        <!-- Footer-->
-        <tiles:insertAttribute name="footer"></tiles:insertAttribute>
+
         
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

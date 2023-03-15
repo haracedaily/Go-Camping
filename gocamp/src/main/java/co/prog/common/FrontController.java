@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.prog.controller.MainControl;
+import co.prog.controller.ProductControl;
 
 
 
@@ -25,6 +26,7 @@ public class FrontController extends HttpServlet {
 	public void init() throws ServletException {
 		// url <-> control
 		map.put("/main.do", new MainControl());
+		map.put("/product.do", new ProductControl());
 
 	}
 
