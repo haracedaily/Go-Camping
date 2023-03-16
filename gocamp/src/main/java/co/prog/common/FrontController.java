@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+import co.prog.controller.BoardFormControl;
 import co.prog.controller.JoinControl;
 import co.prog.controller.LoginControl;
 import co.prog.controller.MainControl;
 import co.prog.controller.ManageControl;
+import co.prog.controller.NoticeControl;
 import co.prog.controller.locaControl;
 import co.prog.controller.ProductListControl;
 
@@ -33,6 +36,11 @@ public class FrontController extends HttpServlet {
 		map.put("/main.do", new MainControl());
 		map.put("/product.do", new ProductListControl());
 		map.put("/manage.do", new ManageControl());
+		
+		//notice
+		map.put("/notice.do", new NoticeControl());
+		//boardForm
+		map.put("/boardform.do", new BoardFormControl());
 
 		map.put("/join.do", new JoinControl());
 		map.put("/login.do", new LoginControl());
