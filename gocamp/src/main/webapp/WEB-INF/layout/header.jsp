@@ -77,11 +77,11 @@ font-size : 20pt;
 				<div id="main-menu">
 				<a href="index.html" class="logo m-0" id="hometag">Home
 				<span
-					class="text-primary">.</span></a>
+					class="">.</span></a>
 					<ul
 						class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu" id="menuals">
-						<li><a href="index.html">Location</a></li>
-						<li class="active"><a href="buy.html">Product</a></li>
+						<li><a href="loca.do">Location</a></li>
+						<li><a href="buy.html">Product</a></li>
 						<li><a href="rent.html">Notice</a></li>
 						<li class="has-children"><a href="#">게시판</a>
 							<ul class="dropdown">

@@ -5,13 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.prog.common.Control;
 
-public class ProductControl implements Control {
+public class locaControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String uri="test.tiles";
+		String uri = "loca.tiles";
 		return uri;
 	}
 
-	
 }

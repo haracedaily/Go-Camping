@@ -14,7 +14,9 @@ import co.prog.controller.JoinControl;
 import co.prog.controller.LoginControl;
 import co.prog.controller.MainControl;
 import co.prog.controller.ManageControl;
-import co.prog.controller.ProductControl;
+import co.prog.controller.locaControl;
+import co.prog.controller.ProductListControl;
+
 
 
 
@@ -29,10 +31,15 @@ public class FrontController extends HttpServlet {
 	public void init() throws ServletException {
 		// url <-> control
 		map.put("/main.do", new MainControl());
-		map.put("/product.do", new ProductControl());
+		map.put("/product.do", new ProductListControl());
 		map.put("/manage.do", new ManageControl());
+
 		map.put("/join.do", new JoinControl());
 		map.put("/login.do", new LoginControl());
+
+		map.put("/loca.do", new locaControl());
+		
+
 
 	}
 
