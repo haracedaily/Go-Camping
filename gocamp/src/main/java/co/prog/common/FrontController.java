@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.prog.controller.MainControl;
 import co.prog.controller.ManageControl;
+import co.prog.controller.locaControl;
 import co.prog.controller.ProductListControl;
+
 
 
 
@@ -29,6 +31,8 @@ public class FrontController extends HttpServlet {
 		map.put("/main.do", new MainControl());
 		map.put("/product.do", new ProductListControl());
 		map.put("/manage.do", new ManageControl());
+		map.put("/loca.do", new locaControl());
+		
 
 	}
 
