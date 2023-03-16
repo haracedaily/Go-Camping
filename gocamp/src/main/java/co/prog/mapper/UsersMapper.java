@@ -1,4 +1,4 @@
-package mapper;
+package co.prog.mapper;
 
 public interface UsersMapper {
 
