@@ -9,13 +9,11 @@
 		<put-attribute name="top"	value="/WEB-INF/layout/top.jsp" />
 		<put-attribute name="body" value="/WEB-INF/layout/body.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
-		
 
-		
 	</definition>
 	<!--  /layouts/classic.tiles -->
-	<definition name="WILDCARD:*" extends="myapp.homepage">
-		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp"/>
+	<definition name="WILDCARD:*/*" extends="myapp.homepage">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
 		
 	</definition>
 	

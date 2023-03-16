@@ -53,7 +53,7 @@
           <li><a href="contact.html">마이페이지</a></li>
           <li class="cta-button active"><a href="login.html">로그인</a></li>
           <li class="cta-button active"><a href="login.html">로그아웃</a></li>
-          <li><a href="signup.html">회원가입</a></li> 
+          <li><a href="join.do">회원가입</a></li> 
 
         </ul>
 

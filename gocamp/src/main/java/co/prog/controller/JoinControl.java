@@ -5,13 +5,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.prog.common.Control;
 
-public class ProductControl implements Control {
+public class JoinControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String uri="test.tiles";
-		return uri;
+
+		String url = "join.tiles";
+		
+		return url;
 	}
 
-	
 }
