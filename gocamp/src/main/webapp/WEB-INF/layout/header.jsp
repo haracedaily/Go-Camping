@@ -77,7 +77,7 @@ font-size : 20pt;
 				<div id="main-menu">
 				<a href="index.html" class="logo m-0" id="hometag">Home
 				<span
-					class="text-primary">.</span></a>
+					class="">.</span></a>
 					<ul
 						class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu" id="menuals">
 						<li><a href="index.html">Location</a></li>

@@ -14,8 +14,8 @@
 		
 	</definition>
 	<!--  /layouts/classic.tiles -->
-	<definition name="WILDCARD:*" extends="myapp.homepage">
-		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp"/>
+	<definition name="WILDCARD:*/*" extends="myapp.homepage">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
 		
 	</definition>
 	
