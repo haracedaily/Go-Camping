@@ -10,16 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.prog.controller.BoardAddControl;
-import co.prog.controller.BoardControl;
+
 import co.prog.controller.BoardFormControl;
-import co.prog.controller.BoardModifyControl;
-import co.prog.controller.BoardRemoveControl;
 import co.prog.controller.JoinControl;
 import co.prog.controller.LoginControl;
 import co.prog.controller.MainControl;
 import co.prog.controller.ManageControl;
 import co.prog.controller.NoticeControl;
+import co.prog.controller.NoticeFormControl;
 import co.prog.controller.locaControl;
 import co.prog.controller.ProductListControl;
 
@@ -40,17 +38,12 @@ public class FrontController extends HttpServlet {
 		map.put("/product.do", new ProductListControl());
 		map.put("/manage.do", new ManageControl());
 		
-		//공지사항 목록
+		//notice
 		map.put("/notice.do", new NoticeControl());
+		//noticeForm//등록화면
+		map.put("/noticeform.do", new NoticeFormControl());
 		//boardForm
 		map.put("/boardform.do", new BoardFormControl());
-		map.put("/boardAdd.do", new BoardAddControl());
-		//board
-		map.put("/board.do", new BoardControl());
-		//수정
-		map.put("/boardModify.do", new BoardModifyControl());
-		//삭제
-		map.put("/boardRemove.do", new BoardRemoveControl());
 
 		map.put("/join.do", new JoinControl());
 		map.put("/login.do", new LoginControl());
@@ -73,7 +66,7 @@ public class FrontController extends HttpServlet {
 		String viewPage = command.exec(req, resp); //product/productList.tiles
 		
 		if (viewPage.endsWith(".jsp")) {
-			viewPage = "WEB-INF/" + viewPage;
+			viewPage = "/WEB-INF/" + viewPage;
 //		} else if (viewPage.endsWith(".tiles")) { // members.do(...tiles)
 			//viewPage = "/" + viewPage;
 
