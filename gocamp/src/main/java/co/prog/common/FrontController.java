@@ -45,8 +45,13 @@ public class FrontController extends HttpServlet {
 	public void init() throws ServletException {
 		// url <-> control
 		map.put("/main.do", new MainControl());
-		map.put("/product.do", new ProductListControl());
+	
 		map.put("/manage.do", new ManageControl());
+	
+		
+		//상품 (전체, 텐트, 테이블, 침낭/메트, 식기)
+		map.put("/product.do", new ProductListControl());
+		
 		
 		//notice
 		map.put("/notice.do", new NoticeControl());
