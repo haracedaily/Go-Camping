@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+
+
 <style>
+
 #bTable{
 margin-left:20%;
 }
@@ -28,6 +31,7 @@ margin-left:20%;
 }
 
 </style>
+
 
   <div class="untree_co-section">
     <div class="container">

@@ -17,9 +17,9 @@ public class NoticeControl implements Control {
 		
 		NoticeService service = new NoticeServiceMybatis();
 		List<NoticeVO> list = service.noticeList();
-		System.out.println(list);
+		System.out.println("list : "+list);
 		
-		request.setAttribute("noticelist", list);
+		request.setAttribute("list", list);
 
 		String uri = "board/notice.tiles";
 		return uri;

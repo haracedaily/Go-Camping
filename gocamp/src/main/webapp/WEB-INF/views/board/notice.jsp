@@ -8,7 +8,9 @@
 
 margin-left:20%;
 margin-right:20%;
+
 }
+
 </style>
 
   <div class="untree_co-section">
@@ -23,20 +25,20 @@ margin-right:20%;
 <nav class ="bar" id="cbar">
 	<table class="table">
 	<thead>
-		<tr><th>글번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th></tr>
+		<tr><th>글번호</th><th id= titlearea style = "width:550px; text-align:center;">제목</th><th>작성자</th><th>작성일</th><th>조회수</th></tr>
 	</thead>
-	<!--  
+		
 	<tbody>
-		<c:forEach var="notice" items="${list }">
-		<tr><td>${notice.noticeId }</td>
-			<td>${notice.noticeWriter }</td>
-			<td><a href="noticeSearch.do?nid=${notice.noticeId }">${notice.noticeTitle }</td>
-			<td>${notice.hitCount }</td>
-			<td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${notice.createDate }" /></td>
-		</tr>	
+		<c:forEach items="${list }" var="notices">
+        <tr>
+            <td>${notices.rownum }</td>
+            <td id= titlearea style = "width:550px;">${notices.boTitle }</td>
+            <td id= nicknamearea >${notices.nickname }</td>
+            <td>${notices.boDate }</td>	
+            <td>${notices.boCount }</td>
+		</tr>
 		</c:forEach>
 	</tbody>
-	-->
 	</table>
 </nav>
 
