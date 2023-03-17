@@ -3,7 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.prog.mapper.ProductMapper">
-  <select id="productList" resultType="ProductVO">
-    select * from products
-  </select>
+
+	<!-- 전체상품 조회 -->
+	<select id="productList" parameterType="co.prog.vo.SearchCondition" resultType="ProductVO">
+		select * from products
+		<where>
+		    <choose>
+		        <when test="cat == 'all'">
+		            1 = 1
+		        </when>
+		        <otherwise>
+                    cate_id = #{cat}
+		        </otherwise>
+		    </choose>
+		    <if test="order == 'price'">
+		        order by prod_price desc
+		    </if>
+		    <if test="order == 'price_low'">
+		        order by prod_price
+		    </if>
+		    <if test="order == 'brandnew'">
+		        order by prod_date desc
+		    </if>
+		</where>
+	</select>
+
+
 </mapper>
