@@ -5,7 +5,7 @@
 <mapper namespace="co.prog.mapper.ProductMapper">
 
 	<!-- 전체상품 조회 -->
-	<select id="productList" parameterType="co.prog.vo.SearchCondition" resultType="ProductVO">
+	<select id="productList" parameterType="co.prog.vo.SearchCondition" resultType="co.prog.vo.ProductVO">
 		select * from products
 		<where>
 		    <choose>

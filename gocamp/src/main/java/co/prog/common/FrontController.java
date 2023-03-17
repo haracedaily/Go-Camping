@@ -26,7 +26,8 @@ import co.prog.controller.MainControl;
 import co.prog.controller.ManageControl;
 import co.prog.controller.NoticeControl;
 import co.prog.controller.LocaControl;
-import co.prog.controller.NoticeFormControl;
+import co.prog.controller.NoticeForm;
+import co.prog.controller.NoticeFormAddControl;
 import co.prog.controller.ProductListControl;
 import co.prog.controller.UserInfoControl;
 import co.prog.controller.UserInfoMod;
@@ -56,7 +57,9 @@ public class FrontController extends HttpServlet {
 		//notice
 		map.put("/notice.do", new NoticeControl());
 		//noticeForm//등록화면
-		map.put("/noticeform.do", new NoticeFormControl());
+		map.put("/noticeform.do", new NoticeForm());
+		//등록처리
+		map.put("/noticeformadd.do", new NoticeFormAddControl());
 		//boardForm
 		map.put("/boardform.do", new BoardFormControl());
 
