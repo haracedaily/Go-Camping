@@ -12,7 +12,7 @@ public class NoticeControl implements Control {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		
-		String uri = "notice.tiles";
+		String uri = "board/notice.tiles";
 		return uri;
 		
 		

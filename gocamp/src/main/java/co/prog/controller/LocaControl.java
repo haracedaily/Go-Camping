@@ -5,11 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.prog.common.Control;
 
-public class locaControl implements Control {
+public class LocaControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String uri = "loca.tiles";
+		String uri = "loca/loca.tiles";
 		return uri;
 	}
 

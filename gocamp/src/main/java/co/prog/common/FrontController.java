@@ -20,7 +20,7 @@ import co.prog.controller.LoginControl;
 import co.prog.controller.MainControl;
 import co.prog.controller.ManageControl;
 import co.prog.controller.NoticeControl;
-import co.prog.controller.locaControl;
+import co.prog.controller.LocaControl;
 import co.prog.controller.ProductListControl;
 
 
@@ -55,7 +55,7 @@ public class FrontController extends HttpServlet {
 		map.put("/join.do", new JoinControl());
 		map.put("/login.do", new LoginControl());
 
-		map.put("/loca.do", new locaControl());
+		map.put("/loca.do", new LocaControl());
 		
 
 

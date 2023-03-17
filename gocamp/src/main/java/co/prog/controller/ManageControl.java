@@ -11,7 +11,7 @@ public class ManageControl implements Control {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
 		
-		String url = "manage.tiles";
+		String url = "product/manage.tiles";
 		return url;
 		
 		

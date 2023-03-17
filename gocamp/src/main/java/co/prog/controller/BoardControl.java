@@ -9,7 +9,7 @@ public class BoardControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String uri = "board.tiles";
+		String uri = "board/board.tiles";
 		return uri;
 				
 		

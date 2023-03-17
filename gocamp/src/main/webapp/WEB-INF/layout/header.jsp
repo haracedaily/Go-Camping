@@ -80,12 +80,9 @@ font-size : 20pt;
 					class="">.</span></a>
 					<ul
 						class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu" id="menuals">
-						<li><a href="index.html">Location</a></li>
-						<li class="active"><a href="buy.html">Product</a></li>
-						<li><a href="notice.do">Notice</a></li>
 						<li><a href="loca.do">Location</a></li>
-						<li><a href="buy.html">Product</a></li>
-						<li><a href="rent.html">Notice</a></li>
+						<li><a href="product.do">Product</a></li>
+						<li><a href="notice.do">Notice</a></li>
 						<li class="has-children"><a href="#">게시판</a>
 							<ul class="dropdown">
 								<li><a href="elements.html">자유게시판</a></li>
