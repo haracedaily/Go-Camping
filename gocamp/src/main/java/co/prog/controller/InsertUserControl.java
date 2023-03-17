@@ -37,7 +37,7 @@ public class InsertUserControl implements Control {
 		}else {
 			request.setAttribute("message", "nope");
 		}
-		return "join.tiles";
+		return "users/join.tiles";
 	}
 
 }

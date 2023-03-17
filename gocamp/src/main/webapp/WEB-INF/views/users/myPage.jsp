@@ -45,3 +45,7 @@
 			 <button id="modBtn" type="submit" class="btn btn-primary mb-4">정보 수정</button>
           
 </form>
+
+<script>
+	
+</script>

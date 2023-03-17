@@ -10,7 +10,7 @@ public class LoginFormControl implements Control {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response)
 	{
-		String url = "login.tiles";
+		String url = "users/login.tiles";
 		return url;
 	}
 

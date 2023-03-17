@@ -1,53 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+     
+     <c:if test="${message }!=null">
+     alert("${message }");
+     </c:if>
+     
+     
   <div class="untree_co-section bg-light">
     <div class="container">
       <div class="row justify-content-center text-center mb-5">
         <div class="col-lg-6">
           <h2 class="text-secondary heading-2">회원가입</h2>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          <p>일상 속의 자유와 함께 하는 GO CAMPING입니다. 회원가입으로 더 많은 혜택을 누려보세요.</p>
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="col-lg-5 bg-white p-5">
-          <form class="contact-form">
+          <form class="contact-form" action="insertUser.do" method="post">
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
                   <label for="name">이름</label>
-                  <input type="text" class="form-control" id="name">
+                  <input type="text" class="form-control" id="name" name="userName">
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
                   <label for="id">아이디</label>
-                  <input type="text" class="form-control" id="id"><button>중복확인</button>
+                  <input type="text" class="form-control" id="id" name="userId"><button>중복확인</button>
                 </div>
               </div>
             </div>
             <div class="form-group">
               <label for="pw">비밀번호</label>
-              <input type="password" class="form-control" id="pw">
+              <input type="password" class="form-control" id="pw" name="userPw">
             </div>
 
             <div class="form-group">
               <label for="nickname">닉네임</label><button>중복확인</button>
-              <input type="text" class="form-control" id="nickname">
+              <input type="text" class="form-control" id="nickname" name="nickname">
             </div>
             
             <div class="form-group">
               <label for="sinnum">주민등록번호</label>
-              <input type="tel" class="form-control" id="sinnum">
+              <input type="tel" class="form-control" id="sinnum" name="sinNum">
             </div>
             
 			 <div class="form-group">
               <label for="tel">전화번호</label>
-              <input type="tel" class="form-control" id="tel">
+              <input type="tel" class="form-control" id="tel" name="userTel">
             </div>
 
             <div class="form-group">
               <label for="addr">주소</label>
-              <input type="text" class="form-control" id="addr">
+              <input type="text" class="form-control" id="addr" name="userAddr">
             </div>
             
 
@@ -82,7 +89,41 @@
 	  let tel = document.getElementById(tel).value;
 	  let addr = document.getElementById(addr).value;
 	  
-	  if (!)
+	  if (!name){
+		  alert("이름을 입력하세요.");
+		  name.focus();
+		  return;
+	  } 
+	  if (!id){
+		  alert("ID를 확인하세요.");
+		  id.focus();
+		  return;
+	  }
+	  if (!pw){
+		  alert("비밀번호를 확인하세요.");
+		  pw.focus();
+		  return;
+	  }
+	  if (!nickname){
+		  alert("닉네임을 확인하세요.");
+		  nickname.focus();
+		  return;
+	  }
+	  if (!sinNum){
+		  alert("주민등록 번호를 확인하세요.");
+		  sinNum.focus();
+		  return;
+	  }
+	  if (!tel){
+		  alert("전화번호를 확인하세요.");
+		  tel.focus();
+		  return;
+	  }
+	  if (!addr){
+		  alert("주소를 확인하세요.");
+		  addr.focus();
+		  return;
+	  }
   });
 	  
   }

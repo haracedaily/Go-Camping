@@ -26,4 +26,9 @@ public class UsersServiceMybatis implements UsersService{
 		return mapper.login(id);
 	}
 
+	@Override
+	public UsersVO userInfo(String id) {
+		return mapper.selectUsers(id);
+	}
+
 }
