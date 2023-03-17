@@ -32,6 +32,7 @@
 	</environments>
 	<mappers>
 		<mapper resource="co/prog/mapper/ProductMapper.xml" />
-		
+		<mapper resource="co/prog/mapper/UsersMapper.xml" />
+		<mapper resource="co/prog/mapper/LocationMapper.xml" />
 	</mappers>
 </configuration>

@@ -51,8 +51,8 @@
         <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu">
 		  <li><a href="about.html">쪽지함</a></li>
           <li><a href="contact.html">마이페이지</a></li>
-          <li class="cta-button active"><a href="login.html">로그인</a></li>
-          <li class="cta-button active"><a href="login.html">로그아웃</a></li>
+          <li class="cta-button active"><a href="loginForm.do">로그인</a></li>
+          <li class="cta-button active"><a href="logOut.do">로그아웃</a></li>
           <li><a href="join.do">회원가입</a></li> 
 
         </ul>
