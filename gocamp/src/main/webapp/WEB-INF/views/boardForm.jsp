@@ -3,11 +3,39 @@
 <form action="noticeAdd.do" method="post" enctype="multipart/form-data">
 
 <style>
-#cbar{
-
+#bTable{
 margin-left:20%;
-margin-right:20%;
 }
+
+#titleTable{
+ width: 60vw;
+ padding: 12px 20px;
+ margin: 8px 0;
+ box-sizing: border-box;left-padding:100px
+}
+
+#contTable{
+ width: 60vw;
+ height: 35vw;
+ padding: 12px 20px;
+ margin: 8px 0;
+ box-sizing: border-box;
+}
+
+#boardselect{
+ width: 20vw;
+ padding: 12px 20px;
+ margin: 8px 0;
+ box-sizing: border-box;
+}
+
+#imgfile{
+ width: 20vw;
+ padding: 12px;
+
+ 
+}
+
 </style>
 
   <div class="untree_co-section">
@@ -19,10 +47,9 @@ margin-right:20%;
       </div>
     </div>
   </div>
-	<table class="table">
-		<tr>
-			<td>
-                <select>
+	<table id="bTable">
+			<td colspan=2 >
+                <select id="boardselect">
                     <option>자유게시판</option>
                     <option>중고게시판</option>
                     <option>문의게시판</option>
@@ -30,16 +57,14 @@ margin-right:20%;
                 </select>
             </td>
 		<tr>
-			<td>제목</td>
-			<td><input type="text" name="title" placeholder="제목을 입력해주세요"></td>
+			<td><input type="text" name="title" placeholder="제목을 입력해주세요" id="titleTable"></td>
 		</tr>
 		<tr>
-			<td>내용</td>
-			<td><textarea cols="30" rows="5" name="subject" placeholder="내용을 입력해주세요"></textarea></td>
+			<td><textarea cols="30" rows="5" name="subject" placeholder="내용을 입력해주세요" id="contTable"></textarea></td>
 		</tr>
 		<tr>
-			<td>파일</td>
-			<td><input type="file" name="attach"></td>
+			
+			<td><input type="file" name="attach" id=imgfile></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">

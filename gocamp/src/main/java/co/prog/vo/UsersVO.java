@@ -21,4 +21,6 @@ public class UsersVO {
 	String userTel; //연락처
 	String userAddr; //주소
 	
+	
+	
 }
