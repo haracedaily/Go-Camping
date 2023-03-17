@@ -11,11 +11,11 @@
 	</properties>
 	 
 	 <settings>
-	 <setting name="mapUnderscoreToCamelCase" value="true"/>
+	  <setting name="mapUnderscoreToCamelCase" value="true"/>
 	 </settings>
 	 
 	<typeAliases>
-		<typeAlias type="co.prog.vo.ProductVO" alias="ProductVO" />
+		<typeAlias type="co.prog.vo.NoticeVO" alias="NoticeVO" />
 	</typeAliases>
 
 	<environments default="development">
@@ -31,7 +31,7 @@
 
 	</environments>
 	<mappers>
-		<mapper resource="co/prog/mapper/ProductMapper.xml" />
+		<mapper resource="co/prog/mapper/NoticeMapper.xml" />
 		
 	</mappers>
 </configuration>

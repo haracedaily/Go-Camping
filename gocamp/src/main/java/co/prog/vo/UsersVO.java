@@ -21,4 +21,6 @@ public class UsersVO {
 	String sinNum; //주민등록번호
 	String nickname; //닉네임
 	
+	
+	
 }
