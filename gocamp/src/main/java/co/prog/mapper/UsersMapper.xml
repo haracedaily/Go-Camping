@@ -4,8 +4,17 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="co.prog.mapper.UsersMapper">
+
 	<insert id="insertUser" parameterType="co.prog.vo.UsersVO">
-		insert into users values(#{userName}, #{userId}, #{userPw}, #{nickname}, #{sinNum}, #{userTel},#{userTel})
+		insert into users values(#{userId}, #{userName}, #{userPw}, #{userAddr}, #{userTel}, #{sinNum},#{nickname})
 	</insert>
+	
+	<select id="selectUserId" resultType="int">
+		select count(*) from users where user_id = #{userId}
+	</select>
+	
+	<select id="login" parameterType="co.prog.vo.UsersVO" resultType="co.prog.vo.UsersVO">
+	select * from users where user_id=#{Id}
+	</select>
 
 </mapper>

@@ -8,13 +8,22 @@ import co.prog.vo.UsersVO;
 
 public class UsersServiceMybatis implements UsersService{
 	
-	private SqlSession sqlSession = DataSource.getInstance().openSession();
+	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private UsersMapper mapper = sqlSession.getMapper(UsersMapper.class);
 	
 	@Override
 	public boolean joinUsers(UsersVO vo) {
-		// TODO Auto-generated method stub
 		return mapper.insertUser(vo)==1;
+	}
+
+	@Override
+	public boolean checkId(String id) {
+		return mapper.selectUserId(id)==1;
+	}
+
+	@Override
+	public UsersVO login(String id) {
+		return mapper.login(id);
 	}
 
 }
