@@ -25,6 +25,7 @@ margin-right:20%;
 	<thead>
 		<tr><th>글번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th></tr>
 	</thead>
+	<!--  
 	<tbody>
 		<c:forEach var="notice" items="${list }">
 		<tr><td>${notice.noticeId }</td>
@@ -35,6 +36,7 @@ margin-right:20%;
 		</tr>	
 		</c:forEach>
 	</tbody>
+	-->
 	</table>
 </nav>
 

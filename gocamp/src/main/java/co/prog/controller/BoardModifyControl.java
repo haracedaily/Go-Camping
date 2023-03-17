@@ -4,18 +4,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.prog.common.Control;
-import co.prog.service.NoticeService;
-import co.prog.service.NoticeServiceMybatis;
 
-public class NoticeControl implements Control {
+public class BoardModifyControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		
-		String uri = "notice.tiles";
-		return uri;
-		
-		
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
