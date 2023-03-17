@@ -5,15 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.prog.common.Control;
 
-public class JoinControl implements Control {
+public class UserInfoControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-
-		String url = "users/join.tiles";
-		
-		
-		return url;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
