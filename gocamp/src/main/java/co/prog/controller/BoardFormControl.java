@@ -8,9 +8,10 @@ import co.prog.common.Control;
 public class BoardFormControl implements Control {
 
 	@Override
-	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String uri="boardForm.tiles";
+	public String exec(HttpServletRequest req, HttpServletResponse resp) {
+		String uri = "boardForm.tiles";
 		return uri;
+		
 	}
 
 }
