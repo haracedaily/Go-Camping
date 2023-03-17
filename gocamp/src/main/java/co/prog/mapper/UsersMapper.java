@@ -13,5 +13,7 @@ public interface UsersMapper {
 	//로그인
 	public UsersVO login(String id);
 	
+	//마이페이지 - 개인 정보 조회
+	public UsersVO selectUsers(String id);
 
 }

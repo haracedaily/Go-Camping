@@ -12,7 +12,7 @@ public class LogOutControl implements Control {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		return "loca.tiles";
+		return "loca/loca.tiles";
 	}
 
 }

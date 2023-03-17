@@ -16,7 +16,10 @@
 	 
 	<typeAliases>
 		<typeAlias type="co.prog.vo.NoticeVO" alias="NoticeVO" />
+		<typeAlias type="co.prog.vo.UsersVO" alias="UsersVO"/>
 	</typeAliases>
+	
+	
 
 	<environments default="development">
 		<environment id="development">
