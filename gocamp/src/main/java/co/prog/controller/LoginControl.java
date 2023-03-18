@@ -26,7 +26,7 @@ public class LoginControl implements Control{
 		session.setAttribute("userId", vo.getUserId());
 		session.setAttribute("user", vo);
 		
-		return "loca/loca.tiles";
+		return "users/myPage.tiles";
 	}
 
 

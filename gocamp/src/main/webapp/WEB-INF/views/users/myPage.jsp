@@ -7,13 +7,13 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="name">이름</label>
-                  <input type="text" class="form-control" id="userName" name="userName">
+                  <input type="text" class="form-control" id="userName" name="userName" readonly>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
                   <label for="id">아이디</label>
-                  <input type="text" class="form-control" id="userId" name="userId">
+                  <input type="text" class="form-control" id="userId" name="userId" readonly>
                 </div>
               </div>
             </div>
@@ -29,7 +29,7 @@
             
             <div class="form-group">
               <label for="sinnum">주민등록번호</label>
-              <input type="tel" class="form-control" id="sinNum" name="sinNum">
+              <input type="tel" class="form-control" id="sinNum" name="sinNum" readonly>
             </div>
             
 			 <div class="form-group">
@@ -47,5 +47,10 @@
 </form>
 
 <script>
-	
+	document.getElementById('userName').value="${user.getUserName()}";
+	document.getElementById('userId').value="${user.getUserId()}";
+	document.getElementById('nickname').value="${user.getNickname()}";
+	document.getElementById('sinNum').value="${user.getSinNum()}";
+	document.getElementById('userTel').value="${user.getUserTel()}";
+	document.getElementById('userAddr').value="${user.getUserAddr()}";
 </script>
