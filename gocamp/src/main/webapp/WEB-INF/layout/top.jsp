@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -51,9 +53,16 @@
         <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu">
 		  <li><a href="about.html">쪽지함</a></li>
           <li><a href="contact.html">마이페이지</a></li>
-          <li class="cta-button active"><a href="loginForm.do">로그인</a></li>
+          <c:choose>
+          <c:when test="${user != null}" >
           <li class="cta-button active"><a href="logOut.do">로그아웃</a></li>
+          </c:when>
+          <c:otherwise>
+          <li class="cta-button active"><a href="loginForm.do">로그인</a></li>
           <li><a href="join.do">회원가입</a></li> 
+          </c:otherwise>
+          </c:choose>
+          
 
         </ul>
 
