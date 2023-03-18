@@ -8,6 +8,8 @@
 		select rownum, bo_title,bo_date,bo_count,nickname,bo_id from notice_list_view order by bo_date
 	</select>
 
-
+	<insert id="insertNotice" parameterType="co.prog.vo.NoticeVO">
+		insert into board(bo_id, user_id,bo_title,bo_cont, bo_img) values(#{boId},#{userId},#{boTitle},#{boCont},#{boImg})
+	</insert>
 
 </mapper>

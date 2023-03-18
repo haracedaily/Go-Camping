@@ -32,7 +32,6 @@ margin-left:20%;
 
 </style>
 
-
   <div class="untree_co-section">
     <div class="container">
       <div class="row justify-content-center text-center">
@@ -42,21 +41,47 @@ margin-left:20%;
       </div>
     </div>
   </div>
+
+<form method="post" action="noticeformadd.do" enctpye="multipart/form-data">
+
 	<table id="bTable">
 		<tr>
-			<td><input type="text" name="title" placeholder="제목을 입력해주세요" id="titleTable"></td>
+			<td>
+			<input type="hidden" name="userId" value="${user.getUserId() }">
+			<input type="text" name="title" placeholder="제목을 입력해주세요" id="titleTable"></td>
 		</tr>
 		<tr>
 			<td><textarea cols="30" rows="5" name="subject" placeholder="내용을 입력해주세요" id="contTable"></textarea></td>
 		</tr>
-		<tr>
-			
-			<td><input type="file" name="attach" id=imgfile></td>
+		<tr>	
+			<td><input type="file" name="attach" id=imgfile placeholder='null'></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<input type="submit" value="저장">
+				<button type="submit" id="subBtn">저장</button>
 			</td>
 		</tr>
 	</table>
 </form>
+<script>
+	document.querySelector('button').addEventListener('click', function(e){
+		
+		let title = document.querySelector('input[name="title"]').value;
+		let subject = document.querySelector('textearea["subject"]').textContent;
+
+		let isOK = true;
+		if(title == '' || title =='null'){
+			isOK = false;
+		}
+		if(subject == '' || subject == 'null'){
+			isOK = false;
+		}
+		if(!isOK){
+			alert("확인해주세요");
+			return false;
+		}
+
+		console.log(this);
+		
+	})
+</script>
