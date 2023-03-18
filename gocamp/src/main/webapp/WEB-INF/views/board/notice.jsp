@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
+
 <style>
 #cbar{
 
@@ -22,6 +23,7 @@ margin-right:20%;
       </div>
     </div>
   </div>
+<button><a href="/gocamp/noticeform.do">±Û¾²±â</a></button>
 <nav class ="bar" id="cbar">
 	<table class="table">
 	<thead>
