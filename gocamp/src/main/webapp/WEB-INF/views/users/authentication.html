@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" ></script>
+</head>
+<body>
+
+<script type="text/javascript">
+var IMP = window.IMP;      // 생략 가능
+IMP.init('imp33823352'); // 예: imp00000000
+
+//IMP.certification(param, callback) 호출
+IMP.certification({ // param
+  // 주문 번호
+  //pg:'PG사코드.{CPID}',//본인인증 설정이 2개이상 되어 있는 경우 필
+  merchant_uid: "ORD20180131-0000011", 
+  // 모바일환경에서 popup:false(기본값) 인 경우 필수
+  m_redirect_url : "join.do", 
+  // PC환경에서는 popup 파라미터가 무시되고 항상 true 로 적용됨
+  popup : false 
+}, function (rsp) { // callback
+  if (rsp.success) {
+    // 인증 성공 
+	  console.log(rsp.imp_uid);
+      console.log(rsp.merchant_uid);
+      
+      $.ajax({
+              type : 'POST',
+              url : '/certifications/confirm',
+              dataType : 'json',
+              data : {
+                  imp_uid : rsp.imp_uid
+              }
+       }).done(function(){
+         takeResponseAndHandle(rsp)
+       });
+  } else {
+    // 인증 실패
+    // 인증취소 또는 인증실패
+    var msg = '인증에 실패하였습니다.';
+        msg += '에러내용 : ' + rsp.error_msg;
+ 
+        alert(msg);
+  }
+});
+</script>
+</body>
+</html>
