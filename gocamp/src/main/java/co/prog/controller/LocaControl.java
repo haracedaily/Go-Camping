@@ -9,7 +9,7 @@ public class LocaControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String uri = "loca/loca.tiles";
+		String uri = "loca/test.tiles";
 		return uri;
 	}
 
