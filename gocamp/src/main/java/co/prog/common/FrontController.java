@@ -16,6 +16,7 @@ import co.prog.controller.BoardFormControl;
 
 import co.prog.controller.BoardModifyControl;
 import co.prog.controller.BoardRemoveControl;
+import co.prog.controller.CalendarControl;
 import co.prog.controller.InsertUserControl;
 
 import co.prog.controller.JoinControl;
@@ -29,6 +30,7 @@ import co.prog.controller.LocaControl;
 import co.prog.controller.NoticeForm;
 import co.prog.controller.NoticeFormAddControl;
 import co.prog.controller.ProductListControl;
+import co.prog.controller.ReservListAjax;
 import co.prog.controller.UserInfoControl;
 import co.prog.controller.UserInfoMod;
 
@@ -87,6 +89,10 @@ public class FrontController extends HttpServlet {
 		map.put("/userInfoMod.do", new UserInfoMod());
 
 		map.put("/loca.do", new LocaControl());
+		
+		map.put("/calendar.do", new CalendarControl());
+		
+		map.put("/getReservListAjax.do", new ReservListAjax());
 		
 
 

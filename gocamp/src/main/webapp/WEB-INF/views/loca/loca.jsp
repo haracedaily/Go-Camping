@@ -28,6 +28,7 @@ width:100vw;
 }
 </style>    
  <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu" id="loca_menu">
+ <li>전 체</li>
  <li>경기도</li>
  <li>충청도</li>
  <li>경상도</li>
