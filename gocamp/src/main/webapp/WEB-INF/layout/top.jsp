@@ -51,6 +51,14 @@
       <div class="site-navigation">
     
         <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu">
+          <c:choose>
+          <c:when test="${user != null }">
+          <li>[ ${user.getUserName()} ] 님 반갑습니다!</li>
+          </c:when>
+          <c:otherwise>
+          <li>[ 손님 ] 반갑습니다!</li>
+          </c:otherwise>
+          </c:choose>
 		  <li><a href="about.html">쪽지함</a></li>
           <li><a href="contact.html">마이페이지</a></li>
           <c:choose>

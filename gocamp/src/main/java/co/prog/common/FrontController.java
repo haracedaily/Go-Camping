@@ -32,7 +32,7 @@ import co.prog.controller.NoticeFormAddControl;
 import co.prog.controller.ProductListControl;
 import co.prog.controller.ReservListAjax;
 import co.prog.controller.UserInfoControl;
-import co.prog.controller.UserInfoMod;
+import co.prog.controller.UserInfoModControl;
 
 
 
@@ -86,7 +86,7 @@ public class FrontController extends HttpServlet {
 		//마이페이지 - 회원 정보 조회
 		map.put("/userInfo.do", new UserInfoControl());
 		//마이페이지 - 회원 정보 수정
-		map.put("/userInfoMod.do", new UserInfoMod());
+		map.put("/userInfoMod.do", new UserInfoModControl());
 
 		map.put("/loca.do", new LocaControl());
 		

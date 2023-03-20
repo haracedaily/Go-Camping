@@ -31,4 +31,10 @@ public class UsersServiceMybatis implements UsersService{
 		return mapper.selectUsers(id);
 	}
 
+	@Override
+	public boolean modifyUsers(UsersVO vo) {
+		int r = mapper.updateUser(vo);
+		return r==1;
+	}
+
 }
