@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
@@ -53,16 +53,16 @@ margin-right:20%;
     <div class="container">
       <div class="row justify-content-center text-center">
         <div class="col-lg-6">
-          <h2 class="text-secondary heading-2">NOTICE</h2>
+          <h2 class="text-secondary heading-2">${usageName}게시판</h2>
         </div>
       </div>
     </div>
   </div>
-<button id="wbtn"><a href="/gocamp/noticeform.do">�۾���</a></button>
+<button id="wbtn"><a href="/gocamp/boardform.do">글쓰기</a></button>
 <nav class ="bar" id="cbar">
 	<table class="table">
 	<thead>
-		<tr><th>�۹�ȣ</th><th id= titlearea style = "width:550px; text-align:center;">����</th><th>�ۼ���</th><th>�ۼ���</th><th>��ȸ��</th></tr>
+		<tr><th>글번호</th><th id= titlearea style = "width:550px; text-align:center;">제목</th><th>작성자</th><th>작성일</th><th>조회수</th></tr>
 	</thead>
 		
 	<tbody>
@@ -82,16 +82,16 @@ margin-right:20%;
 	<div class="center">
 		<div class="pagination">
 		<c:if test="${page.prev }">
-			<a href="/gocamp/notice.do?page=${page.startPage - 1 }"> &laquo; </a>
+			<a href="/gocamp/boardform.do?page=${page.startPage - 1 }"> &laquo; </a>
 		</c:if>
 		
 		<c:forEach begin="${page.startPage }" end ="${page.endPage }" var="i">
 			<c:choose>
 				<c:when test= "${i == page.page }">
-					<a class="active" href = "/gocamp/notice.do?page=${i }">${i }</a>
+					<a class="active" href = "/gocamp/boardform.do?page=${i }">${i }</a>
 				</c:when>
 				<c:otherwise>
-					<a href = "/gocamp/notice.do?page=${i }">${i }</a>
+					<a href = "/gocamp/boardform.do?page=${i }">${i }</a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
