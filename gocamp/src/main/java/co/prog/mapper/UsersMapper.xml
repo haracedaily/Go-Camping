@@ -14,11 +14,19 @@
 	</select>
 	
 	<select id="login" parameterType="UsersVO" resultType="UsersVO">
-	select * from users where user_id=#{Id}
+		select * from users where user_id=#{Id}
 	</select>
 	
 	<select id="selectUsers" parameterType="UsersVO" resultType="UsersVO">
-	select * from users where user_id=#{Id}
+		select * from users where user_id=#{Id}
+	</select>
+	
+	<select id="updateUser" parameterType="usersVO" resultType="UsersVO">
+		update users
+		set user_pw = #{userPw}
+			user_addr = #{userAddr}
+			user_tel = #{userTel}
+			nickname = #{nickname}
 	</select>
 
 </mapper>

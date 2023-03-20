@@ -16,6 +16,7 @@ import co.prog.controller.BoardFormControl;
 import co.prog.controller.BoardListControl;
 import co.prog.controller.BoardModifyControl;
 import co.prog.controller.BoardRemoveControl;
+import co.prog.controller.CalendarControl;
 import co.prog.controller.InsertUserControl;
 
 import co.prog.controller.JoinControl;
@@ -29,8 +30,9 @@ import co.prog.controller.LocaControl;
 import co.prog.controller.NoticeForm;
 import co.prog.controller.NoticeFormAddControl;
 import co.prog.controller.ProductListControl;
+import co.prog.controller.ReservListAjax;
 import co.prog.controller.UserInfoControl;
-import co.prog.controller.UserInfoMod;
+import co.prog.controller.UserInfoModControl;
 
 public class FrontController extends HttpServlet {
 	private Map<String, Control> map;
@@ -79,10 +81,16 @@ public class FrontController extends HttpServlet {
 		map.put("/logOut.do", new LogOutControl());
 		// 마이페이지 - 회원 정보 조회
 		map.put("/userInfo.do", new UserInfoControl());
-		// 마이페이지 - 회원 정보 수정
-		map.put("/userInfoMod.do", new UserInfoMod());
+		//마이페이지 - 회원 정보 수정
+		map.put("/userInfoMod.do", new UserInfoModControl());
 
 		map.put("/loca.do", new LocaControl());
+		
+		map.put("/calendar.do", new CalendarControl());
+		
+		map.put("/getReservListAjax.do", new ReservListAjax());
+		
+
 
 	}
 
