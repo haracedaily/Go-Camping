@@ -4,13 +4,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.prog.common.Control;
+import co.prog.vo.MessageVO;
 
-public class LocaControl implements Control {
+public class MessageSendAjax implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String uri = "loca/loca.tiles";
-		return uri;
+		MessageVO vo = new MessageVO();
+		
+		return null;
 	}
 
 }
