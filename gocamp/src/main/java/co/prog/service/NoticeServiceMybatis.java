@@ -14,8 +14,10 @@ public class NoticeServiceMybatis implements NoticeService{
 	NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
 
 	@Override
-	public List<NoticeVO> noticeList() {//목록
-		return mapper.noticeList();
+	public List<NoticeVO> noticeListPage(int page) {//목록
+		return mapper.noticeListWithPaging(page);
+//		return mapper.noticeList();
+		
 	}
 
 	@Override
@@ -23,5 +25,32 @@ public class NoticeServiceMybatis implements NoticeService{
 		int r = mapper.insertNotice(vo);
 		return r == 1;
 	}
+
+	@Override
+	public NoticeVO getNotice(String boId) {//조회
+		mapper.updateCount(boId);
+		return mapper.selectNotice(boId);
+	}
+
+	@Override
+	public int getTotalCount() {//전체건수
+		return mapper.getTotalCount();
+	}
+
+	@Override
+	public List<NoticeVO> noticeList() {
+		// TODO Auto-generated method stub
+		return mapper.noticeList();
+	}
+
+	@Override
+	public List<NoticeVO> boardList() { //게시판리스트
+		
+		return mapper.boardList();
+	}
+
+
+	
+	
 	
 }
