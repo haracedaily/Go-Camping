@@ -17,7 +17,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-lg-5 bg-white p-5">
-          <form class="contact-form" action="insertUser.do" method="post">
+          <form class="contact-form" action="insertUser.do"method="post" id="userInsertForm">
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
@@ -132,12 +132,12 @@
     }
 </script>
 
+
   <script>
   
   //등록버튼 클릭 이벤트
-  document.getElementById('addBtn').addEventListner('click', function(){
-	  
-	  
+  document.querySelector('form').addEventListner('submit', function(e){
+	  e.preventDefault();
 	  let name = document.getElementById(name).value;
 	  let id = document.getElementById(id).value;
 	  let passwd = document.getElementById(pw).value;
@@ -146,43 +146,42 @@
 	  let tel = document.getElementById(tel).value;
 	  let addr = document.getElementById(postcode).value + document.getElementById(address).value +
 	  			 document.getElementById(detailAddress).value + document.getElementById(extraAddress).value;
-	  
-	  if (!name){
+	  let add = true;
+	  if (name==' '||name==null||name=='null'){
 		  alert("이름을 입력하세요.");
 		  name.focus();
-		  return;
+		  return add=false;
 	  } 
-	  if (!id){
+	  if (id==''||id==null||id=='null'){
 		  alert("ID를 확인하세요.");
-		  id.focus();
-		  return;
+		  return add=false;
 	  }
-	  if (!pw){
+	  if (pw==''||pw==null||pw=='null'){
 		  alert("비밀번호를 확인하세요.");
-		  pw.focus();
-		  return;
+		  return add=false;
 	  }
-	  if (!nickname){
+	  if (nickname==''||nickname==null||nickname=='null'){
 		  alert("닉네임을 확인하세요.");
-		  nickname.focus();
-		  return;
+		  return add=false;
 	  }
-	  if (!sinNum){
+	  if (sinNum==''||sinNum==null||sinNum=='null'){
 		  alert("주민등록 번호를 확인하세요.");
-		  sinNum.focus();
-		  return;
+		  return add=false;
 	  }
-	  if (!tel){
+	  if (tel==''){
 		  alert("전화번호를 확인하세요.");
-		  tel.focus();
-		  return;
+		  return add=false;
 	  }
-	  if (!addr){
+	  if (addr==''){
 		  alert("주소를 확인하세요.");
-		  addr.focus();
-		  return;
+		  return add=false;
 	  }
-  });
+	  if(!add){
+		  alert("입력항목을 확인하십시오.");
+	  }
+	  if(add){
+		  e.submit();
+	  }
 	  
-  }
+  });
   </script>

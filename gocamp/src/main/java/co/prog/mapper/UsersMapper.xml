@@ -21,12 +21,13 @@
 		select * from users where user_id=#{Id}
 	</select>
 	
-	<select id="updateUser" parameterType="usersVO" resultType="UsersVO">
+	<update id="updateUser" parameterType="usersVO" >
 		update users
-		set user_pw = #{userPw}
-			user_addr = #{userAddr}
-			user_tel = #{userTel}
+		set user_pw = #{userPw},
+			user_addr = #{userAddr},
+			user_tel = #{userTel},
 			nickname = #{nickname}
-	</select>
+		where user_id=#{userId}
+	</update>
 
 </mapper>

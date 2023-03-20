@@ -25,6 +25,8 @@ import co.prog.controller.LoginControl;
 import co.prog.controller.LoginFormControl;
 import co.prog.controller.MainControl;
 import co.prog.controller.ManageControl;
+import co.prog.controller.MessageListAjax;
+import co.prog.controller.MessageSendAjax;
 import co.prog.controller.NoticeControl;
 import co.prog.controller.LocaControl;
 import co.prog.controller.NoticeForm;
@@ -68,10 +70,10 @@ public class FrontController extends HttpServlet {
 		map.put("/boardModify.do", new BoardModifyControl());
 		// 삭제
 		map.put("/boardRemove.do", new BoardRemoveControl());
-		// 회원가입
-		map.put("/insertUser.do", new InsertUserControl());
-		// 회원가입 폼
 
+		//회원가입
+		map.put("/insertUser.do", new InsertUserControl());	
+		//회원가입 폼
 		map.put("/join.do", new JoinControl());
 		// 로그인 폼
 		map.put("/loginForm.do", new LoginFormControl());
@@ -83,6 +85,12 @@ public class FrontController extends HttpServlet {
 		map.put("/userInfo.do", new UserInfoControl());
 		//마이페이지 - 회원 정보 수정
 		map.put("/userInfoMod.do", new UserInfoModControl());
+		
+		//쪽지 관련
+		//쪽지 - 쪽지 리스트
+		map.put("/messageList.do", new MessageListAjax());
+		//쪽지 - 쪽지 보내기
+		map.put("/messageSendAjax.do", new MessageSendAjax());
 
 		map.put("/loca.do", new LocaControl());
 		

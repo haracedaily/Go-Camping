@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
   <link rel="stylesheet" href="css/style2/style.css">
 
-  <title>Homespace Free HTML Template by Untree.co</title>
+  <title>Go Camping</title>
 </head>
 
 <body>
@@ -53,14 +53,21 @@
         <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu">
           <c:choose>
           <c:when test="${user != null }">
-          <li>[ ${user.getUserName()} ] 님 반갑습니다!</li>
+          <li>[ ${user.getNickname()} ] 님 반갑습니다!</li>
           </c:when>
           <c:otherwise>
           <li>[ 손님 ] 반갑습니다!</li>
           </c:otherwise>
           </c:choose>
-		  <li><a href="about.html">쪽지함</a></li>
-          <li><a href="contact.html">마이페이지</a></li>
+		  <li><a href="#">쪽지함</a></li>
+		  <c:choose>
+		  <c:when test="${user.getUserId() != admin}">
+          <li><a href="userInfo.do">마이페이지</a></li>
+		  </c:when>
+		  <c:otherwise>
+		  <li><a href="#">관리자 페이지</a></li>
+		  </c:otherwise>		  
+		  </c:choose>
           <c:choose>
           <c:when test="${user != null}" >
           <li class="cta-button active"><a href="logOut.do">로그아웃</a></li>
