@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
 #loca_menu{
 list-style-type: none;
@@ -33,6 +34,7 @@ width:100vw;
  <li>충청도</li>
  <li>경상도</li>
  </ul>
+<div id='locaDetail'> 
 <div id="map" style="width:35vw;height:40vh;"></div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f5ca12e7c10d8949c4309573d8d938a9&libraries=services"></script>
@@ -75,7 +77,7 @@ geocoder.addressSearch('경기 파주시 문산읍 마정리 613-1', function(re
 });    
 </script>
 <div class="loca-exp">
-<form action="">
+
 <table class="">
 <thead>
 <tr>
@@ -109,9 +111,9 @@ geocoder.addressSearch('경기 파주시 문산읍 마정리 613-1', function(re
 </tr>
 </tbody>
 </table>
-</form>
-</div>
 
+</div>
+</div>
 <div id="blank"/>
 <!--
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  

@@ -30,6 +30,7 @@ import co.prog.controller.LocaControl;
 import co.prog.controller.NoticeForm;
 import co.prog.controller.NoticeFormAddControl;
 import co.prog.controller.ProductListControl;
+import co.prog.controller.ReservControl;
 import co.prog.controller.ReservListAjax;
 import co.prog.controller.UserInfoControl;
 import co.prog.controller.UserInfoMod;
@@ -94,7 +95,7 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/getReservListAjax.do", new ReservListAjax());
 		
-
+		map.put("/reserv.do", new ReservControl());
 
 	}
 
