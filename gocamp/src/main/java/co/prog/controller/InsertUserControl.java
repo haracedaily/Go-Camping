@@ -28,7 +28,12 @@ public class InsertUserControl implements Control {
 		vo.setNickname(request.getParameter("nickname"));
 		vo.setSinNum(request.getParameter("sinNum"));
 		vo.setUserTel(request.getParameter("userTel"));
-		vo.setUserAddr(request.getParameter("userAddr"));
+		String Addr="우편번호 : "+request.getParameter("postcode")+"|";
+		Addr+="주소 : "+request.getParameter("address")+"_";
+		Addr+=request.getParameter("extraAddress")+"_";
+		Addr+=request.getParameter("detailAddress")+"_";
+		System.out.println(Addr);
+		vo.setUserAddr(Addr);
 		
 		System.out.println(vo);
 		

@@ -1,49 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form action="noticeAdd.do" method="post" enctype="multipart/form-data">
 
 <style>
-#cbar{
+	#cbar {
 
-margin-left:20%;
-margin-right:20%;
-}
+		margin-left: 20%;
+		margin-right: 20%;
+	}
+	#bTable{
+	margin-left:20%;
+	}
+
+	#titleTable{
+ 	width: 60vw;
+	 padding: 12px 20px;
+	 margin: 8px 0;
+	 box-sizing: border-box;
+	}
+	
+	#contTable{
+	 width: 60vw;
+	 height: 35vw;
+	 padding: 12px 20px;
+	 margin: 8px 0;
+	 box-sizing: border-box;
+	}
+	
+	
+	#imgfile{
+	 width: 20vw;
+	 padding: 12px;
+	
+	}
 </style>
 
-  <div class="untree_co-section">
-    <div class="container">
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-6">
-          <h2 class="text-secondary heading-2">글쓰기</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-	<table class="table">
+<div class="untree_co-section">
+	<div class="container">
+		<div class="row justify-content-center text-center">
+			<div class="col-lg-6">
+				<h2 class="text-secondary heading-2">${usageName} 글쓰기</h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+<form method="post" action="boardadd.do" enctype="multipart/form-data">
+
+	<table id="bTable">
 		<tr>
 			<td>
-                <select>
-                    <option>자유게시판</option>
-                    <option>중고게시판</option>
-                    <option>문의게시판</option>
-                    <option>건의게시판</option>
-                </select>
-            </td>
-		<tr>
-			<td>제목</td>
-			<td><input type="text" name="title" placeholder="제목을 입력해주세요"></td>
+			<input type="hidden" name="boId" value="${notice.getboId() }">
+			<input type="hidden" name="userId" value="${user.getUserId() }">
+			<input type="text" name="title" placeholder="제목을 입력해주세요" id="titleTable"></td>
 		</tr>
 		<tr>
-			<td>내용</td>
-			<td><textarea cols="30" rows="5" name="subject" placeholder="내용을 입력해주세요"></textarea></td>
+			<td><textarea cols="30" rows="5" name="subject" placeholder="내용을 입력해주세요" id="contTable"></textarea></td>
 		</tr>
-		<tr>
-			<td>파일</td>
-			<td><input type="file" name="attach"></td>
+		<tr>	
+			<td><input type="file" name="attach" id=imgfile placeholder='null'></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<input type="submit" value="저장">
+				<button type="submit" id="subBtn">저장</button>
 			</td>
 		</tr>
 	</table>

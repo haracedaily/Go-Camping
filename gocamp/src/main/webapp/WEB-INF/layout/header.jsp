@@ -85,10 +85,10 @@ font-size : 20pt;
 						<li><a href="notice.do">Notice</a></li>
 						<li class="has-children"><a href="#">게시판</a>
 							<ul class="dropdown">
-								<li><a href="elements.html">자유게시판</a></li>
-								<li><a href="#">중고게시판</a></li>
-								<li><a href="#">문의게시판</a></li>
-								<li><a href="#">건의게시판</a></li>
+								<li><a href="boardform.do?usage=b">자유게시판</a></li>
+								<li><a href="boardform.do?usage=c">중고게시판</a></li>
+								<li><a href="boardform.do?usage=d">문의게시판</a></li>
+								<li><a href="boardform.do?usage=e">건의게시판</a></li>
 							</ul>
 						</li>
 					</ul>
