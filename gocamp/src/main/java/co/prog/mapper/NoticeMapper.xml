@@ -5,11 +5,43 @@
 <mapper namespace="co.prog.mapper.NoticeMapper">
 
 	<select id="noticeList" >
-		select rownum, bo_title,bo_date,bo_count,nickname,bo_id from notice_list_view order by bo_date
+		<![CDATA[
+		select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage from (select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage from notice_list_view order by bo_date)]]>
+	</select>
+	
+	<select id="noticeListWithPaging" resultType="co.prog.vo.NoticeVO" parameterType="int">
+		<![CDATA[
+		select rn, bo_title, nickname, bo_date, bo_count
+		from(select rownum rn, bo_title, nickname, bo_date, bo_count
+		from (select rownum rn, bo_title, nickname, bo_date, bo_count from notice_list_view order by bo_id desc) a
+		where rownum <=(${page}*10)) b
+		where b.rn>(${page}-1)*10
+		]]>
 	</select>
 
 	<insert id="insertNotice" parameterType="co.prog.vo.NoticeVO">
-		insert into board(bo_id, user_id,bo_title,bo_cont, bo_img) values(#{boId},#{userId},#{boTitle},#{boCont},#{boImg})
+		INSERT INTO board (bo_id, user_id, bo_title, bo_cont, bo_img, usage)
+		VALUES (notice_board_seq.NEXTVAL, #{userId}, #{boTitle}, #{boCont}, #{boImg}, #{usage})
 	</insert>
-
+	
+	<select id = "selectNotice" resultType="co.prog.vo.NoticeVO">
+		select * from board where bo_id = #{boId}
+	</select>
+	
+	<update id="updateCount" parameterType="int">
+		update board set bo_count = bo_count + 1
+		where bo_id = #{boId}
+	</update>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from board
+	</select>
+	
+	
+	
+	
+	<select id="boardList">
+		<![CDATA[
+		select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage from (select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage from notice_list_view order by bo_date)]]>
+	</select>
 </mapper>

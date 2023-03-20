@@ -42,11 +42,12 @@ margin-left:20%;
     </div>
   </div>
 
-<form method="post" action="noticeformadd.do" enctpye="multipart/form-data">
+<form method="post" action="noticeformadd.do" enctype="multipart/form-data">
 
 	<table id="bTable">
 		<tr>
 			<td>
+			<input type="hidden" name="boId" value="${notice.getboId() }">
 			<input type="hidden" name="userId" value="${user.getUserId() }">
 			<input type="text" name="title" placeholder="제목을 입력해주세요" id="titleTable"></td>
 		</tr>
@@ -63,6 +64,7 @@ margin-left:20%;
 		</tr>
 	</table>
 </form>
+
 <script>
 	document.querySelector('button').addEventListener('click', function(e){
 		
