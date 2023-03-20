@@ -3,6 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.prog.mapper.LocationMapper">
-
+<select id="getReservList">
+select res_id,room_id,user_id,res_name,res_tel,res_per,to_char(res_sdate,'yyyy-mm-dd') res_sdate, to_char(res_edate+1,'yyyy-mm-dd') res_edate,res_state,res_date from reserv where room_id=#{roomId}
+</select>
 
 </mapper>
