@@ -17,6 +17,7 @@ import co.prog.controller.BoardListControl;
 import co.prog.controller.BoardModifyControl;
 import co.prog.controller.BoardRemoveControl;
 import co.prog.controller.CalendarControl;
+import co.prog.controller.GetMessageControl;
 import co.prog.controller.InsertUserControl;
 
 import co.prog.controller.JoinControl;
@@ -26,6 +27,7 @@ import co.prog.controller.LoginFormControl;
 import co.prog.controller.MainControl;
 import co.prog.controller.ManageControl;
 import co.prog.controller.MessageListAjax;
+import co.prog.controller.MessageListControl;
 import co.prog.controller.MessageSendAjax;
 import co.prog.controller.NoticeControl;
 import co.prog.controller.LocaControl;
@@ -36,6 +38,7 @@ import co.prog.controller.ReservControl;
 import co.prog.controller.ReservListAjax;
 import co.prog.controller.UserInfoControl;
 import co.prog.controller.UserInfoModControl;
+import co.prog.controller.UserMessageListControl;
 
 public class FrontController extends HttpServlet {
 	private Map<String, Control> map;
@@ -88,10 +91,14 @@ public class FrontController extends HttpServlet {
 		map.put("/userInfoMod.do", new UserInfoModControl());
 		
 		//쪽지 관련
-		//쪽지 - 쪽지 리스트
-		map.put("/messageList.do", new MessageListAjax());
-		//쪽지 - 쪽지 보내기
+		//쪽지 - 쪽지 리스트 (관리자)
+		map.put("/messageList.do", new MessageListControl());
+		//쪽지 - 쪽지 보내기 (관리자)
 		map.put("/messageSendAjax.do", new MessageSendAjax());
+		//쪽지 - 쪽지 리스트 (회원)
+		map.put("/userMessageList.do", new UserMessageListControl());
+		//쪽지 - 쪽지 읽기
+		map.put("/getMessage.do", new GetMessageControl());
 
 		map.put("/loca.do", new LocaControl());
 		

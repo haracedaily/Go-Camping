@@ -59,15 +59,17 @@
           <li>[ 손님 ] 반갑습니다!</li>
           </c:otherwise>
           </c:choose>
-		  <li><a href="#">쪽지함</a></li>
+		  <li><a href="userMessageList.do">쪽지함</a></li>
 		  <c:choose>
-		  <c:when test="${user.getUserId() != admin}">
+		  <c:when test="${user.getUserId() != null}">
           <li><a href="userInfo.do">마이페이지</a></li>
 		  </c:when>
 		  <c:otherwise>
-		  <li><a href="#">관리자 페이지</a></li>
-		  </c:otherwise>		  
+		  </c:otherwise>
 		  </c:choose>
+		  <c:if test="${user.getUserId() == 'admin' && user != null }">
+		  <li><a href="#">관리자 페이지</a></li>
+		  </c:if>		  
           <c:choose>
           <c:when test="${user != null}" >
           <li class="cta-button active"><a href="logOut.do">로그아웃</a></li>

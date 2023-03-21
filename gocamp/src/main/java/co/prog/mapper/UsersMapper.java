@@ -18,4 +18,5 @@ public interface UsersMapper {
 	
 	//마이페이지 - 개인 정보 수정
 	public int updateUser(UsersVO vo);
+	
 }

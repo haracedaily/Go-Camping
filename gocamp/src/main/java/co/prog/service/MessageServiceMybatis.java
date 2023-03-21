@@ -24,5 +24,11 @@ public class MessageServiceMybatis implements MessageService{
 		return false;
 	}
 
+	@Override
+	public MessageVO getMessage(int mNum) { //쪽지 상세 조회
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

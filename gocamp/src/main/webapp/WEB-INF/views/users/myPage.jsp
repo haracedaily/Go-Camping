@@ -1,14 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<style>
+#cForm{
+  margin: 0 auto;
+}
+
+</style>
 <div>
 	<sidebar>
 	<%@ include file="/WEB-INF/layout/myPageSidebar.jsp"%>
 	</sidebar>
 	<body>
-<section class="py-5">
-	<div class="row justify-content-center">
+<section class="py-5" id="cForm">
+	<div class="row justify-content-center" >
 		<div>
-			<form class="contact-form" action="userInfoMod.do" method="post">
+			<form class="contact-form" action="userInfoMod.do" method="post" >
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group">
@@ -54,7 +61,7 @@
               <input type="text" id="sample6_extraAddress" name="extraAddress" placeholder="참고항목">
             </div>
 
-				<button id="modBtn" type="submit" class="btn btn-primary mb-4">정보
+				<button id="modBtn" type="submit" class="btn btn-primary mb-4" id="mBtn">정보
 					수정</button>
 
 			</form>
