@@ -18,6 +18,7 @@
 	<typeAliases>
 		<typeAlias type="co.prog.vo.NoticeVO" alias="NoticeVO" />
 		<typeAlias type="co.prog.vo.UsersVO" alias="UsersVO"/>
+		<typeAlias type="co.prog.vo.MessageVO" alias="MessageVO"/>
 	</typeAliases>
 	
 	
@@ -39,7 +40,7 @@
 		<mapper resource="co/prog/mapper/ProductMapper.xml" />
 		<mapper resource="co/prog/mapper/UsersMapper.xml" />
 		<mapper resource="co/prog/mapper/LocationMapper.xml" />
-
+		<mapper resource="co/prog/mapper/MessageMapper.xml" />
 		<mapper resource="co/prog/mapper/NoticeMapper.xml" />
 		
 

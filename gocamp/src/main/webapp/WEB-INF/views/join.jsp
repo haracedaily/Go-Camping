@@ -11,7 +11,7 @@
       
       <div class="row justify-content-center">
         <div class="col-lg-5 bg-white p-5">
-          <form class="contact-form" action="insertUser.do" method="post">
+          <form class="contact-form">
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
@@ -70,12 +70,22 @@
       </div> <!-- /.row -->
     </div> <!-- /.container -->
   </div> <!-- /.untree_co-section bg-light -->
-  
+ <form id="insertFrm" action="insertUser.do" method="post">
+ <input type="hidden" id="nm" name="userName">
+ <input type="hidden" id="id" name="userId">
+ <input type="hidden" id="pw" name="userPw">
+ <input type="hidden" id="nN" name="nickname">
+ <input type="hidden" id="sN" name="sinNum">
+ <input type="hidden" id="uT" name="userTel">
+ <input type="hidden" id="uA" name=""><!-- 컨트롤에 get parameter 이름과 동일한 이름 -->
+ </form> 
   <script>
   //등록버튼 클릭 이벤트
-  document.getElementById('addBtn').addEventListner('click', function(){
-	  
-	  
+  document.getElementById('addBtn').addEventListner('click', function(e){
+	  e.prventDefault();
+	  let run=true;
+	  let inFrm = document.querySelector('#insertFrm');
+	  	  
 	  let userName = document.getElementById('userName').value;
 	  let userId = document.getElementById('userId').value;
 	  let userPw = document.getElementById('userPw').value;
@@ -87,37 +97,48 @@
 	  if (!name){
 		  alert("이름을 입력하세요.");
 		  name.focus();
-		  return;
+		  return run=false;
 	  } 
 	  if (!id){
 		  alert("ID를 확인하세요.");
 		  id.focus();
-		  return;
+		  return run=false;
 	  }
 	  if (!pw){
 		  alert("비밀번호를 확인하세요.");
 		  pw.focus();
-		  return;
+		  return run=false;
 	  }
 	  if (!nickname){
 		  alert("닉네임을 확인하세요.");
 		  nickname.focus();
-		  return;
+		  return run=false;
 	  }
 	  if (!sinNum){
 		  alert("주민등록 번호를 확인하세요.");
 		  sinNum.focus();
-		  return;
+		  return run=false;
 	  }
 	  if (!tel){
 		  alert("전화번호를 확인하세요.");
 		  tel.focus();
-		  return;
+		  return run=false;
 	  }
 	  if (!addr){
 		  alert("주소를 확인하세요.");
 		  addr.focus();
-		  return;
+		  return run=false;
+	  }
+
+	  document.getElementById('nm').value=userName;
+	  document.getElementById('nm').value=userName;
+	  document.getElementById('nm').value=userName;
+	  document.getElementById('nm').value=userName;
+	  document.getElementById('nm').value=userName;
+	  document.getElementById('nm').value=userName;
+	  //form 새로 만든 곳에 있는 아이디 넣고 밸류에 입력 받은 밸류 넣은 변수 넣기<
+	  if(run){
+		  e.submit();
 	  }
 	  
   });

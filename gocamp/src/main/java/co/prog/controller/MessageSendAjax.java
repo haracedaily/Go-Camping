@@ -4,18 +4,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.prog.common.Control;
-import co.prog.service.UsersService;
-import co.prog.service.UsersServiceMybatis;
-import co.prog.vo.UsersVO;
+import co.prog.vo.MessageVO;
 
-public class JoinControl implements Control {
+public class MessageSendAjax implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		MessageVO vo = new MessageVO();
 		
-		String uri = "users/join.tiles";
-
-		return uri;
+		return null;
 	}
 
 }

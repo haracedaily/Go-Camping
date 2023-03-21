@@ -17,6 +17,7 @@ import co.prog.controller.BoardListControl;
 import co.prog.controller.BoardModifyControl;
 import co.prog.controller.BoardRemoveControl;
 import co.prog.controller.CalendarControl;
+import co.prog.controller.GetMessageControl;
 import co.prog.controller.InsertUserControl;
 
 import co.prog.controller.JoinControl;
@@ -25,14 +26,19 @@ import co.prog.controller.LoginControl;
 import co.prog.controller.LoginFormControl;
 import co.prog.controller.MainControl;
 import co.prog.controller.ManageControl;
+import co.prog.controller.MessageListAjax;
+import co.prog.controller.MessageListControl;
+import co.prog.controller.MessageSendAjax;
 import co.prog.controller.NoticeControl;
 import co.prog.controller.LocaControl;
 import co.prog.controller.NoticeForm;
 import co.prog.controller.NoticeFormAddControl;
 import co.prog.controller.ProductListControl;
+import co.prog.controller.ReservControl;
 import co.prog.controller.ReservListAjax;
 import co.prog.controller.UserInfoControl;
 import co.prog.controller.UserInfoModControl;
+import co.prog.controller.UserMessageListControl;
 
 public class FrontController extends HttpServlet {
 	private Map<String, Control> map;
@@ -68,10 +74,15 @@ public class FrontController extends HttpServlet {
 		// 삭제
 		map.put("/boardRemove.do", new BoardRemoveControl());
 
+
 		// 회원가입
 		map.put("/insertUser.do", new InsertUserControl());
 		// 회원가입 폼
 
+
+		//회원가입
+		map.put("/insertUser.do", new InsertUserControl());	
+		//회원가입 폼
 		map.put("/join.do", new JoinControl());
 		// 로그인 폼
 		map.put("/loginForm.do", new LoginFormControl());
@@ -83,12 +94,24 @@ public class FrontController extends HttpServlet {
 		map.put("/userInfo.do", new UserInfoControl());
 		// 마이페이지 - 회원 정보 수정
 		map.put("/userInfoMod.do", new UserInfoModControl());
+		
+		//쪽지 관련
+		//쪽지 - 쪽지 리스트 (관리자)
+		map.put("/messageList.do", new MessageListControl());
+		//쪽지 - 쪽지 보내기 (관리자)
+		map.put("/messageSendAjax.do", new MessageSendAjax());
+		//쪽지 - 쪽지 리스트 (회원)
+		map.put("/userMessageList.do", new UserMessageListControl());
+		//쪽지 - 쪽지 읽기
+		map.put("/getMessage.do", new GetMessageControl());
 
 		map.put("/loca.do", new LocaControl());
-
+		
 		map.put("/calendar.do", new CalendarControl());
-
+		
 		map.put("/getReservListAjax.do", new ReservListAjax());
+		
+		map.put("/reserv.do", new ReservControl());
 
 	}
 

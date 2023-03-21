@@ -51,19 +51,26 @@ document.addEventListener('DOMContentLoaded', function() {
 				},
 			select : function(info) {
 				if (startDate == null) {
+					alert('입실일 설정')
 					startDate = info.startStr;
 				} else {
 					//endDate.setTime(info.end.getTime()-(540*60*1000));
 					endDate=info.endStr;
-					alert('set end date: ' + endDate);
+					alert('퇴실일 설정');
 					// 여기서 startDate와 endDate를 처리할 수 있습니다.
 					if (new Date(startDate) < new Date(endDate)) {
+						calendar.addEvent({
+							start : startDate,
+							end : endDate,
+							display : 'background',
+							color : '#0044cc'
+						})
 						calendar.addEvent({
 							title : '선택한 기간',
 							start : startDate,
 							end : endDate,
-							backgroundColor : '#ff9f89',
-							borderColor : '#ff9f89',
+							backgroundColor : '#0044cc',
+							borderColor : '#0044cc',
 							textColor : '#000000'
 						});
 					document.getElementById('resSdate').value=startDate;
@@ -91,12 +98,18 @@ document.addEventListener('DOMContentLoaded', function() {
 				
 				console.log(end)
 					calendar.addEvent({
+						start : start,
+						end : end,
+						display : 'background',
+						color : '#ff0000'
+					});
+					calendar.addEvent({
 					title : title,
 					start : start,
 					end : end,
-					backgroundColor : '#cccccc',
-					borderColor : '#cccccc',
-					textColor : '#000000'
+					textColor : '#000000',
+					backgroundColor : '#ff0000',
+					borderColor : '#ff0000'
 				});
 			}
 		})
@@ -128,20 +141,24 @@ html, body {
 }
 
 #calendar {
-float:left;
+position:absolute;
+left:10%;
+top:20%;
+width:40%;
+height:80%;
 	max-width: 60%;
 	max-height:100%;
 	margin-right:10px;
 }
 #calMo{
 display:none;
-background-color: rgba(255,255,255,0.6);
+background-color: rgb(255,255,255);
 overflow:auto;
 z-index:1;
-left:20%;
-top:10%;
+left:0;
+top:0;
 position:absolute;
-width:50%;
+width:100%;
 height:100%;
 }
 .animate {
@@ -158,17 +175,29 @@ height:100%;
   to {transform: scale(1)}
 }
 .close{
-display:block;
-float:right;
+position:relative;
+top:10%;
+right:10%;
 }
 .modal-content {
-clear:right;
+position:absolute;
+top:20%;
+right:10%;
   background-color: #fefefe;
   border: 1px solid #888;
-  width: 30%; /* Could be more or less, depending on screen size */
+  width: 20%; /* Could be more or less, depending on screen size */
+  padding: 15px;
 }
 #clBtn{
-float:left;
+position:absolute;
+right:10%;
+bottom:20%;
+}
+.modal-content input{
+margin-bottom:5px;
+}
+.modal-content button{
+margin-bottom:5px;
 }
 </style>
 </head>
@@ -176,18 +205,31 @@ float:left;
 <div class='modal' id='calMo'>
  <span onclick="document.getElementById('calMo').style.display='none'" class="close" title="Close Modal">&times;</span>
 	<div id='calendar'><button id='reset'>선택 취소</button></div>
-<form class="modal-content animate" action="reserv.do" method="post">
+<form class="modal-content animate" action="reserv.do" method="post" id="resFrm">
 	<label for='resNm'>예약자 이름</label><input type='text' id='resNm'>
 	<label for='resTel'>예약자 연락처</label><input type='text' id='resTel'>
 	<label for='resPer'>방문인원</label><input type='text' id='resPer'>
 	<label for='resSdate'>입실일</label><input type='text' id='resSdate' readonly>
 	<label for='resEdate'>퇴실일</label><input type='text' id='resEdate' readonly>
-	<button type='submit'>예약</button><button type='reset'>취소</button>
+	<button type='submit'>예약</button>
+	<button type='reset'>취소</button>
 </form>
 	<button onclick="document.getElementById('calMo').style.display='none'" id='clBtn'>창닫기</button>
 </div>
 <button onclick="document.getElementById('calMo').style.display='block'" style="width:auto;">예약하기</button>
 <script>
+document.querySelector('#resFrm').addEventListener('submit',function(e){
+e.preventDefault();
+let nm = document.getElementById('resNm').value;
+let tel = document.getElementById('resTel').value;
+let per = document.getElementById('resPer').value;
+let sdate = document.getElementById('resSdate').value;
+let edate = document.getElementById('resEdate').value;
+if(confirm('예약자 이름 : '+nm+'\n\n연락처 : '+tel+'\n\n인원 : '+per+'\n\n입실일자 : '+sdate+'\n퇴실일자 : '+edate+'\n\n 예약하시겠습니까?')){
+	this.submit();
+}
+
+})
 
 </script>
 </body>

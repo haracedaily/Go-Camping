@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="co.prog.mapper.MessageMapper">
+	<!-- 관리자 쪽지 리스트 -->
+	<select id="messageList" resultType="MessageVO">
+	  	select m_num, user_id, m_title, m_date, m_check from message order by m_num desc
+	</select>
+	
+	<!-- 회원 쪽지 리스트 -->
+	<select id="userMessageList" resultType="MessageVO">
+	  <!--  m_num, m_title, m_date, m_check -->
+	  select m_num, m_title, m_date, m_check where user_id = ${userId }order by m_num desc
+	</select>
+</mapper>
