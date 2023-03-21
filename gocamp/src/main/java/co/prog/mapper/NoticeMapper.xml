@@ -6,15 +6,19 @@
 
 	<select id="noticeList" >
 		<![CDATA[
-		select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage from (select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage from notice_list_view order by bo_date)]]>
+		select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage
+		from (select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage from notice_list_view order by bo_date)]]>
 	</select>
 	
-	<select id="noticeListWithPaging" resultType="co.prog.vo.NoticeVO" parameterType="int">
+	<select id="noticeListWithPaging" resultType="co.prog.vo.NoticeVO" parameterType="co.prog.vo.NoticeDTO">
 		<![CDATA[
-		select rn, bo_title, nickname, bo_date, bo_count
-		from(select rownum rn, bo_title, nickname, bo_date, bo_count
-		from (select rownum rn, bo_title, nickname, bo_date, bo_count from notice_list_view order by bo_id desc) a
-		where rownum <=(${page}*10)) b
+		select rn, bo_title, nickname, bo_date, bo_count, bo_id, usage
+		from(select rownum rn, bo_title, nickname, bo_date, bo_count, bo_id, usage
+		     from (select rownum rn, bo_title, nickname, bo_date, bo_count, bo_id, usage 
+		           from notice_list_view 
+		           where usage='a' 
+		           order by bo_id desc) a
+		     where rownum <=(${page}*10)) b
 		where b.rn>(${page}-1)*10
 		]]>
 	</select>
@@ -25,7 +29,7 @@
 	</insert>
 	
 	<select id = "selectNotice" resultType="co.prog.vo.NoticeVO">
-		select * from board where bo_id = #{boId}
+		select * from board_view where bo_id = #{boId}
 	</select>
 	
 	<update id="updateCount" parameterType="int">
@@ -33,15 +37,35 @@
 		where bo_id = #{boId}
 	</update>
 	
-	<select id="getTotalCount" resultType="int">
-		select count(*) from board
+	<select id="getTotalCount" resultType="int" parameterType="string">
+		select count(*) as totalCount from board
+		where usage=#{usage}
+		group by usage
 	</select>
 	
+	<update id="updateNotice" parameterType="co.prog.vo.NoticeVO">
+		update board set bo_title = #{boTitle}, bo_cont= #{boCont}, bo_img=#{boImg} where bo_id = #{boId}
+	</update>
 	
-	
+	<delete id="deleteNotice" parameterType="int">
+		delete from board where bo_id = #{boId}
+	</delete>
 	
 	<select id="boardList">
 		<![CDATA[
 		select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage from (select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage from notice_list_view order by bo_date)]]>
+	</select>
+	
+	<select id="boardListWithPaging" resultType="co.prog.vo.NoticeVO" parameterType="co.prog.vo.NoticeDTO">
+		<![CDATA[
+		select rn, bo_title, nickname, bo_date, bo_count, bo_id, usage
+		from(select rownum rn, bo_title, nickname, bo_date, bo_count, bo_id, usage
+		     from (select rownum rn, bo_title, nickname, bo_date, bo_count, bo_id, usage
+		           from notice_list_view 
+		           where usage=#{usage} 
+		           order by bo_id desc) a
+		     where rownum <=(${page}*10)) b
+		where b.rn>(${page}-1)*10	
+		]]>
 	</select>
 </mapper>

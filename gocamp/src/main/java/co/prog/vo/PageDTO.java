@@ -9,6 +9,7 @@ public class PageDTO {
 	private boolean prev, next; // 이전, 다음페이지
 	private int page; // 현재페이지
 	
+	
 	public PageDTO(int page, int total) {
 		//total: 235건 --> 24page
 		this.page = page;
