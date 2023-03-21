@@ -44,6 +44,7 @@ margin-bottom:20px;
 
 </form>
 <script>
+<!-- 
 let myfrm=document.querySelector('#locaChoice');
 
 document.querySelectorAll('.float-right.site-menu a').forEach(atag=>{
@@ -52,7 +53,7 @@ document.querySelectorAll('.float-right.site-menu a').forEach(atag=>{
 		myfrm.addr.value=this.getAttribute('href');
 		myfrm.submit();
 	})
-})
+})-->
 </script>
 
 <div id='locaDetail'> 

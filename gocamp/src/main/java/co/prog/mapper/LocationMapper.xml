@@ -23,16 +23,7 @@ loca_addr like #{addr }
 
 <select id="getAlmostLocaList">
 select loca_addr from loca
-<where>
-<choose>
-<when test="addr == 'all'">
-1=1
-</when>
-<otherwise>
-loca_addr like (#{addr })
-</otherwise>
-</choose>
-</where>
+
 </select>
 
 </mapper>
