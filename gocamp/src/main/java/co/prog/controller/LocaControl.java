@@ -16,20 +16,21 @@ public class LocaControl implements Control {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 파라미터: cat, order
-		/* 
-		String addr = request.getParameter("addr")+"%";
 
-	
+		String addr = request.getParameter("addrs");
+		
+		addr = addr == null ? "all%" : addr+"%";
 		System.out.println(addr);
 		LocationVO con = new LocationVO();
-		con.setAddr(addr);
-		*/
+		con.setAddrs(addr);
+
 		LocationService service = new LocationServiceMybatis();
-		//List<LocationVO> list = service.getAllLocaList(con);
-		List<String> locaAddr = service.getAlmostLocaList();
+		List<LocationVO> list = service.getAllLocaList(con);
+		List<String> locaAddr = service.getAlmostLocaList(con);
 		System.out.println(locaAddr);
-		//request.setAttribute("addr", addr);
-		//request.setAttribute("list", list);
+		System.out.println("확인 : "+list);
+		request.setAttribute("addr", addr);
+		request.setAttribute("list", list);
 		String loAddr = "";
 		for(int i=0;i<locaAddr.size();i++) {
 		loAddr += locaAddr.get(i);
