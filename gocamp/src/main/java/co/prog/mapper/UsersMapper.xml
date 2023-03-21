@@ -7,7 +7,7 @@
 
 	<!-- 회원가입 -->
 	<insert id="insertUser" parameterType="UsersVO">
-		insert into users values(#{userId}, #{userName}, #{userPw}, #{userAddr}, #{userTel}, #{sinNum},#{nickname})
+		insert into users values(#{userId}, #{userName}, #{userPw}, #{userAddr}, #{userTel}, #{sinNum},#{nickname}, sysdate)
 	</insert>
 	
 	<!-- 아이디 중복확인 -->

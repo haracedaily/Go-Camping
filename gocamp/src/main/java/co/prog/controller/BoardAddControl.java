@@ -54,7 +54,7 @@ public class BoardAddControl implements Control {
 			e.printStackTrace();
 		}
 
-		return null;
+		return "boardList.do";
 	}
 
 }

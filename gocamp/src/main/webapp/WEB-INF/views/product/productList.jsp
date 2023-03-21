@@ -49,18 +49,12 @@
 
 	</ul>
 </div>
-<div>
-	<label> <input type="checkbox" name="sale_only" value="true">
-		Sale only
-	</label>
-</div>
+
 
 <form action="product.do">
-	<input type="hidden" name="cat" value="${cat }"> <input
-		type="hidden" name="order" value="${order }"> <input
-		type="hidden" name="cat" value="${cat }"> <input type="hidden"
-		name="order" value="${order }"> <input type="hidden"
-		name="sale_only" value="${param.sale_only}">
+	<input type="hidden" name="cat" value="${cat }"> 
+	<input type="hidden" name="order" value="${order }"> 
+
 </form>
 <script>
 	let myform = document.querySelector('form');
@@ -102,14 +96,14 @@
 						<div class="badge bg-dark text-white position-absolute"
 							style="top: 0.5rem; right: 0.5rem">Sale</div>
 						<!-- Product image-->
-						<a href="#"> <img class="card-img-top"
+						 <img class="card-img-top"
 							src="./img/${product.prodImga }" alt="..." />
 						</a>
 						<!-- Product details-->
 						<div class="card-body p-4">
 							<div class="text-center">
 								<!-- Product name-->
-								<h5 class="fw-bolder">${product.prodName }</h5>
+								<h5 class="fw-bolder"><a href='productInfo.do?code=${product.sku}'>${product.prodName }</a></h5>
 								<!-- Product reviews-->
 
 								<!-- Product price-->
@@ -124,14 +118,35 @@
 						<!-- Product actions-->
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto" href="#">Add to cart
-									<hr> <a class="btn btn-outline-dark mt-auto" href="#">바로
-										구매하기</a>
+								<a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+									<hr> 
+									<a class="btn btn-outline-dark mt-auto" href="#">바로 구매하기</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</c:forEach>
+			<div class="center">
+  <div class="pagination">
+    <c:if test="${page.prev }">
+       <a href="product.do?page=${page.startPage -1 }"> &laquo; </a>
+    </c:if>
+    <c:forEach begin="${page.startPage }" end="${page.endPage }" var="i"> <!-- step 따로 선언하지 않으면 1씩 증가 -->
+      <c:choose>
+        <c:when test="${i == page.page }">
+           <a class="active" href="product.do?page=${i }">${i }</a>
+        </c:when>
+        <c:otherwise>
+           <a href="product.do?page=${i }" >${i }</a>
+        </c:otherwise>
+      </c:choose>
+    </c:forEach>
+    <c:if test="${page.next }">
+       <a href="product.do?page=${page.endPage +1 }"> &raquo;</a>
+    </c:if>
+    
+  </div>
+	</div>
 		</div>
 	</div>
 </section>

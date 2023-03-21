@@ -5,28 +5,70 @@
 <mapper namespace="co.prog.mapper.ProductMapper">
 
 	<!-- 전체상품 조회 -->
-	<select id="productList" parameterType="co.prog.vo.SearchCondition" resultType="co.prog.vo.ProductVO">
+	<select id="productList"
+		parameterType="co.prog.vo.SearchCondition"
+		resultType="co.prog.vo.ProductVO">
 		select * from products
 		<where>
-		    <choose>
-		        <when test="cat == 'all'">
-		            1 = 1
-		        </when>
-		        <otherwise>
-                    cate_id = #{cat}
-		        </otherwise>
-		    </choose>
-		    <if test="order == 'price'">
-		        order by prod_price desc
-		    </if>
-		    <if test="order == 'price_low'">
-		        order by prod_price
-		    </if>
-		    <if test="order == 'brandnew'">
-		        order by prod_date desc
-		    </if>
+			<choose>
+				<when test="cat == 'all'">
+					1 = 1
+				</when>
+				<otherwise>
+					cate_id = #{cat}
+				</otherwise>
+			</choose>
+			<if test="order == 'price'">
+				order by prod_price desc
+			</if>
+			<if test="order == 'price_low'">
+				order by prod_price
+			</if>
+			<if test="order == 'brandnew'">
+				order by prod_date desc
+			</if>
 		</where>
 	</select>
 
 
+
+	<select id="productListWithPaging"
+		resultType="co.prog.vo.ProductVO" parameterType="int">
+	    <![CDATA[
+	    	select cate_id, prod_type, prod_name
+	    	from(select rownum rn, cate_id, prod_type, prod_name
+           	   from (select cate_id, prod_type, prod_name
+                    from products
+                     order by cate_id desc) a
+                where rownum <= (#{page}*10)) b
+	    	where b.rn> (#{page}-1)*10
+	   ]]>
+
+
+	</select>
+
+	<select id="selectProduct" resultType="co.prog.vo.ProductVO"
+		parameterType="co.prog.vo.ProductVO">
+		select* from products where sku= #{sku}
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from
+		products
+	</select>
+
+	<select id="replyList" parameterType="co.prog.vo.PcomVO"
+		resultType="co.prog.vo.PcomVO">
+		select p.sku, p.user_Id, p.rep_Num, p.rep_Con, p.rep_Date, u.user_Name
+		from pcom p
+		inner join users u
+		on p.user_Id = u.user_Id
+		where sku=  #{sku}
+		order by p.rep_date desc
+	</select>
+
+	<insert id="registReply" parameterType="co.prog.vo.PcomVO">
+		insert into pcom (sku, user_id, rep_num, rep_con)
+		values(#{sku}, #{userId}, pcom_seq.nextval, #{repCon})
+	</insert>
 </mapper>

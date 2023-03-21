@@ -13,6 +13,7 @@ public class MessageVO {
 //	m_check varchar2(30)
 	
 	int mNum; // 쪽지 아이디
+	String uId; // 회원 아이디
 	String mContent; // 쪽지 내용
 	String mDate; // 보낸 날짜
 	String readDate; // 읽은 날짜

@@ -17,6 +17,7 @@ import co.prog.controller.BoardListControl;
 import co.prog.controller.BoardModifyControl;
 import co.prog.controller.BoardRemoveControl;
 import co.prog.controller.CalendarControl;
+import co.prog.controller.GetMessageControl;
 import co.prog.controller.InsertUserControl;
 
 import co.prog.controller.JoinControl;
@@ -26,17 +27,20 @@ import co.prog.controller.LoginFormControl;
 import co.prog.controller.MainControl;
 import co.prog.controller.ManageControl;
 import co.prog.controller.MessageListAjax;
+import co.prog.controller.MessageListControl;
 import co.prog.controller.MessageSendAjax;
 import co.prog.controller.NoticeControl;
 import co.prog.controller.LocaControl;
 import co.prog.controller.LocaListControl;
 import co.prog.controller.NoticeForm;
 import co.prog.controller.NoticeFormAddControl;
+import co.prog.controller.ProductInfoControl;
 import co.prog.controller.ProductListControl;
 import co.prog.controller.ReservControl;
 import co.prog.controller.ReservListAjax;
 import co.prog.controller.UserInfoControl;
 import co.prog.controller.UserInfoModControl;
+import co.prog.controller.UserMessageListControl;
 
 public class FrontController extends HttpServlet {
 	private Map<String, Control> map;
@@ -53,25 +57,32 @@ public class FrontController extends HttpServlet {
 		map.put("/manage.do", new ManageControl());
 		// 상품 (전체, 텐트, 테이블, 침낭/메트, 식기)
 		map.put("/product.do", new ProductListControl());
-		// notice
+		
+		map.put("/productInfo.do", new ProductInfoControl());
+		// noticelist
 		map.put("/notice.do", new NoticeControl());
-		// noticeForm//등록화면
+		// noticeForm 등록화면 //글쓰기폼
 		map.put("/noticeform.do", new NoticeForm());
-		// 등록처리
+		// noticeForm 등록처리
 		map.put("/noticeformadd.do", new NoticeFormAddControl());
-		// boardForm
-		map.put("/boardform.do", new BoardFormControl());
-		// board
+		// board list
+		map.put("/boardList.do", new BoardListControl());
+		// board 상세보기
 		map.put("/board.do", new BoardControl());
+		// boardForm 등록화면
+		map.put("/boardform.do", new BoardFormControl());
 		// 게시글등록처리.(a:공지사항, b:자유, c:중고, d:문의, e:건의.)
 		map.put("/boardAdd.do", new BoardAddControl());
-		//board list
-		map.put("/boardlist.do", new BoardListControl());
-
 		// 수정
 		map.put("/boardModify.do", new BoardModifyControl());
 		// 삭제
 		map.put("/boardRemove.do", new BoardRemoveControl());
+
+
+		// 회원가입
+		map.put("/insertUser.do", new InsertUserControl());
+		// 회원가입 폼
+
 
 		//회원가입
 		map.put("/insertUser.do", new InsertUserControl());	
@@ -85,14 +96,18 @@ public class FrontController extends HttpServlet {
 		map.put("/logOut.do", new LogOutControl());
 		// 마이페이지 - 회원 정보 조회
 		map.put("/userInfo.do", new UserInfoControl());
-		//마이페이지 - 회원 정보 수정
+		// 마이페이지 - 회원 정보 수정
 		map.put("/userInfoMod.do", new UserInfoModControl());
 		
 		//쪽지 관련
-		//쪽지 - 쪽지 리스트
-		map.put("/messageList.do", new MessageListAjax());
-		//쪽지 - 쪽지 보내기
+		//쪽지 - 쪽지 리스트 (관리자)
+		map.put("/messageList.do", new MessageListControl());
+		//쪽지 - 쪽지 보내기 (관리자)
 		map.put("/messageSendAjax.do", new MessageSendAjax());
+		//쪽지 - 쪽지 리스트 (회원)
+		map.put("/userMessageList.do", new UserMessageListControl());
+		//쪽지 - 쪽지 읽기
+		map.put("/getMessage.do", new GetMessageControl());
 
 		map.put("/loca.do", new LocaControl());
 		
@@ -121,6 +136,7 @@ public class FrontController extends HttpServlet {
 		System.out.println("command:" + command);
 		String viewPage = command.exec(req, resp); // product/productList.tiles
 		System.out.println("view:" + viewPage);
+
 		if (viewPage.endsWith(".jsp")) {
 			viewPage = "/WEB-INF/" + viewPage;
 //		} else if (viewPage.endsWith(".tiles")) { // members.do(...tiles)
@@ -130,7 +146,11 @@ public class FrontController extends HttpServlet {
 			resp.setContentType("text/json;charset=utf-8");
 			resp.getWriter().append(viewPage.substring(0, viewPage.length() - 5));
 			return;
+		} else if (viewPage.endsWith(".do")) {
+			resp.sendRedirect(viewPage);
+			return;
 		}
+
 		// 페이지 재지정.
 		RequestDispatcher rd = req.getRequestDispatcher(viewPage);
 		rd.forward(req, resp);

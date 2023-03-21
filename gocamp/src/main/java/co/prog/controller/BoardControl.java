@@ -18,7 +18,7 @@ public class BoardControl implements Control {
 		String boId = request.getParameter("boId");
 		
 		NoticeService service = new NoticeServiceMybatis();
-		NoticeVO vo = service.getNotice(boId);
+		NoticeVO vo = service.getNotice(Integer.parseInt(boId));
 		
 		request.setAttribute("notice", vo);
 		
