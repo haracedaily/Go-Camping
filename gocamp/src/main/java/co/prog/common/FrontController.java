@@ -29,6 +29,7 @@ import co.prog.controller.MessageListAjax;
 import co.prog.controller.MessageSendAjax;
 import co.prog.controller.NoticeControl;
 import co.prog.controller.LocaControl;
+import co.prog.controller.LocaListControl;
 import co.prog.controller.NoticeForm;
 import co.prog.controller.NoticeFormAddControl;
 import co.prog.controller.ProductListControl;
@@ -100,6 +101,8 @@ public class FrontController extends HttpServlet {
 		map.put("/getReservListAjax.do", new ReservListAjax());
 		
 		map.put("/reserv.do", new ReservControl());
+		
+		map.put("/locaList.do", new LocaListControl());
 
 	}
 
