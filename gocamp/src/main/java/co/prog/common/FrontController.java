@@ -33,6 +33,7 @@ import co.prog.controller.NoticeControl;
 import co.prog.controller.LocaControl;
 import co.prog.controller.NoticeForm;
 import co.prog.controller.NoticeFormAddControl;
+import co.prog.controller.ProductInfoControl;
 import co.prog.controller.ProductListControl;
 import co.prog.controller.ReservControl;
 import co.prog.controller.ReservListAjax;
@@ -55,6 +56,8 @@ public class FrontController extends HttpServlet {
 		map.put("/manage.do", new ManageControl());
 		// 상품 (전체, 텐트, 테이블, 침낭/메트, 식기)
 		map.put("/product.do", new ProductListControl());
+		
+		map.put("/productInfo.do", new ProductInfoControl());
 		// noticelist
 		map.put("/notice.do", new NoticeControl());
 		// noticeForm 등록화면 //글쓰기폼
