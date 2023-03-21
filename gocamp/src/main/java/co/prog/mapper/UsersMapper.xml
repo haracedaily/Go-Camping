@@ -5,14 +5,17 @@
 
 <mapper namespace="co.prog.mapper.UsersMapper">
 
+	<!-- 회원가입 -->
 	<insert id="insertUser" parameterType="UsersVO">
 		insert into users values(#{userId}, #{userName}, #{userPw}, #{userAddr}, #{userTel}, #{sinNum},#{nickname})
 	</insert>
 	
+	<!-- 아이디 중복확인 -->
 	<select id="selectUserId" resultType="int">
 		select count(*) from users where user_id = #{userId}
 	</select>
 	
+	<!-- 로그인 -->
 	<select id="login" parameterType="UsersVO" resultType="UsersVO">
 		select * from users where user_id=#{Id}
 	</select>
@@ -20,7 +23,7 @@
 	<select id="selectUsers" parameterType="UsersVO" resultType="UsersVO">
 		select * from users where user_id=#{Id}
 	</select>
-	
+	<!-- 회원 정보 수정 -->
 	<update id="updateUser" parameterType="usersVO" >
 		update users
 		set user_pw = #{userPw},

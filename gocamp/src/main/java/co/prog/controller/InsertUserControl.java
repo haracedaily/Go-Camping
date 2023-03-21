@@ -37,6 +37,15 @@ public class InsertUserControl implements Control {
 		
 		System.out.println(vo);
 		
+		// 아이디 중복 확인
+		String userId = request.getParameter("userId");
+		boolean isDuplicated = service.checkId(userId);
+		if (isDuplicated) {
+		    request.setAttribute("message", "duplicated");
+		    return "users/join.tiles";
+		}
+		
+	    
 		if(service.joinUsers(vo)==true) {
 			request.setAttribute("message", "ok");
 		}else {

@@ -28,7 +28,8 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="id">아이디</label>
-                  <input type="text" class="form-control" id="id" name="userId"><button>중복확인</button>
+                   <button type="button" onclick="checkIdDuplicate()">중복확인</button>
+                  <input type="text" class="form-control" id="id" name="userId">
                 </div>
               </div>
             </div>
@@ -134,6 +135,28 @@
 
 
   <script>
+  //아이디 중복 확인
+  function checkIdDuplicate() {
+    var userId = document.getElementById("id").value;
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          var result = xhr.responseText;
+          if (result === "exist") {
+            alert("이미 사용 중인 아이디입니다.");
+          } else {
+            alert("사용 가능한 아이디입니다.");
+          }
+        } else {
+          alert("서버 오류가 발생했습니다.");
+        }
+      }
+    };
+    xhr.open("POST", "checkIdDuplicate.do", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("userId=" + userId);
+  }
   
   //등록버튼 클릭 이벤트
   document.querySelector('form').addEventListner('submit', function(e){
