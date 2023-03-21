@@ -202,10 +202,11 @@ margin-bottom:5px;
 </style>
 </head>
 <body>
+
 <div class='modal' id='calMo'>
+<form class="modal-content animate" id="resFrm">
  <span onclick="document.getElementById('calMo').style.display='none'" class="close" title="Close Modal">&times;</span>
 	<div id='calendar'><button id='reset'>선택 취소</button></div>
-<form class="modal-content animate" action="reserv.do" method="post" id="resFrm">
 	<label for='resNm'>예약자 이름</label><input type='text' id='resNm'>
 	<label for='resTel'>예약자 연락처</label><input type='text' id='resTel'>
 	<label for='resPer'>방문인원</label><input type='text' id='resPer'>
@@ -216,7 +217,16 @@ margin-bottom:5px;
 </form>
 	<button onclick="document.getElementById('calMo').style.display='none'" id='clBtn'>창닫기</button>
 </div>
+
 <button onclick="document.getElementById('calMo').style.display='block'" style="width:auto;">예약하기</button>
+
+
+
+<form action="reserv.do" method="POST" id="reservFrm">
+
+</form>
+
+
 <script>
 document.querySelector('#resFrm').addEventListener('submit',function(e){
 e.preventDefault();

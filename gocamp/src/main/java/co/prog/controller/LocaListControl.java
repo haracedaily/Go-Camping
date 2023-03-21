@@ -22,7 +22,7 @@ public class LocaListControl implements Control {
 		addr = addr == null ? "all" : addr; // 조건없을 경우.
 
 		LocationVO con = new LocationVO();
-		con.setAddr(addr);
+		con.setAddrs(addr);
 
 		LocationService service = new LocationServiceMybatis();
 		List<LocationVO> list = service.getAllLocaList(con);
