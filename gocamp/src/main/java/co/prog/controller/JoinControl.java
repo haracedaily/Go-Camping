@@ -13,9 +13,9 @@ public class JoinControl implements Control {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		
-		String url = "users/join.tiles";
+		String uri = "users/join.tiles";
 
-		return url;
+		return uri;
 	}
 
 }
