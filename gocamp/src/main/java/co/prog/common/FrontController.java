@@ -55,25 +55,30 @@ public class FrontController extends HttpServlet {
 		map.put("/manage.do", new ManageControl());
 		// 상품 (전체, 텐트, 테이블, 침낭/메트, 식기)
 		map.put("/product.do", new ProductListControl());
-		// notice
+		// noticelist
 		map.put("/notice.do", new NoticeControl());
-		// noticeForm//등록화면
+		// noticeForm 등록화면 //글쓰기폼
 		map.put("/noticeform.do", new NoticeForm());
-		// 등록처리
+		// noticeForm 등록처리
 		map.put("/noticeformadd.do", new NoticeFormAddControl());
-		// boardForm
-		map.put("/boardform.do", new BoardFormControl());
-		// board
+		// board list
+		map.put("/boardList.do", new BoardListControl());
+		// board 상세보기
 		map.put("/board.do", new BoardControl());
+		// boardForm 등록화면
+		map.put("/boardform.do", new BoardFormControl());
 		// 게시글등록처리.(a:공지사항, b:자유, c:중고, d:문의, e:건의.)
 		map.put("/boardAdd.do", new BoardAddControl());
-		//board list
-		map.put("/boardlist.do", new BoardListControl());
-
 		// 수정
 		map.put("/boardModify.do", new BoardModifyControl());
 		// 삭제
 		map.put("/boardRemove.do", new BoardRemoveControl());
+
+
+		// 회원가입
+		map.put("/insertUser.do", new InsertUserControl());
+		// 회원가입 폼
+
 
 		//회원가입
 		map.put("/insertUser.do", new InsertUserControl());	
@@ -87,7 +92,7 @@ public class FrontController extends HttpServlet {
 		map.put("/logOut.do", new LogOutControl());
 		// 마이페이지 - 회원 정보 조회
 		map.put("/userInfo.do", new UserInfoControl());
-		//마이페이지 - 회원 정보 수정
+		// 마이페이지 - 회원 정보 수정
 		map.put("/userInfoMod.do", new UserInfoModControl());
 		
 		//쪽지 관련
@@ -125,6 +130,7 @@ public class FrontController extends HttpServlet {
 		System.out.println("command:" + command);
 		String viewPage = command.exec(req, resp); // product/productList.tiles
 		System.out.println("view:" + viewPage);
+
 		if (viewPage.endsWith(".jsp")) {
 			viewPage = "/WEB-INF/" + viewPage;
 //		} else if (viewPage.endsWith(".tiles")) { // members.do(...tiles)
@@ -134,7 +140,11 @@ public class FrontController extends HttpServlet {
 			resp.setContentType("text/json;charset=utf-8");
 			resp.getWriter().append(viewPage.substring(0, viewPage.length() - 5));
 			return;
+		} else if (viewPage.endsWith(".do")) {
+			resp.sendRedirect(viewPage);
+			return;
 		}
+
 		// 페이지 재지정.
 		RequestDispatcher rd = req.getRequestDispatcher(viewPage);
 		rd.forward(req, resp);

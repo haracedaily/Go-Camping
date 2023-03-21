@@ -43,9 +43,8 @@
 		</div>
 	</div>
 </div>
-
-<form method="post" action="boardadd.do" enctype="multipart/form-data">
-
+<form method="post" action="boardAdd.do" enctype="multipart/form-data">
+<input type="hidden" name="usage" value="${usage }">
 	<table id="bTable">
 		<tr>
 			<td>

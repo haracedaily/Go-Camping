@@ -69,7 +69,7 @@ margin-right:20%;
 		<c:forEach items="${list }" var="notice">
         <tr>
             <td>${notice.rn }</td>
-            <td id= titlearea style = "width:550px;"><a href="/gocamp/board.do=${notice.boId }">${notice.boTitle }</a></td>
+            <td id= titlearea style = "width:550px;"><a href="/gocamp/board.do?boId=${notice.boId }">${notice.boTitle }</a></td>
             <td id= nicknamearea >${notice.nickname }</td>
             <td>${notice.boDate }</td>	
             <td>${notice.boCount }</td>
