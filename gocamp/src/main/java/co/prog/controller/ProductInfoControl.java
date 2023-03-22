@@ -1,17 +1,18 @@
 package co.prog.controller;
 
-import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.prog.common.Control;
 import co.prog.service.ProductService;
 import co.prog.service.ProductServiceMybatis;
-import co.prog.vo.PcomVO;
+import co.prog.service.ReplyService;
+import co.prog.service.ReplyServiceMybatis;
+import co.prog.vo.PageDTO;
 import co.prog.vo.ProductVO;
+import co.prog.vo.ReplyVO;
 
 public class ProductInfoControl implements Control {
 
@@ -25,10 +26,27 @@ public class ProductInfoControl implements Control {
 		System.out.println(vo);
 		request.setAttribute("vo", vo);
 		
-		PcomVO rep = new PcomVO();
+		ReplyVO rep = new ReplyVO();
 		rep.setSku(name);
-		List<PcomVO> list = service.replyList(rep);
+		
+		String page = request.getParameter("page");
+		System.out.println(page);
+		if (page == null) {
+			page = "1";
+		}
+		// 글목록. mybatis활용 목록.
+		ReplyService rservice = new ReplyServiceMybatis();
+		ReplyVO rvo= new ReplyVO();
+		rvo.setSku(vo.getSku());
+		rvo.setPage(page);
+		
+		List<ReplyVO> list = rservice.replyList(rvo); // 공지사항 목록.
+		int total = rservice.getTotalCount();
 		request.setAttribute("list", list);
+		request.setAttribute("page", new PageDTO(Integer.parseInt(page), total));
+		
+		
+		
 		return "product/productInfo.tiles"; 
 	}
 

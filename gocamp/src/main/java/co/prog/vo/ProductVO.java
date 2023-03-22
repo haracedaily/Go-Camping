@@ -18,8 +18,7 @@ public class ProductVO {
 	String prodImgc;
 	String prodImgd;
 	Date prodDate;
-	
-	
+
 }
 
 //sku varchar2(30) constraint prod_sku_pk primary key,
