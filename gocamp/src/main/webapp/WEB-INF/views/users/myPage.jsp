@@ -11,7 +11,7 @@
 	<sidebar>
 	<%@ include file="/WEB-INF/layout/myPageSidebar.jsp"%>
 	</sidebar>
-	<body>
+<body>
 <section class="py-5" id="cForm">
 	<div class="row justify-content-center" >
 		<div>
@@ -60,7 +60,7 @@
 	</div>
 </section>
 </div>
-</body>
+
 
 <form id="modFrm" action="userInfoMod.do" method="post">
 <input type="hidden" id="nm" name="userNmae">
@@ -94,37 +94,7 @@
 	  let tel = document.getElementById('userTel').value;
 	  let addr = document.getElementById('userAddr').value;
 	  
-	  let add = true;
 	  
-	  if (name==' '||name==null||name=='null'){
-		  alert("이름을 입력하세요.");
-		  name.focus();
-		  return add=false;
-	  } 
-	  if (id==''||id==null||id=='null'){
-		  alert("ID를 확인하세요.");
-		  return add=false;
-	  }
-	  if (pw==''||pw==null||pw=='null'){
-		  alert("비밀번호를 확인하세요.");
-		  return add=false;
-	  }
-	  if (nickname==''||nickname==null||nickname=='null'){
-		  alert("닉네임을 확인하세요.");
-		  return add=false;
-	  }
-	  
-	  if (tel==''){
-		  alert("전화번호를 확인하세요.");
-		  return add=false;
-	  }
-	  if (addr==''){
-		  alert("주소를 확인하세요.");
-		  return add=false;
-	  }
-	  if(!run){
-		  alert("입력항목을 확인하십시오.");
-	  }
 	  
 	  document.getElementById('nm').value=userName;
 	  document.getElementById('id').value=userId;
@@ -138,3 +108,4 @@
 	  
   });
 </script>
+</body>

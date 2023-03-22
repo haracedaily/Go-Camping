@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.prog.mapper.ReplyMapper">
+
+	<select id="replyListWithPaging" resultType="co.prog.vo.ReplyVO"
+		parameterType="co.prog.vo.ReplyVO">
+	    <![CDATA[
+	    select  sku, user_Id, rep_Num, rep_Con, rep_Date, user_Name
+	    	from(select rownum rn, sku, user_Id, rep_Num, rep_Con, rep_Date, user_Name
+           	     from (select  p.sku, p.user_Id, p.rep_Num, p.rep_Con, p.rep_Date, user_Name
+                       from pcom p inner join users u
+                       on p.user_Id=u.user_Id
+                       where sku=  #{sku}
+                       order by p.rep_date desc) a
+                where rownum <= (#{page}*10) ) b
+	    	where b.rn> (#{page}-1)*10
+	   ]]>
+
+
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from pcom
+	</select>
+	 <insert id="insertReply" parameterType="co.prog.vo.ReplyVO">
+		insert into pcom (sku, user_id, rep_num, rep_con)
+   		 values(#{sku}, #{userId} , pcom_seq.nextval, #{repCon})
+  	</insert>
+  	<delete id="deleteReply"  parameterType="co.prog.vo.ReplyVO">
+  	delete from pcom where rep_num = #{repNum};
+  	</delete>
+</mapper>

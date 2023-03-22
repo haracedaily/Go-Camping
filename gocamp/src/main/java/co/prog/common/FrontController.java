@@ -19,28 +19,29 @@ import co.prog.controller.BoardRemoveControl;
 import co.prog.controller.CalendarControl;
 import co.prog.controller.GetMessageControl;
 import co.prog.controller.InsertUserControl;
-
 import co.prog.controller.JoinControl;
+import co.prog.controller.LocaControl;
+import co.prog.controller.LocaListControl;
 import co.prog.controller.LogOutControl;
 import co.prog.controller.LoginControl;
 import co.prog.controller.LoginFormControl;
 import co.prog.controller.MainControl;
 import co.prog.controller.ManageControl;
-import co.prog.controller.MessageListAjax;
 import co.prog.controller.MessageListControl;
+import co.prog.controller.MessageRemoveControl;
 import co.prog.controller.MessageSendAjax;
 import co.prog.controller.NoticeControl;
-import co.prog.controller.LocaControl;
-import co.prog.controller.LocaListControl;
 import co.prog.controller.NoticeForm;
 import co.prog.controller.NoticeFormAddControl;
 import co.prog.controller.ProductInfoControl;
 import co.prog.controller.ProductListControl;
+import co.prog.controller.ReplyAddControl;
 import co.prog.controller.ReservControl;
 import co.prog.controller.ReservListAjax;
 import co.prog.controller.UserInfoControl;
 import co.prog.controller.UserInfoModControl;
 import co.prog.controller.UserMessageListControl;
+
 
 public class FrontController extends HttpServlet {
 	private Map<String, Control> map;
@@ -56,9 +57,18 @@ public class FrontController extends HttpServlet {
 
 		map.put("/manage.do", new ManageControl());
 		// 상품 (전체, 텐트, 테이블, 침낭/메트, 식기)
-		map.put("/product.do", new ProductListControl());
 		
+		
+		map.put("/product.do", new ProductListControl());
+		//상품상세페이지
 		map.put("/productInfo.do", new ProductInfoControl());
+		
+		map.put("/replyadd.do", new ReplyAddControl());
+		
+		// 상품댓글)
+		//map.put("/replyList.do", new ReplyListControl());
+		
+	
 		// noticelist
 		map.put("/notice.do", new NoticeControl());
 		// noticeForm 등록화면 //글쓰기폼
@@ -108,6 +118,8 @@ public class FrontController extends HttpServlet {
 		map.put("/userMessageList.do", new UserMessageListControl());
 		//쪽지 - 쪽지 읽기
 		map.put("/getMessage.do", new GetMessageControl());
+		//쪽지 - 쪽지 삭제
+		map.put("/messageRemove.do", new MessageRemoveControl());
 
 		map.put("/loca.do", new LocaControl());
 		

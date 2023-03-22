@@ -2,6 +2,7 @@ package co.prog.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.prog.common.Control;
 import co.prog.service.MessageService;
@@ -12,12 +13,18 @@ public class GetMessageControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
 		
-		String uId = request.getParameter("userId");
-		
+		String mNum = request.getParameter("mNum");
+
 		MessageService service = new MessageServiceMybatis();
-		MessageVO vo = service.getMessage(0);//추후 수정
-		return null;
+		MessageVO vo = service.getMessage(Integer.parseInt(mNum));
+		
+		System.out.println(vo);
+		
+		request.setAttribute("message", vo); //message 어트리뷰트에 vo 객체를 담아 넘김
+		
+		return "users/getMessage.tiles";
 	}
 
 }

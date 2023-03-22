@@ -8,7 +8,7 @@ public interface UsersService {
 	//아이디 중복 확인
 	public boolean checkId(String id);
 	//로그인
-	public UsersVO login(String id);
+	public UsersVO login(UsersVO vo);
 	//마이페이지 - 개인정보조회
 	public UsersVO userInfo(String id);
 	//마이페이지 - 개인정보 수정
