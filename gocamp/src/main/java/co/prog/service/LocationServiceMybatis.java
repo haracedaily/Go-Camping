@@ -32,4 +32,22 @@ public class LocationServiceMybatis implements LocationService{
 		return mapper.getAlmostLocaList(vo);
 	}
 
+	@Override
+	public LocationVO getLocaDetail(LocationVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.getLocaDetail(vo);
+	}
+
+	@Override
+	public String getLocaAddr(LocationVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.getLocaAddr(vo);
+	}
+
+	@Override
+	public String getLocaNm(LocationVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.getLocaNm(vo);
+	}
+
 }

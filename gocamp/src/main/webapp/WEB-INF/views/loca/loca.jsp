@@ -10,8 +10,8 @@ margin-right:60%;
 float:left;
 padding:10px;
 }
-#loca_menu li:hover{
-color:skyblue;
+#loca_menu a:hover{
+color:black;
 }
 #map{
 margin-left:20%;
@@ -30,6 +30,13 @@ width:100vw;
 .detail-exp{
 margin-bottom:20px;
 }
+.list-none{
+list-style-type: none;
+
+}
+.loca-sub-menu a:hover{
+color:black;
+}
 </style>
 
  <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu" id="loca_menu">
@@ -39,10 +46,18 @@ margin-bottom:20px;
  <li><a href="충청">충청도</a></li>
  <li><a href="경상">경상도</a></li>
  </ul>
+ 
+ <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right loca-sub-menu" id="sub_menu">
+ <c:forEach items="${check }" var="check">
+ <li><a href="locaDetail.do?locaId=${check.locaId }&roomId=${check.locaId }">${check.locaName }</a></li>
+ </c:forEach>
+ </ul>
+
+				
 
 <form action="loca.do" method="POST" id='locaChoice'>
 <input type="hidden" name="addrs" value="${addrs }">
-
+<input type="hidden" name="choice" value="${choice }">
 </form>
 <script>
 let myfrm=document.querySelector('#locaChoice');
@@ -50,23 +65,22 @@ let myfrm=document.querySelector('#locaChoice');
 document.querySelectorAll('#loca_menu a').forEach(atag=>{
 	atag.addEventListener('click',function(e){
 		e.preventDefault();
-		console.log(this);
 		myfrm.addrs.value=this.getAttribute('href');
 		myfrm.submit();
 	})
 })
-</script>
 
+</script>
 <div id='locaDetail'> 
 <div id="map" style="width:35vw;height:70vh;"></div>
 
 <div class="loca-exp">
 <c:forEach items="${list }" var="list">
-<table class="detail-exp">
+<table class="detail-exp loca-sub-menu">
 <thead>
 <tr>
 <th>이름</th>
-<th><a href="${list.locaId }">${list.locaName }</a></th>
+<th><a href="locaDetail.do?locaId=${list.locaId }&roomId=${list.locaId }">${list.locaName }</a></th>
 </tr>
 <tbody>
 <tr>
