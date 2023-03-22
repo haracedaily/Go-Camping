@@ -28,6 +28,7 @@ import co.prog.controller.MainControl;
 import co.prog.controller.ManageControl;
 import co.prog.controller.MessageListAjax;
 import co.prog.controller.MessageListControl;
+import co.prog.controller.MessageRemoveControl;
 import co.prog.controller.MessageSendAjax;
 import co.prog.controller.NoticeControl;
 import co.prog.controller.LocaControl;
@@ -108,6 +109,8 @@ public class FrontController extends HttpServlet {
 		map.put("/userMessageList.do", new UserMessageListControl());
 		//쪽지 - 쪽지 읽기
 		map.put("/getMessage.do", new GetMessageControl());
+		//쪽지 - 쪽지 삭제
+		map.put("/messageRemove.do", new MessageRemoveControl());
 
 		map.put("/loca.do", new LocaControl());
 		
