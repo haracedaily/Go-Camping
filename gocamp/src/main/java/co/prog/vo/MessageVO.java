@@ -17,6 +17,6 @@ public class MessageVO {
 	String mContent; // 쪽지 내용
 	String mDate; // 보낸 날짜
 	String readDate; // 읽은 날짜
-	String mTitle; // 쪽지 제목
+	String mTitle; // 쪽지 제목 
 	String mCheck; // 읽음 여부
 }

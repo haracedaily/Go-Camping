@@ -22,8 +22,8 @@ public class UsersServiceMybatis implements UsersService{
 	}
 
 	@Override
-	public UsersVO login(String id) {
-		return mapper.login(id);
+	public UsersVO login(UsersVO vo) {
+		return mapper.login(vo);
 	}
 
 	@Override

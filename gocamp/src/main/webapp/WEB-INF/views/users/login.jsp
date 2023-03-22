@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
+
     
   <div class="untree_co-section bg-light">
     <div class="container">
       <div class="row justify-content-center text-center mb-5">
         <div class="col-lg-6">
           <h2 class="text-secondary heading-2">로그인</h2>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          <p>로그인 후 더 많은 혜택을 누려보세요.</p>
         </div>
       </div>
       <div class="row justify-content-center">
@@ -35,3 +38,13 @@
       </div> <!-- /.row -->
     </div> <!-- /.container -->
   </div> <!-- /.untree_co-section bg-light -->
+  
+  <script>
+  
+  if('${message}'){
+	  
+	  alert('${message}');
+	  location.href="main.do";
+  }
+  
+  </script>
