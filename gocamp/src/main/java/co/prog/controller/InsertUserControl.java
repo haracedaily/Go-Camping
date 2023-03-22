@@ -26,17 +26,12 @@ public class InsertUserControl implements Control {
 		vo.setUserId(request.getParameter("userId"));
 		vo.setUserPw(request.getParameter("userPw"));
 		vo.setNickname(request.getParameter("nickname"));
-		vo.setSinNum(request.getParameter("sinNum"));
 		vo.setUserTel(request.getParameter("userTel"));
-		String Addr="우편번호 : "+request.getParameter("postcode")+"|";
-		Addr+="주소 : "+request.getParameter("address")+"_";
-		Addr+=request.getParameter("extraAddress")+"_";
-		Addr+=request.getParameter("detailAddress")+"_";
-		System.out.println(Addr);
-		vo.setUserAddr(Addr);
+		vo.setUserAddr(request.getParameter("userAddr"));
 		
 		System.out.println(vo);
 		
+		/*
 		// 아이디 중복 확인
 		String userId = request.getParameter("userId");
 		boolean isDuplicated = service.checkId(userId);
@@ -44,12 +39,19 @@ public class InsertUserControl implements Control {
 		    request.setAttribute("message", "duplicated");
 		    return "users/join.tiles";
 		}
-		
+		*/
 	    
-		if(service.joinUsers(vo)==true) {
-			request.setAttribute("message", "ok");
+		boolean result = service.joinUsers(vo);
+		System.out.println(result);
+		
+		
+		if(result) {
+			System.out.println("성공");
+			request.setAttribute("message", "가입이 완료되었습니다. 로그인해주세요.");
+			request.setAttribute("id", vo.getUserId());
 		}else {
-			request.setAttribute("message", "nope");
+			System.out.println("예외");
+			request.setAttribute("message", "회원 가입에 실패했습니다. 다시 시도해주세");
 		}
 		return "users/join.tiles";
 	}

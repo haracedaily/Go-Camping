@@ -57,18 +57,7 @@
 		products
 	</select>
 
-	<select id="replyList" parameterType="co.prog.vo.PcomVO"
-		resultType="co.prog.vo.PcomVO">
-		select p.sku, p.user_Id, p.rep_Num, p.rep_Con, p.rep_Date, u.user_Name
-		from pcom p
-		inner join users u
-		on p.user_Id = u.user_Id
-		where sku=  #{sku}
-		order by p.rep_date desc
-	</select>
 
-	<insert id="registReply" parameterType="co.prog.vo.PcomVO">
-		insert into pcom (sku, user_id, rep_num, rep_con)
-		values(#{sku}, #{userId}, pcom_seq.nextval, #{repCon})
-	</insert>
+	
+
 </mapper>

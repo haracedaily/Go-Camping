@@ -4,26 +4,79 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.prog.mapper.LocationMapper">
 <select id="getReservList" parameterType="co.prog.vo.ReservVO">
-select res_id,room_id,user_id,res_name,res_tel,res_per,to_char(res_sdate,'yyyy-mm-dd') res_sdate, to_char(res_edate+1,'yyyy-mm-dd') res_edate,res_state,res_date from reserv where room_id=#{roomId}
+select res_id,room_id,user_id,res_name,res_tel,res_per,to_char(res_sdate,'yyyy-mm-dd') res_sdate,
+ to_char(res_edate+1,'yyyy-mm-dd') res_edate,res_state,res_date from reserv where room_id=#{roomId}
 </select>
 
 <select id="getAllLocaList" parameterType="co.prog.vo.LocationVO">
 select * from loca
+	<where>
+	<choose>
+		<when test="addrs=='all%'">
+		1=1
+		</when>
+		<otherwise>
+		loca_addr like #{addrs }
+		</otherwise>
+		</choose>
+	</where>
+</select>
+
+<select id="getAlmostLocaList" parameterType="co.prog.vo.LocationVO">
+select loca_addr from loca
 <where>
 <choose>
-<when test="addr == 'all'">
+<when test="addrs == 'all%'">
 1=1
 </when>
 <otherwise>
-loca_addr like #{addr }
+loca_addr like #{addrs }
 </otherwise>
 </choose>
 </where>
 </select>
 
-<select id="getAlmostLocaList">
-select loca_addr from loca
+<select id="getLocaDetail" parameterType="co.prog.vo.LocationVO" resultType="co.prog.vo.LocationVO">
+select * from loca
+<where>
+<choose>
+<when test="choice =='all'">
+1=1
+</when>
+<otherwise>
+loca_id=#{choice}
+</otherwise>
+</choose>
+</where>
+</select>
 
+
+<select id="getLocaAddr" parameterType="co.prog.vo.LocationVO">
+select loca_addr from loca
+<where>
+<choose>
+<when test="choice =='all'">
+1=1
+</when>
+<otherwise>
+loca_id=#{choice}
+</otherwise>
+</choose>
+</where>
+</select>
+
+<select id="getLocaNm" parameterType="co.prog.vo.LocationVO">
+select loca_name from loca
+<where>
+<choose>
+<when test="choice =='all'">
+1=1
+</when>
+<otherwise>
+loca_id=#{choice}
+</otherwise>
+</choose>
+</where>
 </select>
 
 </mapper>

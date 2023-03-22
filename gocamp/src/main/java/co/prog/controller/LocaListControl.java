@@ -17,20 +17,37 @@ public class LocaListControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		String addr = request.getParameter("addr");
-
-		addr = addr == null ? "all" : addr; // 조건없을 경우.
-
+		String addr = request.getParameter("addrs");
+		String choice = request.getParameter("locaId");
+		
+		addr = addr == null ? "all%" : addr+"%";
+		choice = choice == null ? "all" : choice;
+		System.out.println("========================");
+		System.out.println("choice :"+choice);
+		System.out.println("addr : "+addr);
 		LocationVO con = new LocationVO();
-		con.setAddr(addr);
-
+		con.setChoice(choice);
+		con.setAddrs(addr);
+		
 		LocationService service = new LocationServiceMybatis();
-		List<LocationVO> list = service.getAllLocaList(con);
-
-		Gson gson = new GsonBuilder().create();
-		String json = gson.toJson(list); // json 포맷(위와 같은 문자열)으로 변경
-				
-		return json + ".ajax";
+		LocationVO list = service.getLocaDetail(con);
+		List<LocationVO> allList=service.getAllLocaList(con);
+		String locaAddr = service.getLocaAddr(con);
+		System.out.println(locaAddr);
+		System.out.println("확인 : "+list);
+		request.setAttribute("list", list);
+		request.setAttribute("check", allList);
+		String loAddr = "";
+		loAddr += locaAddr;
+		int roomId = list.getLocaId();
+		String locaNm = service.getLocaNm(con);
+		request.setAttribute("loNm", locaNm);
+		request.setAttribute("locaAddr", locaAddr);
+		System.out.println(loAddr);
+		request.setAttribute("loAddr", loAddr);
+		request.setAttribute("locaId", roomId);
+		String uri = "loca/locaDetail.tiles";
+		return uri;
 	}
 
 }

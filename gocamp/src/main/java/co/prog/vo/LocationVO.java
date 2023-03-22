@@ -12,7 +12,7 @@ public class LocationVO {
 	private String locaImg;
 	
 	
-private String addr;
+private String addrs;
 private String choice;
 	
 	

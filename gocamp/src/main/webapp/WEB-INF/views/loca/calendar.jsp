@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					startDate = info.startStr;
 				} else {
 					//endDate.setTime(info.end.getTime()-(540*60*1000));
-					endDate=info.endStr;
+					endDate=info.endStr;    //여기서 end 수정하기 gmt -9 시간
 					alert('퇴실일 설정');
 					// 여기서 startDate와 endDate를 처리할 수 있습니다.
 					if (new Date(startDate) < new Date(endDate)) {
@@ -148,7 +148,6 @@ width:40%;
 height:80%;
 	max-width: 60%;
 	max-height:100%;
-	margin-right:10px;
 }
 #calMo{
 display:none;
@@ -175,7 +174,7 @@ height:100%;
   to {transform: scale(1)}
 }
 .close{
-position:relative;
+position:absolute;
 top:10%;
 right:10%;
 }
@@ -202,10 +201,11 @@ margin-bottom:5px;
 </style>
 </head>
 <body>
-<div class='modal' id='calMo'>
+
+<div class='modal animate' id='calMo'>
  <span onclick="document.getElementById('calMo').style.display='none'" class="close" title="Close Modal">&times;</span>
 	<div id='calendar'><button id='reset'>선택 취소</button></div>
-<form class="modal-content animate" action="reserv.do" method="post" id="resFrm">
+<form class="modal-content animate" id="resFrm">
 	<label for='resNm'>예약자 이름</label><input type='text' id='resNm'>
 	<label for='resTel'>예약자 연락처</label><input type='text' id='resTel'>
 	<label for='resPer'>방문인원</label><input type='text' id='resPer'>
@@ -216,7 +216,16 @@ margin-bottom:5px;
 </form>
 	<button onclick="document.getElementById('calMo').style.display='none'" id='clBtn'>창닫기</button>
 </div>
+
 <button onclick="document.getElementById('calMo').style.display='block'" style="width:auto;">예약하기</button>
+
+
+
+<form action="reserv.do" method="POST" id="reservFrm">
+
+</form>
+
+
 <script>
 document.querySelector('#resFrm').addEventListener('submit',function(e){
 e.preventDefault();

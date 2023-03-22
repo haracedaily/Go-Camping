@@ -17,6 +17,9 @@ public class ReservControl implements Control {
 		ReservVO vo = new ReservVO();
 		vo.setUserId(session.getId());
 		vo.setResName(request.getParameter(""));
+		vo.setResSdate(request.getParameter(""));
+		vo.setResEdate(request.getParameter(""));
+		vo.setResTel(request.getParameter(""));
 		return "users/reserved.tiles";
 	}
 

@@ -18,6 +18,7 @@ public class MessageListAjax implements Control {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		MessageService service = new MessageServiceMybatis();
+		
 		List<MessageVO> list = service.messageList();
 		
 		Gson gson = new GsonBuilder().create();

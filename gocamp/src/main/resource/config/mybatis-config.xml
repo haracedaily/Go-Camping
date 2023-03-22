@@ -11,14 +11,16 @@
 	</properties>
 	 
 	 <settings>
-	  <setting name="mapUnderscoreToCamelCase" value="true"/>
-	   <setting name="jdbcTypeForNull" value="NULL" />
+	   <setting name="cacheEnabled" value="false" />
+	   <setting name="mapUnderscoreToCamelCase" value="true"/>
+	   <setting name="jdbcTypeForNull" value="NULL"/>
 	 </settings>
 	 
 	<typeAliases>
 		<typeAlias type="co.prog.vo.NoticeVO" alias="NoticeVO" />
 		<typeAlias type="co.prog.vo.UsersVO" alias="UsersVO"/>
 		<typeAlias type="co.prog.vo.MessageVO" alias="MessageVO"/>
+		<typeAlias type="co.prog.vo.ReplyVO" alias="ReplyVO"/>
 	</typeAliases>
 	
 	
@@ -36,6 +38,7 @@
 
 	</environments>
 	<mappers>
+		<mapper resource="co/prog/mapper/ReplyMapper.xml" />
 
 		<mapper resource="co/prog/mapper/ProductMapper.xml" />
 		<mapper resource="co/prog/mapper/UsersMapper.xml" />
