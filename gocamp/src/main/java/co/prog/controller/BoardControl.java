@@ -20,6 +20,8 @@ public class BoardControl implements Control {
 		NoticeService service = new NoticeServiceMybatis();
 		NoticeVO vo = service.getNotice(Integer.parseInt(boId));
 		
+		System.out.println(vo);
+		
 		request.setAttribute("notice", vo);
 		
 		String uri = "board/board.tiles";

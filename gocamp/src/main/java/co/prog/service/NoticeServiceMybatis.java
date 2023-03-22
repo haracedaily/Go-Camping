@@ -34,7 +34,7 @@ public class NoticeServiceMybatis implements NoticeService {
 
 	@Override
 	public NoticeVO getNotice(int boId) {// 조회
-		mapper.updateCount(boId);
+		mapper.updateCount(boId); //조회수 증가
 		return mapper.selectNotice(boId);
 	}
 
@@ -45,13 +45,11 @@ public class NoticeServiceMybatis implements NoticeService {
 
 	@Override
 	public List<NoticeVO> boardList() { // 게시판리스트
-
 		return mapper.boardList();
 	}
 
 	@Override
 	public List<NoticeVO> boardListPage(NoticeDTO noticeDto) {// 게시판리스트
-
 		return mapper.boardListWithPaging(noticeDto);
 	}
 

@@ -33,18 +33,21 @@
 	</select>
 	
 	<update id="updateCount" parameterType="int">
-		update board set bo_count = bo_count + 1
+		update board set bo_count = NVL(bo_count,0)+ 1
 		where bo_id = #{boId}
 	</update>
 	
 	<select id="getTotalCount" resultType="int" parameterType="string">
 		select count(*) as totalCount from board
 		where usage=#{usage}
-		group by usage
 	</select>
 	
 	<update id="updateNotice" parameterType="co.prog.vo.NoticeVO">
-		update board set bo_title = #{boTitle}, bo_cont= #{boCont}, bo_img=#{boImg} where bo_id = #{boId}
+		update board set bo_title = #{boTitle}, bo_cont= #{boCont}
+		<if test="boImg != null">
+		 ,bo_img=#{boImg}
+		</if>
+		where bo_id = #{boId}
 	</update>
 	
 	<delete id="deleteNotice" parameterType="int">
