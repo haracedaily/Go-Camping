@@ -11,5 +11,5 @@ public interface LocationMapper {
 	
 	public List<LocationVO> getAllLocaList(LocationVO vo);
 	
-	public List<String> getAlmostLocaList();
+	public List<String> getAlmostLocaList(LocationVO vo);
 }

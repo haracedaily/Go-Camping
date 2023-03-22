@@ -35,25 +35,26 @@ margin-bottom:20px;
  <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu" id="loca_menu">
  <li><a href="all">전 체</a></li>
  <li><a href="경기">경기도</a></li>
+ <li><a href="강원">강원도</a></li>
  <li><a href="충청">충청도</a></li>
  <li><a href="경상">경상도</a></li>
  </ul>
 
-<form action="loca.do" id='locaChoice'>
-<input type="hidden" name="addr" value="${addr }">
+<form action="loca.do" method="POST" id='locaChoice'>
+<input type="hidden" name="addrs" value="${addrs }">
 
 </form>
 <script>
-<!-- 
 let myfrm=document.querySelector('#locaChoice');
 
-document.querySelectorAll('.float-right.site-menu a').forEach(atag=>{
+document.querySelectorAll('#loca_menu a').forEach(atag=>{
 	atag.addEventListener('click',function(e){
 		e.preventDefault();
-		myfrm.addr.value=this.getAttribute('href');
+		console.log(this);
+		myfrm.addrs.value=this.getAttribute('href');
 		myfrm.submit();
 	})
-})-->
+})
 </script>
 
 <div id='locaDetail'> 
@@ -62,11 +63,10 @@ document.querySelectorAll('.float-right.site-menu a').forEach(atag=>{
 <div class="loca-exp">
 <c:forEach items="${list }" var="list">
 <table class="detail-exp">
-<input type="hidden" name="locaId" id="locaId" value="${list.locaId }">
 <thead>
 <tr>
 <th>이름</th>
-<th>${list.locaName }</th>
+<th><a href="${list.locaId }">${list.locaName }</a></th>
 </tr>
 <tbody>
 <tr>
