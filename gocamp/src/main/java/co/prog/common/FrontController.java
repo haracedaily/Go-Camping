@@ -15,6 +15,7 @@ import co.prog.controller.BoardControl;
 import co.prog.controller.BoardFormControl;
 import co.prog.controller.BoardListControl;
 import co.prog.controller.BoardModifyControl;
+import co.prog.controller.BoardModifyFormControl;
 import co.prog.controller.BoardRemoveControl;
 import co.prog.controller.CalendarControl;
 import co.prog.controller.GetMessageControl;
@@ -60,7 +61,7 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/productInfo.do", new ProductInfoControl());
 		// noticelist
-		map.put("/notice.do", new NoticeControl());
+		map.put("/noticeList.do", new NoticeControl());
 		// noticeForm 등록화면 //글쓰기폼
 		map.put("/noticeform.do", new NoticeForm());
 		// noticeForm 등록처리
@@ -73,7 +74,9 @@ public class FrontController extends HttpServlet {
 		map.put("/boardform.do", new BoardFormControl());
 		// 게시글등록처리.(a:공지사항, b:자유, c:중고, d:문의, e:건의.)
 		map.put("/boardAdd.do", new BoardAddControl());
-		// 수정
+		//수정조회화면
+		map.put("/boardModifyForm.do", new BoardModifyFormControl());
+		// 수정처리
 		map.put("/boardModify.do", new BoardModifyControl());
 		// 삭제
 		map.put("/boardRemove.do", new BoardRemoveControl());
@@ -149,8 +152,10 @@ public class FrontController extends HttpServlet {
 		} else if (viewPage.endsWith(".do")) {
 			resp.sendRedirect(viewPage);
 			return;
+		} else if (viewPage.endsWith(".gyuri")) {
+			resp.sendRedirect(viewPage.substring(0, viewPage.length() - 6));
+			return;
 		}
-
 		// 페이지 재지정.
 		RequestDispatcher rd = req.getRequestDispatcher(viewPage);
 		rd.forward(req, resp);

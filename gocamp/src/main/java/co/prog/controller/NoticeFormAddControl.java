@@ -24,7 +24,7 @@ public class NoticeFormAddControl implements Control {
 		System.out.println("dir" + dir);
 		int maxSize = 5 * 1024 * 1024;
 		String enc = "UTF-8";
-
+		HttpSession session = request.getSession();
 		MultipartRequest multi = null;
 		try {
 			multi = new MultipartRequest(request, dir, maxSize, enc, new DefaultFileRenamePolicy());
@@ -48,8 +48,10 @@ public class NoticeFormAddControl implements Control {
 		vo.setUsage(usage);
 		vo.setBoTitle(boTitle);
 		vo.setBoCont(boCont);
-		vo.setBoImg(boImg); // 이미지 올릴때 위에 test 이름 바꿔서하기
-		vo.setUserId(multi.getParameter("userId"));
+		if (boImg != null) {
+			vo.setBoImg(boImg); // 이미지 올릴때 위에 test 이름 바꿔서하기			
+		}
+		vo.setUserId((String) session.getAttribute("userId"));
 
 		System.out.println(vo);
 
@@ -58,6 +60,6 @@ public class NoticeFormAddControl implements Control {
 			request.setAttribute("message", "글작성 완료");
 		}
 
-		return "notice.do";
+		return "noticeList.do";
 	}
 }

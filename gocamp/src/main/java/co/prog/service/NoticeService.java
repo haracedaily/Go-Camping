@@ -14,6 +14,7 @@ public interface NoticeService {
 	public boolean noticeModify(NoticeVO vo);//수정
 	public boolean noticeRemove(int boId);//삭제
 	public List<NoticeVO> boardList();//게시판list
-	public List<NoticeVO> boardListPage(NoticeDTO noticeDto);	
+	public List<NoticeVO> boardListPage(NoticeDTO noticeDto);
+	
 	
 }
