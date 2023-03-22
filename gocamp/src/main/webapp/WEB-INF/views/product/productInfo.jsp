@@ -3,88 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+
+
 <html>
 <head>
 <title>상품 상세 정보</title>
 </head>
-<style>
-.img {
-	left: 50px;
-	top: 50px;
-}
 
-#detail {
-	left: 500px;
-	top: 50px;
-}
 
-.replyForm {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-section.replyForm {
-	padding: 30px 0;
-}
-
-section.replyForm div.input_area {
-	margin: 10px 0;
-}
-
-section.replyForm textarea {
-	font-size: 16px;
-	font-family: '맑은 고딕', verdana;
-	padding: 10px;
-	width: 500px;;
-	height: 150px;
-}
-
-section.replyForm button {
-	font-size: 20px;
-	padding: 5px 10px;
-	margin: 10px 0;
-	background: #fff;
-	border: 1px solid #ccc;
-}
-
-section.replyList {
-	padding: 30px 0;
-}
-
-section.replyList ol {
-	padding: 0;
-	margin: 0;
-
-	
-}
-
-section.replyList ol li {
-	padding: 10px 0;
-	border-bottom: 2px solid #eee;
-	
-}
-
-section.replyList div.userInfo {
-	
-}
-
-section.replyList div.userInfo .userName {
-	font-size: 24px;
-	font-weight: bold;
-}
-
-section.replyList div.userInfo .date {
-	color: #999;
-	display: inline-block;
-	margin-left: 10px;
-}
-
-section.replyList div.replyContent {
-	padding: 10px;
-	margin: 20px 0;
-}
-</style>
 <body>
 
 	<div class="jumbotron">
@@ -120,7 +46,7 @@ section.replyList div.replyContent {
 						</c:otherwise>
 					</c:choose>
 				<p>
-					<a href="#" class="btn btn-info"> 상품 주문</a> <a href="./product.jsp"
+					<a href="#" class="btn btn-info"> 상품 주문</a> <a href="#"
 						class="btn btn-secondary">장바구니 </a>
 			</div>
 		</div>
@@ -128,53 +54,82 @@ section.replyList div.replyContent {
 
 	<div id="reply">
 
-		<c:if test="${user == null }">
+		<c:if test="${userId == null }">
 			<p>
-				소감을 남기시려면 <a href="/gocamp/loginForm.do">로그인</a>해주세요
+				소감을 남기시려면 <a href="/member/signin">로그인</a>해주세요
 			</p>
 		</c:if>
 
-		<c:if test="${user != null}">
+		<c:if test="${userId != null}">
 			<section class="replyForm">
-				<form role="form" action="pcomInsert.do" method="post">
-					<input type="hidden" name="sku" value="${vo.sku}"> <input
-						type="hidden" name="user_id" value="${userId }">
+				<form role="form" method="post" autocomplete="off" action="replyadd.do">
+				<input type="hidden" name="sku" value="${vo.sku}">
+		<input type="hidden" name="userId" value="${userId}">
 					<div class="input_area">
-						<textarea name="rep_con" id="repCon"></textarea>
+						<textarea name="repCon" id="repCon"></textarea>
 					</div>
 
 					<div class="input_area">
-						<button type=submit id="reply_btn">댓글 달기</button>
+						<button type="submit" id="reply_btn">소감 남기기</button>
 					</div>
 
 				</form>
 			</section>
 		</c:if>
 
-		<section class="replyList">
-			<ol>
-				<li>댓글 목록</li>
-			</ol>
-		</section>
 	</div>
 
 
-	<section class="replyList">
-		<ol>
-			<c:forEach items="${list}" var="reply">
 
-				<li>
-					<div class="userInfo">
-						<span class="userName">${reply.userId}</span> <span class="date"><fmt:formatDate
-								value="${reply.repDate}" pattern="yyyy-MM-dd" /></span>
-					</div>
-					<div class="replyContent">${reply.repCon}</div>
-				</li>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>글번호</th>
+				<th>작성자</th>
+				<th>댓글내용</th>
+				<th>작성일자</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="reply" items="${list }">
+				<tr>
+					<td>${reply.repNum }</td>
+					<td>${reply.userId }</td>
+					<td>${reply.repCon}</td>
+					<td>${reply.repDate }</td>
+
+				</tr>
 			</c:forEach>
-		</ol>
-	</section>
+		</tbody>
+	</table>
+
+	<div class="center">
+		<div class="pagination">
+			<c:if test="${page.prev }">
+				<a href="productInfo.do?page=${page.startPage - 1 }&code=${vo.sku}">
+					&laquo; </a>
+			</c:if>
+			<c:forEach begin="${page.startPage }" end="${page.endPage }" var="i">
+				<c:choose>
+					<c:when test="${i == page.page }">
+						<a class="active" href="productInfo.do?page=${i }&code=${vo.sku}">
+							${i } </a>
+					</c:when>
+					<c:otherwise>
+						<a href="productInfo.do?page=${i }&code=${vo.sku}"> ${i } </a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:if test="${page.next }">
+				<a href="productInfo.do?page=${page.endPage + 1 }&code=${vo.sku}">
+					&raquo; </a>
+			</c:if>
+		</div>
 	</div>
+
+
 
 
 </body>
 </html>
+
