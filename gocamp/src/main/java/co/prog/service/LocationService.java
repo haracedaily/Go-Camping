@@ -12,4 +12,10 @@ public interface LocationService {
 	public List<LocationVO> getAllLocaList(LocationVO vo);
 	
 	public List<String> getAlmostLocaList(LocationVO vo);
+	
+	public LocationVO getLocaDetail(LocationVO vo);
+	
+	public String getLocaAddr(LocationVO vo);
+	
+	public String getLocaNm(LocationVO vo);
 }

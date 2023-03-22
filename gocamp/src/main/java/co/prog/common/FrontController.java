@@ -117,7 +117,7 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/reserv.do", new ReservControl());
 		
-		map.put("/locaList.do", new LocaListControl());
+		map.put("/locaDetail.do", new LocaListControl());
 
 	}
 

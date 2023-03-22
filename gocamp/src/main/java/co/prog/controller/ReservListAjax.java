@@ -20,7 +20,7 @@ public class ReservListAjax implements Control {
 		LocationService service = new LocationServiceMybatis();
 		
 		
-		List<ReservVO> list = service.getReservList(1);
+		List<ReservVO> list = service.getReservList(Integer.parseInt(request.getParameter("roomId")));
 		
 		// {"id":"user1", "passwd":"1234", "name":"홍길동" ...} => json
 		Gson gson = new GsonBuilder().create();

@@ -18,12 +18,17 @@ public class LocaControl implements Control {
 		// 파라미터: cat, order
 
 		String addr = request.getParameter("addrs");
+		String choice = request.getParameter("choice");
 		
 		addr = addr == null ? "all%" : addr+"%";
-		System.out.println(addr);
+		choice = choice == null ? "all" : choice;
+		System.out.println("========================");
+		System.out.println("addr : "+addr);
+		System.out.println("choice :"+choice);
 		LocationVO con = new LocationVO();
 		con.setAddrs(addr);
-
+		con.setChoice(choice);
+		
 		LocationService service = new LocationServiceMybatis();
 		List<LocationVO> list = service.getAllLocaList(con);
 		List<String> locaAddr = service.getAlmostLocaList(con);
@@ -31,6 +36,7 @@ public class LocaControl implements Control {
 		System.out.println("확인 : "+list);
 		request.setAttribute("addr", addr);
 		request.setAttribute("list", list);
+		request.setAttribute("check", list);
 		String loAddr = "";
 		for(int i=0;i<locaAddr.size();i++) {
 		loAddr += locaAddr.get(i);
