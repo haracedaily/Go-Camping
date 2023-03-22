@@ -17,7 +17,6 @@ public class UsersVO {
 	String userName; //이름
 	String userPw; //비밀번호
 	String nickname; //닉네임
-	String sinNum; //주민등록번호
 	String userTel; //연락처
 	String userAddr; //주소
 	String joinDate; //가입일

@@ -27,19 +27,14 @@ public class UserInfoModControl implements Control {
 		String userPw = request.getParameter("userPw"); //비밀번호
 		String nickname = request.getParameter("nickname"); //닉네임
 		String userTel = request.getParameter("userTel"); //연락처
+		String addr = request.getParameter("userAddr"); //주소
 		
 		UsersVO user = new UsersVO();
 		user.setUserPw(userPw);
 		user.setNickname(nickname);
 		user.setUserTel(userTel);
 		user.setUserId(session.getId());
-		
-		String Addr="우편번호 : "+request.getParameter("postcode")+"|";
-		Addr+="주소 : "+request.getParameter("address")+"_";
-		Addr+=request.getParameter("extraAddress")+"_";
-		Addr+=request.getParameter("detailAddress")+"_";
-		System.out.println(Addr);
-		user.setUserAddr(Addr);
+		user.setUserAddr(addr);
 		
 		
 		System.out.println(user);
