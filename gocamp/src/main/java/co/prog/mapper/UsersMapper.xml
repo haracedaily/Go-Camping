@@ -17,11 +17,11 @@
 	
 	<!-- 로그인 -->
 	<select id="login" parameterType="UsersVO" resultType="UsersVO">
-		select * from users where user_id=#{Id}
+		select * from users where user_id=#{userId} and user_pw=#{userPw}
 	</select>
 	
 	<select id="selectUsers" parameterType="UsersVO" resultType="UsersVO">
-		select * from users where user_id=#{Id}
+		select * from users where user_id=#{userId}
 	</select>
 	<!-- 회원 정보 수정 -->
 	<update id="updateUser" parameterType="usersVO" >

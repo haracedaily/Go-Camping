@@ -20,14 +20,25 @@ public class MessageServiceMybatis implements MessageService{
 	
 	@Override
 	public boolean sendMessage() { //쪽지 보내기
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public MessageVO getMessage(int mNum) { //쪽지 상세 조회
+		//쪽지 읽으면 상태 변경..
+		return mapper.selectMessage(mNum);
+	}
+
+	@Override
+	public List<MessageVO> messageListByUser(String userId) {//회원별 쪽지 리트스 만들기
 		// TODO Auto-generated method stub
-		return null;
+		return mapper.messageListByUser(userId);
+	}
+
+	@Override
+	public int messageRemove(int mNum) {
+//		return mapper.messageRemove(mNum);
+		return 0;
 	}
 
 	
