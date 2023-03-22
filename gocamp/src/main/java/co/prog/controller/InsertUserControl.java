@@ -26,17 +26,12 @@ public class InsertUserControl implements Control {
 		vo.setUserId(request.getParameter("userId"));
 		vo.setUserPw(request.getParameter("userPw"));
 		vo.setNickname(request.getParameter("nickname"));
-		vo.setSinNum(request.getParameter("sinNum"));
 		vo.setUserTel(request.getParameter("userTel"));
-		String Addr="우편번호 : "+request.getParameter("postcode")+"|";
-		Addr+="주소 : "+request.getParameter("address")+"_";
-		Addr+=request.getParameter("extraAddress")+"_";
-		Addr+=request.getParameter("detailAddress")+"_";
-		System.out.println(Addr);
-		vo.setUserAddr(Addr);
+		vo.setUserAddr(request.getParameter("userAddr"));
 		
 		System.out.println(vo);
 		
+		/*
 		// 아이디 중복 확인
 		String userId = request.getParameter("userId");
 		boolean isDuplicated = service.checkId(userId);
@@ -44,7 +39,7 @@ public class InsertUserControl implements Control {
 		    request.setAttribute("message", "duplicated");
 		    return "users/join.tiles";
 		}
-		
+		*/
 	    
 		if(service.joinUsers(vo)==true) {
 			request.setAttribute("message", "ok");
