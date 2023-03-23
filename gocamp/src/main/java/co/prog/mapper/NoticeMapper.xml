@@ -6,7 +6,7 @@
 
 	<select id="noticeList" >
 		<![CDATA[
-		select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage
+		select rownum, bo_tit	le,bo_date,bo_count,nickname,bo_id,usage
 		from (select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage from notice_list_view order by bo_date)]]>
 	</select>
 	
@@ -29,7 +29,7 @@
 	</insert>
 	
 	<select id = "selectNotice" resultType="co.prog.vo.NoticeVO">
-		select * from board_view where bo_id = #{boId}
+		select * from board where bo_id = #{boId}
 	</select>
 	
 	<update id="updateCount" parameterType="int">

@@ -18,6 +18,9 @@ import co.prog.controller.BoardModifyControl;
 import co.prog.controller.BoardModifyFormControl;
 import co.prog.controller.BoardRemoveControl;
 import co.prog.controller.CalendarControl;
+import co.prog.controller.CommentAddControl;
+import co.prog.controller.CommentListControl;
+import co.prog.controller.CommentRemoveControl;
 import co.prog.controller.GetMessageControl;
 import co.prog.controller.GetMessageManagerControl;
 import co.prog.controller.InsertUserControl;
@@ -92,12 +95,19 @@ public class FrontController extends HttpServlet {
 		map.put("/boardform.do", new BoardFormControl());
 		// 게시글등록처리.(a:공지사항, b:자유, c:중고, d:문의, e:건의.)
 		map.put("/boardAdd.do", new BoardAddControl());
-		//수정조회화면
+		// 수정조회화면
 		map.put("/boardModifyForm.do", new BoardModifyFormControl());
 		// 수정처리
 		map.put("/boardModify.do", new BoardModifyControl());
 		// 삭제
 		map.put("/boardRemove.do", new BoardRemoveControl());
+
+		// 댓글목록
+		map.put("/commentList.do", new CommentListControl());
+		// 댓글등록
+		map.put("/commentAdd.do", new CommentAddControl());
+		// 댓글삭제
+		map.put("/commentRemove.do", new CommentRemoveControl());
 
 		// 회원가입
 		map.put("/insertUser.do", new InsertUserControl());
@@ -119,21 +129,16 @@ public class FrontController extends HttpServlet {
 		map.put("/userInfoMod.do", new UserInfoModControl());
 
 
-		// 쪽지 관련
-		// 쪽지 - 쪽지 리스트 (관리자)
 
 		// 마이페이지 - 회원 탈퇴
 		map.put("/userDelete.do", new UserDeleteControl());
 		
 		//쪽지 관련
 		//쪽지 - 쪽지 리스트 (관리자)
-
 		map.put("/messageList.do", new MessageListControl());
 
 		// 쪽지 - 쪽지 보내기 (관리자)
 		map.put("/messageSendAjax.do", new MessageSendAjax());
-		// 쪽지 - 쪽지 리스트 (회원)
-
 		//쪽지 - 쪽지 읽기 ( 관리자)
 		map.put("/getMessageManager.do", new GetMessageManagerControl());
 		//쪽지 - 쪽지 보내기 폼 (관리자)
@@ -143,7 +148,6 @@ public class FrontController extends HttpServlet {
 		//쪽지 - 쪽지 삭제 (관리자)
 		map.put("/messageRemove.do", new MessageRemoveControl());
 		//쪽지 - 쪽지 리스트 (회원)
-
 		map.put("/userMessageList.do", new UserMessageListControl());
 
 		// 쪽지 - 쪽지 읽기
@@ -167,8 +171,10 @@ public class FrontController extends HttpServlet {
 		map.put("/reserv.do", new ReservControl());
 
 
+
 		map.put("/locaList.do", new LocaListControl());
 		
+
 		map.put("/locaDetail.do", new LocaListControl());
 
 	}
@@ -210,6 +216,9 @@ public class FrontController extends HttpServlet {
 			resp.sendRedirect(viewPage);
 		} else if (viewPage.endsWith(".gyuri")) {
 			resp.sendRedirect(viewPage.substring(0, viewPage.length() - 6));
+			return;
+		} else if (viewPage.indexOf(".do") != -1) {
+			resp.sendRedirect(viewPage);
 			return;
 		}
 		// 페이지 재지정.
