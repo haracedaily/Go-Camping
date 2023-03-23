@@ -5,6 +5,9 @@
 #cForm{
   margin: 0 auto;
 }
+#delBtn{
+  display:inline-block;zoom:1;.display:inline;
+}
 
 </style>
 <div>
@@ -20,13 +23,13 @@
 					<div class="col-12">
 						<div class="form-group">
 							<label for="name">이름</label> <input type="text"
-								class="form-control" id="userName" name="userName" readonly>
+								class="form-control" id="userName" name="userName" value="${user.getUserName()}" readonly>
 						</div>
 					</div>
 					<div class="col-12">
 						<div class="form-group">
 							<label for="id">아이디</label> <input type="text"
-								class="form-control" id="userId" name="userId" readonly>
+								class="form-control" id="userId" name="userId" value="${user.getUserId()}" readonly>
 						</div>
 					</div>
 				</div>
@@ -38,24 +41,22 @@
 				<div class="form-group">
 					<label for="nickname">닉네임</label>
 					<input type="text" class="form-control" id="nickname"
-						name="nickname">
+						name="nickname" value="${user.getNickname()}">
 				</div>
 
 
 				<div class="form-group">
 					<label for="tel">전화번호</label> <input type="tel"
-						class="form-control" id="userTel" name="userTel">
+						class="form-control" id="userTel" name="userTel" value="${user.getUserTel()}">
 				</div>
 
             <div class="form-group">
               <label for="userAddr">주소</label>
-              <input type="text" class="form-control" id="userAddr" name="userAddr">
+              <input type="text" class="form-control" id="userAddr" name="userAddr" value="${user.getUserAddr()}">
             </div>
-
-				<button id="modBtn" type="submit" class="btn btn-primary mb-4">정보
-					수정</button>
-
 			</form>
+				<button id="modBtn" type="submit" class="btn btn-primary mb-4">정보수정</button>
+				<button id="delBtn" type="submit" class="btn btn-warning">회원 탈퇴</button>
 		</div>
 	</div>
 </section>
@@ -63,7 +64,7 @@
 
 
 <form id="modFrm" action="userInfoMod.do" method="post">
-<input type="hidden" id="nm" name="userNmae">
+<input type="hidden" id="nm" name="userName">
  <input type="hidden" id="id" name="userId">
  <input type="hidden" id="pw" name="userPw">
  <input type="hidden" id="nN" name="nickname">
@@ -74,18 +75,22 @@
 
 
 <script>
-	//myPage 클릭 시 회원 정보 노출
-	document.getElementById('userName').value = "${user.getUserName()}";
-	document.getElementById('userId').value = "${user.getUserId()}";
-	document.getElementById('nickname').value = "${user.getNickname()}";
-	document.getElementById('userTel').value = "${user.getUserTel()}";
-	document.getElementById('userAddr').value = "${user.getUserAddr()}";
+ 	//회원 탈퇴
+ 	document.querySelector('#delBtn').addEventListener("click", function() {
+    let mFrm = document.querySelector('#modFrm');
 	
+    let mNum = document.getElementById('userId').value;
+    document.getElementById('id').value=mNum;
+    mFrm.action = "userDelete.do";
+    mFrm.submit();
+});
+ 	
+ 	
 	//회원 정보 수정
- document.querySelector('modBtn').addEventListner('click', function(e){
+ document.querySelector('#modBtn').addEventListener("click", function(e){
 	  e.preventDefault();
 	  let run = true;
-	  let modFrm=document.querySelector('#modFrm')
+	  let modFrm=document.querySelector('#modFrm');
 
 	  let name = document.getElementById('userName').value;
 	  let id = document.getElementById('userId').value;
@@ -96,16 +101,26 @@
 	  
 	  
 	  
-	  document.getElementById('nm').value=userName;
-	  document.getElementById('id').value=userId;
-	  document.getElementById('pw').value=userPw;
-	  document.getElementById('nM').value=nickname;
-	  document.getElementById('uT').value=userTel;
+	  document.getElementById('nm').value=name;
+	  document.getElementById('id').value=id;
+	  document.getElementById('pw').value=passwd;
+	  document.getElementById('nN').value=nickname;
+	  document.getElementById('uT').value=tel;
+	  document.getElementById('uA').value=addr;
 	  
 	  if(run){
 		  modFrm.submit();
 	  }
 	  
   });
+	
+ if('${message}'){
+	 
+	  alert('${message}');
+ }else if('${dmessage}'){
+	 alert('${dmessage}');
+	 location.href = "main.do";
+ }
+
 </script>
 </body>

@@ -22,28 +22,31 @@ public class UserInfoModControl implements Control {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		HttpSession session = request.getSession();
 		
 		String userPw = request.getParameter("userPw"); //비밀번호
 		String nickname = request.getParameter("nickname"); //닉네임
 		String userTel = request.getParameter("userTel"); //연락처
 		String addr = request.getParameter("userAddr"); //주소
+		String userId = request.getParameter("userId");
+		String userNm = request.getParameter("userName");
+		
 		
 		UsersVO user = new UsersVO();
 		user.setUserPw(userPw);
 		user.setNickname(nickname);
 		user.setUserTel(userTel);
-		user.setUserId(session.getId());
+		user.setUserId(userId);
 		user.setUserAddr(addr);
+		user.setUserName(userNm);
 		
 		
-		System.out.println(user);
+		System.out.println("수정 정보 : "+user);
 		
 		UsersService service = new UsersServiceMybatis();
 		if(service.modifyUsers(user) == true) {
-			request.setAttribute("message", "ok");
+			request.setAttribute("message", "정보 수정이 완료되었습니다.");
 		}else {
-			request.setAttribute("message", "nope");
+			request.setAttribute("message", "정보 수정에 실패했습니다.");
 		}
 		return "users/myPage.tiles";
 	}

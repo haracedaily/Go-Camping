@@ -25,7 +25,19 @@
 	#imgfile {
 		width: 20vw;
 		padding: 12px;
-
+	}
+	
+	#subBtn{
+	  background-color: #bfd5f3;
+	  border: none;
+	  color: white;
+	  padding: 10px 15px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 15px;
+	  position: relative; 
+	  margin-bottom: 30px;
 	}
 </style>
 
@@ -44,8 +56,6 @@
 	<table id="bTable">
 		<tr>
 			<td>
-				<input type="text" name="boId" value="${notice.getboId() }">
-				<input type="text" name="userId" value="${user.getUserId() }">
 				<input type="text" name="title" placeholder="제목을 입력해주세요" id="titleTable"></td>
 		</tr>
 		<tr>
@@ -56,7 +66,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<button type="submit" id="subBtn">저장</button>
+				<input type="submit" id="subBtn" value="저장">
 			</td>
 		</tr>
 	</table>

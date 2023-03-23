@@ -82,21 +82,21 @@ margin-right:20%;
 	<div class="center">
 		<div class="pagination">
 		<c:if test="${page.prev }">
-			<a href="/gocamp/notice.do?page=${page.startPage - 1 }"> &laquo; </a>
+			<a href="/gocamp/noticeList.do?page=${page.startPage - 1 }"> &laquo; </a>
 		</c:if>
 		
 		<c:forEach begin="${page.startPage }" end ="${page.endPage }" var="i">
 			<c:choose>
 				<c:when test= "${i == page.page }">
-					<a class="active" href = "/gocamp/notice.do?page=${i }">${i }</a>
+					<a class="active" href = "/gocamp/noticeList.do?page=${i }">${i }</a>
 				</c:when>
 				<c:otherwise>
-					<a href = "/gocamp/notice.do?page=${i }">${i }</a>
+					<a href = "/gocamp/noticeList.do?page=${i }">${i }</a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 		<c:if test="${page.next }">
-			<a href="/gocamp/notice.do?page=${page.endPage + 1 }"> &raquo; </a>
+			<a href="/gocamp/noticeList.do?page=${page.endPage + 1 }"> &raquo; </a>
 		</c:if>
 		</div>
 	</div>

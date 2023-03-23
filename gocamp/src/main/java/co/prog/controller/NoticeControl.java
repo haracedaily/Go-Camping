@@ -23,13 +23,14 @@ public class NoticeControl implements Control {
 			page = "1";
 		}
 
+		// 목록
+		NoticeService service = new NoticeServiceMybatis();
+		List<NoticeVO> list = null;// service.noticeList();
+
 		NoticeDTO dto = new NoticeDTO();
 		dto.setPage(Integer.parseInt(page));
 		dto.setUsage(usage);
 
-		// 목록
-		NoticeService service = new NoticeServiceMybatis();
-		List<NoticeVO> list = null;// service.noticeList();
 		list = service.noticeListPage(dto);
 		System.out.println("list : " + list);
 		request.setAttribute("list", list);
@@ -37,9 +38,10 @@ public class NoticeControl implements Control {
 		// 페이징.
 		// List<NoticeVO> listpage = service.noticeListPage(Integer.parseInt(page));
 		int total = service.getTotalCount(usage);
+		System.out.println("total Cnt: " + total + ", usage: " + usage);
 		request.setAttribute("page", new PageDTO(Integer.parseInt(page), total));
 
-		String uri = "board/notice.tiles";
+		String uri = "board/noticeList.tiles";
 		return uri;
 
 	}
