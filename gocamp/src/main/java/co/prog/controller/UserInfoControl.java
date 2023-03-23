@@ -18,6 +18,7 @@ public class UserInfoControl implements Control {
 		
 		UsersVO vo = new UsersVO();
 		
+		
 		UsersService service = new UsersServiceMybatis();
 		vo = service.userInfo(userId);
 		

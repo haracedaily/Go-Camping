@@ -30,14 +30,21 @@
                         </tr>
                     </tbody>
                 </table>
+                <form id="mFrm" action="getMessage.do">
+                 <input type="hidden" id="mNum" name="mNum" value="${message.getMNum() }">
+                </form>
             </div>
         </div>
     </div>
     
 <script>
-document.querySelector('#delBtn').addEventListener('click',function(){
+document.querySelector('#delBtn').addEventListener('click', function() {
 	
-})
+    let mNum = document.querySelector('#mNum').value;
+    let mFrm = document.querySelector('#mFrm');
     
+    mFrm.action = 'messageRemove.do';
+    mFrm.submit();
+});
 </script>
 </body>
