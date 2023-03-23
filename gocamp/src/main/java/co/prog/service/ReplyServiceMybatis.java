@@ -33,6 +33,12 @@ public class ReplyServiceMybatis implements ReplyService{
 		// TODO Auto-generated method stub
 		return mapper.deleteReply(nid);
 	}
+	@Override
+	public boolean replyModify(ReplyVO vo) {
+		// TODO Auto-generated method stub
+		int r = mapper.updateReply(vo);
+		return r ==1;
+	}
 	}
 	
 
