@@ -40,6 +40,7 @@ import co.prog.controller.MessageSendFormControl;
 import co.prog.controller.NoticeControl;
 import co.prog.controller.NoticeForm;
 import co.prog.controller.NoticeFormAddControl;
+import co.prog.controller.PerReservControl;
 import co.prog.controller.ProductInfoControl;
 import co.prog.controller.ProductListControl;
 import co.prog.controller.ReplyAddControl;
@@ -176,7 +177,8 @@ public class FrontController extends HttpServlet {
 		
 
 		map.put("/locaDetail.do", new LocaListControl());
-
+		
+		map.put("/perReserv.do", new PerReservControl());
 	}
 
 	@Override
