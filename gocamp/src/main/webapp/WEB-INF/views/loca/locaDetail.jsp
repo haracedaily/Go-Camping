@@ -247,6 +247,30 @@ list-style-type: none;
 .loca-sub-menu a:hover{
 color:black;
 }
+.img-container{
+width:400vw;
+margin : 0;
+transition : transform 0.5s;
+}
+.img-container *{
+margin : 0;
+}
+.img-content{
+width:100vw;
+float:left;
+}
+.img-cotent img{
+width:100%;
+}
+.img-boxer{
+overflow:hidden;
+}
+.next-button:hover{
+cursor:pointer;
+}
+.prev-button:hover{
+cursor:pointer;
+}
 </style>
 
  <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu" id="loca_menu">
@@ -306,10 +330,28 @@ document.querySelectorAll('#loca_menu a').forEach(atag=>{
 <tr><td>로그인 후 이용해주세요</td></tr>
 </c:otherwise>
 </c:choose>
-
+<tr>
+</tr>
 </tbody>
 </table>
 </div>
+</div>
+<div class="img-boxer">
+<div class="img-container">
+<div class='img-content'>
+<img src="upload/${list.locaName }1.jpg">
+</div>
+<div class='img-content'>
+<img src="upload/${list.locaName }2.jpg">
+</div>
+<div class='img-content'>
+<img src="upload/${list.locaName }3.jpg">
+</div>
+<div class='img-content'>
+<img src="upload/${list.locaName }4.jpg">
+</div>
+</div>
+<button class="prev-button">&lt;</button> <button class="next-button"> &gt;</button>
 </div>
 <div id="blank"/>
 
@@ -372,7 +414,33 @@ if(confirm('예약자 이름 : '+nm+'\n\n연락처 : '+tel+'\n\n입실일자 : '
 })
 
 </script>
+<script>
+const prevButton = document.querySelector('.prev-button');
+const nextButton = document.querySelector('.next-button');
+const imgContainer = document.querySelector('.img-container');
 
+let imgcount = 0;
+
+prevButton.addEventListener('click', function(){
+	if(imgcount!=0){
+		imgcount -= 1;
+		console.log(imgcount);
+	   imgContainer.style.transform = 'translate(-'+100*imgcount+'vw)';	
+	}
+});
+
+nextButton.addEventListener('click', function(){
+	if(imgcount==3){
+		imgcount=-1;
+	}
+	else if (imgcount>=-1){
+	   imgcount += 1;
+	   console.log(imgcount);
+	   imgContainer.style.transform ='translate(-'+100*imgcount+'vw)';
+	   
+	}
+});
+</script>
 
 
 
