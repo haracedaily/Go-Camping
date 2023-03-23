@@ -4,30 +4,49 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="co.prog.mapper.MessageMapper">
-	<!-- 관리자 쪽지 리스트 -->
-	<select id="messageList" resultType="MessageVO">
-	  	select m_num, user_id, m_title, m_date, m_check from message order by m_num desc
-	</select>
-	
-	<!-- 회원 쪽지 리스트 -->
-	<select id="messageListByUser" resultType="MessageVO" parameterType="String">
+   <!-- 관리자 쪽지 리스트 -->
+   <select id="messageList" resultType="MessageVO">
+        select m_num, user_id, m_title, m_date, m_check from message order by m_num desc
+   </select>
+   
+   <!-- 회원 쪽지 리스트 -->
+   <select id="messageListByUser" resultType="MessageVO" parameterType="String">
     <!--  m_num, m_title, m_date, m_check -->
-      select m_num, m_title, m_date, m_check from message where user_id = #{userId} order by m_num desc
-	</select>
-	
-	<!-- 쪽지 단건 조회 -->
-	<select id="selectMessage" resultType="MessageVO" parameterType="int">
-	  select * from message where m_num = #{mNum}
-	</select>
-	
-	<!-- 쪽지 수신 상태 변경 -->
-	<update id="updateCheck" parameterType="String">
-	  update message set m_check = 'Y'
-	  where m_num=#{mNum}
-	</update>
-	
-	<!-- 쪽지 삭제 -->
-	<delete id="messageRemove" parameterType="int">
-	  delete from message where m_num=#{mNum}
-	</delete>
+      select m_num, m_title, m_date, m_check from user_message where user_id = #{userId} order by m_num desc
+   </select>
+   
+   <!-- 쪽지 단건 조회 -->
+   <select id="selectMessage" resultType="MessageVO" parameterType="int">
+     select * from message where m_num = #{mNum}
+   </select>
+   
+   <!-- 쪽지 수신 상태 변경 message(관리자) -->
+   <update id="updateCheck" parameterType="String">
+     update message set m_check = 'Y'
+     where m_num=#{mNum}
+   </update>
+   
+   <!-- 쪽지 수신 상태 변경 user_message(회원) -->
+     <update id="updateCheckUser" parameterType="String">
+       update user_message set m_check = 'Y'
+       where m_num=#{mNum}
+   </update>
+   
+   <!-- 쪽지 삭제 -->
+   <delete id="messageRemove" parameterType="int">
+     delete from message where m_num=#{mNum}
+   </delete>
+   
+   <!-- 쪽지 보내기 insert mesage(관리자)-->
+   <insert id="insertMessage" parameterType="MessageVO">
+     insert into message (user_id, m_num, m_content, m_date, m_title)
+     values(#{userId},message_seq.nextval,#{mContent}, sysdate, #{mTitle});
+   </insert>
+   
+   <!-- 쪽지 보내기 insert user_message (회원) -->
+   <insert id="insertMessageUser">
+     insert into message (user_id, m_num, m_content, m_date, m_title)
+     values(#{userId},user_message_seq.nextval,#{mContent}, sysdate, #{mTitle});
+   </insert>
+   
 </mapper>

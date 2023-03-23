@@ -37,4 +37,9 @@ public class UsersServiceMybatis implements UsersService{
 		return r==1;
 	}
 
+	@Override
+	public boolean removeUsers(String id) {
+		return mapper.deleteUser(id)==1;
+	}
+
 }

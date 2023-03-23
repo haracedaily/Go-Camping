@@ -14,7 +14,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-lg-5 bg-white p-5">
-          <form class="contact-form" action="login.do" method="post" >
+          <form class="contact-form" action="login.do" method="POST" >
 
             <div class="form-group">
               <label class="text-black" for="userId">아이디</label>

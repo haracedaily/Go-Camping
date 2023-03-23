@@ -13,9 +13,9 @@ public class LoginControl implements Control{
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		String uri="users/login.tiles";
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
-		String uri="users/login.tiles";
 		UsersVO vo = new UsersVO();
 		vo.setUserId(userId);
 		vo.setUserPw(userPw);
@@ -23,7 +23,7 @@ public class LoginControl implements Control{
 		UsersService service = new UsersServiceMybatis();
 		vo = service.login(vo);
 		
-		System.out.println(vo);
+		System.out.println("로그인 정보 : "+vo);
 		
 		 // 로그인 성공
 		 // 로그인 실패
