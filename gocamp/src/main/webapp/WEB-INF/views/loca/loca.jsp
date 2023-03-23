@@ -80,7 +80,7 @@ document.querySelectorAll('#loca_menu a').forEach(atag=>{
 <thead>
 <tr>
 <th>이름</th>
-<th><a href="locaDetail.do?locaId=${list.locaId }&roomId=${list.locaId }">${list.locaName }</a></th>
+<th><a href="locaDetail.do?locaId=${list.locaId }">${list.locaName }</a></th>
 </tr>
 <tbody>
 <tr>
