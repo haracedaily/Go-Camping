@@ -45,6 +45,7 @@
 		<mapper resource="co/prog/mapper/LocationMapper.xml" />
 		<mapper resource="co/prog/mapper/MessageMapper.xml" />
 		<mapper resource="co/prog/mapper/NoticeMapper.xml" />
+		<mapper resource="co/prog/mapper/ManagerMapper.xml" />
 		
 
 	</mappers>
