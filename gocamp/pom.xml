@@ -92,6 +92,11 @@
 			<artifactId>gson</artifactId>
 			<version>2.10.1</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>co.yedam</groupId>
+			<artifactId>HelloApp</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>

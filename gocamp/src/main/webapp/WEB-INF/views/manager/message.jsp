@@ -5,8 +5,7 @@
 
 	<%@ include file="/WEB-INF/layout/myPageSidebar.jsp"%>
 
-<body>
-	
+
 <section class="py-5">
 	<div class="row justify-content-center">
 		<div>
@@ -26,8 +25,7 @@
 				    <!--  m_num, user_id, m_title, m_date, m_check -->
 				    <td>${message.getMNum() }</td>
 				    <td>${message.getUId()}</td>
-				    <td>${message.getMTitle() }</td>
-				    <td>${message.getMDate() }</td>
+					<td><a href="getMessage.do?mNum=${message.getMNum() }">${message.getMTitle() }</a></td>					    <td>${message.getMDate() }</td>
 				    <td>${message.getMCheck() }</td>
 				  </tr>
 				  </c:forEach>
@@ -35,13 +33,15 @@
     <tr>
       <td colspan="2" align="center">
 
-        <button id = "sendBtn">쪽지 보내기</button>
-        <button id="delBtn">삭제</button>
+        <button id="sendBtn" type="submit" class="btn btn-primary">쪽지 보내기</button>
+        <!-- <button id="delBtn">삭제</button> -->
 
         </td>
     </tr>
   </table>
-  
+   <form id="mFrm" action="getMessageManager.do">
+	<input type="hidden" id="mNum" name="mNum" value="${message.getMNum() }">
+   </form>
 
 		</div>
 	</div>
@@ -50,21 +50,13 @@
 
 
 <script>
-	fetch('MessageListAjax.do')
-		.then(function (resolve) {
-			//console.log(resolve); // body : readablestream
-			return resolve.json(); // json 포맷에 따라 javascript object 변경
-		})
-		.then(function (result) {
-			console.log(result); // result : [{},{},{},{}....{}]
-			for (let i = 0; i < result.length; i++) {
-				let id = result[i].id;
-				makeTr(result[i]);
-			}
-		})
-		.catch(function (reject) {
-			console.error(reject);
-		})
+document.querySelector('#sendBtn').addEventListener('click', function() {
+	
+    let mFrm = document.querySelector('#mFrm');
+    
+    mFrm.action = 'messageSend.do';
+    mFrm.submit();
+});
 </script>
-</body>
 </div>
+

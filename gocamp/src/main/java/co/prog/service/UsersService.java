@@ -13,5 +13,7 @@ public interface UsersService {
 	public UsersVO userInfo(String id);
 	//마이페이지 - 개인정보 수정
 	public boolean modifyUsers(UsersVO vo);
+	//회원 탈퇴
+	public boolean removeUsers(String id);
 	
 }

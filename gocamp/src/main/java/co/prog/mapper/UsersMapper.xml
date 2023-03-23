@@ -23,14 +23,21 @@
 	<select id="selectUsers" parameterType="UsersVO" resultType="UsersVO">
 		select * from users where user_id=#{userId}
 	</select>
+	
 	<!-- 회원 정보 수정 -->
 	<update id="updateUser" parameterType="usersVO" >
 		update users
 		set user_pw = #{userPw},
 			user_addr = #{userAddr},
 			user_tel = #{userTel},
-			nickname = #{nickname}
+			nickname = #{nickname},
+			user_name = #{userName}
 		where user_id=#{userId}
 	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="deleteUser" parameterType="String">
+	  delete users where user_id= #{id}
+	</delete>
 
 </mapper>

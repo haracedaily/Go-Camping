@@ -30,6 +30,6 @@ left:0;
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="perReserv.do">예약 정보</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">상품 구매 내역</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">쿠폰함</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">쪽지함</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="userMessageList.do">쪽지함</a>
                 </div>
             </div>

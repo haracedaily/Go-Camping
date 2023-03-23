@@ -6,44 +6,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.prog.common.Control;
-import co.prog.service.NoticeService;
-import co.prog.service.NoticeServiceMybatis;
+import co.prog.service.CommentService;
+import co.prog.service.CommentServiceMybatis;
+import co.prog.vo.CommentVO;
 import co.prog.vo.NoticeDTO;
-import co.prog.vo.NoticeVO;
 import co.prog.vo.PageDTO;
 
-public class NoticeControl implements Control {
+public class CommentListControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		String page = request.getParameter("page");
 		String usage = request.getParameter("usage");
-		usage = usage == null ? "a" : usage;
-		if (page == null) {
-			page = "1";
-		}
-
-		// 목록
-		NoticeService service = new NoticeServiceMybatis();
-		List<NoticeVO> list = null;// service.noticeList();
-
+		
+		
+		CommentService service = new CommentServiceMybatis();
+		List<CommentVO> list = null;
+		
 		NoticeDTO dto = new NoticeDTO();
 		dto.setPage(Integer.parseInt(page));
 		dto.setUsage(usage);
-
-		list = service.noticeListPage(dto);
+		
+		list = service.commentListPage(dto);
 		System.out.println("list : " + list);
 		request.setAttribute("list", list);
-
-		// 페이징.
-		// List<NoticeVO> listpage = service.noticeListPage(Integer.parseInt(page));
+		
 		int total = service.getTotalCount(usage);
 		System.out.println("total Cnt: " + total + ", usage: " + usage);
 		request.setAttribute("page", new PageDTO(Integer.parseInt(page), total));
 
-		String uri = "board/noticeList.tiles";
+		String uri = "board/board.tiles";
 		return uri;
-
+		
 	}
 
 }

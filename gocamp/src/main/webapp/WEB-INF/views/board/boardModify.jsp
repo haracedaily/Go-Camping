@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <style>
 	#cbar {
@@ -50,22 +51,26 @@
 	<div class="container">
 		<div class="row justify-content-center text-center">
 			<div class="col-lg-6">
-				<h2 class="text-secondary heading-2">${usageName} 글쓰기</h2>
+				<h2 class="text-secondary heading-2">${notice.usage} 수정</h2>
 			</div>
 		</div>
 	</div>
 </div>
-<form method="post" action="boardAdd.do" enctype="multipart/form-data">
+<form method="post" action="boardModify.do" enctype="multipart/form-data">
 <input type="hidden" name="usage" value="${usage }">
 	<table id="bTable">
 		<tr>
 			<td>
-			<input type="hidden" name="boId" value="${notice.getboId() }">
-			<input type="hidden" name="userId" value="${user.getUserId() }">
-			<input type="text" name="title" placeholder="제목을 입력해주세요" id="titleTable"></td>
+			<input type="hidden" name="boId" value="${notice.boId }">
+			<input type="hidden" name="userId" value="${notice.userId }">
+			<input type="text" name="title" id="titleTable" value="${notice.boTitle }"></td>
+		</tr>
+		
+		<tr>
+			<td><img src="./upload/${notice.boImg }" alt="이미지"></td>
 		</tr>
 		<tr>
-			<td><textarea cols="30" rows="5" name="subject" placeholder="내용을 입력해주세요" id="contTable"></textarea></td>
+			<td><textarea cols="30" rows="5" name="subject" id="contTable">${notice.boCont }</textarea></td>
 		</tr>
 		<tr>	
 			<td><input type="file" name="attach" id=imgfile placeholder='null'></td>
@@ -79,8 +84,8 @@
 </form>
 
 <script>
-	document.querySelector('button').addEventListener('click', function (e) {
-
+	document.querySelector('subBtn').addEventListener('click', function (e) {
+	
 	let title = document.querySelector('input[name="title"]').value;
 	let subject = document.querySelector('textearea["subject"]').textContent;
 

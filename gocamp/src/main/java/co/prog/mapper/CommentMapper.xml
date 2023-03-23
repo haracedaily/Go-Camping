@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.prog.mapper.CommentMapper">
+
+	<select id="commentList">
+ <![CDATA[
+ 	select rownum, user_id, bo_id, c_content, c_date, usage
+	from (select rownum,user_id,bo_id,c_content,c_date,usage 
+	from bcommv order by bo_date)]]>
+	</select>
+
+	<select id="commentListPaging" resultType="co.prog.vo.NoticeVO"
+		parameterType="co.prog.vo.NoticeDTO">
+ 	<![CDATA[
+ 	select rownum, user_id,bo_id,c_content,c_date,usage
+		from(select rownum rn, user_id,bo_id,c_content,c_date,usage
+		     from (select rownum rn, user_id,bo_id,c_content,c_date,usage
+		           from bcommv 
+		           where usage=#{usage} 
+		           order by bo_id desc) a
+		     where rownum <=(${page}*10)) b
+		where b.rn>(${page}-1)*10
+		]]>
+	</select>
+
+	<select id="getComm" parameterType="int" resultType="co.prog.vo.CommentVO">
+		select * from bcomment where bo_id=#{boId} order by 1 desc
+	</select>
+
+	<insert id="insertComment" parameterType="co.prog.vo.CommentVO">
+		insert into bcomment(co_no, user_id, bo_id, co_content, co_date)
+		values(bcomm_seq.NEXTVAL, #{userId}, #{boId}, #{coContent}, sysdate)
+	</insert>
+
+</mapper>

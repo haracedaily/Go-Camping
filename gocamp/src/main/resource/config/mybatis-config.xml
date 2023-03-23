@@ -39,12 +39,13 @@
 	</environments>
 	<mappers>
 		<mapper resource="co/prog/mapper/ReplyMapper.xml" />
-
 		<mapper resource="co/prog/mapper/ProductMapper.xml" />
 		<mapper resource="co/prog/mapper/UsersMapper.xml" />
 		<mapper resource="co/prog/mapper/LocationMapper.xml" />
 		<mapper resource="co/prog/mapper/MessageMapper.xml" />
 		<mapper resource="co/prog/mapper/NoticeMapper.xml" />
+		<mapper resource="co/prog/mapper/CommentMapper.xml" />
+		<mapper resource="co/prog/mapper/ManagerMapper.xml" />
 		
 
 	</mappers>

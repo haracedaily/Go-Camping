@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import co.prog.common.DataSource;
 import co.prog.mapper.MessageMapper;
 import co.prog.vo.MessageVO;
+import co.prog.vo.UsersVO;
 
 public class MessageServiceMybatis implements MessageService{
 	
@@ -25,7 +26,7 @@ public class MessageServiceMybatis implements MessageService{
 
 	@Override
 	public MessageVO getMessage(int mNum) { //쪽지 상세 조회
-		//쪽지 읽으면 상태 변경..
+		mapper.updateCheckUser(null);
 		return mapper.selectMessage(mNum);
 	}
 
@@ -36,10 +37,24 @@ public class MessageServiceMybatis implements MessageService{
 	}
 
 	@Override
-	public int messageRemove(int mNum) {
-//		return mapper.messageRemove(mNum);
-		return 0;
+	public int messageRemove(int mNum) { //쪽지 삭제
+		return mapper.messageRemove(mNum);
 	}
+
+	@Override
+	public boolean addMessage(MessageVO vo) { //쪽지 보내기 - 관리자insert
+		int r = mapper.insertMessage(vo);
+		return r == 1;
+	}
+
+	@Override
+	public boolean addMessageUser(MessageVO vo) {//쪽지 보내기 - 회원insert
+		int r = mapper.insertMessageUser(vo);
+		return r == 1;
+	}
+
+
+	
 
 	
 }

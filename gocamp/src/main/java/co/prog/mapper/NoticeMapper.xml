@@ -6,7 +6,7 @@
 
 	<select id="noticeList" >
 		<![CDATA[
-		select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage
+		select rownum, bo_tit	le,bo_date,bo_count,nickname,bo_id,usage
 		from (select rownum, bo_title,bo_date,bo_count,nickname,bo_id,usage from notice_list_view order by bo_date)]]>
 	</select>
 	
@@ -29,22 +29,25 @@
 	</insert>
 	
 	<select id = "selectNotice" resultType="co.prog.vo.NoticeVO">
-		select * from board_view where bo_id = #{boId}
+		select * from board where bo_id = #{boId}
 	</select>
 	
 	<update id="updateCount" parameterType="int">
-		update board set bo_count = bo_count + 1
+		update board set bo_count = NVL(bo_count,0)+ 1
 		where bo_id = #{boId}
 	</update>
 	
 	<select id="getTotalCount" resultType="int" parameterType="string">
 		select count(*) as totalCount from board
 		where usage=#{usage}
-		group by usage
 	</select>
 	
 	<update id="updateNotice" parameterType="co.prog.vo.NoticeVO">
-		update board set bo_title = #{boTitle}, bo_cont= #{boCont}, bo_img=#{boImg} where bo_id = #{boId}
+		update board set bo_title = #{boTitle}, bo_cont= #{boCont}
+		<if test="boImg != null">
+		 ,bo_img=#{boImg}
+		</if>
+		where bo_id = #{boId}
 	</update>
 	
 	<delete id="deleteNotice" parameterType="int">

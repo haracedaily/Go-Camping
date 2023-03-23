@@ -10,5 +10,7 @@ public interface ReplyService {
 	
 	public boolean addReply(ReplyVO vo);
 	
+	public boolean replyModify(ReplyVO vo);
+	
 	public int replyRemove(int nid);
 }

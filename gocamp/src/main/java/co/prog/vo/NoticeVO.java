@@ -23,6 +23,9 @@ public class NoticeVO {
 	private String sinNum; // 주민등록번호
 	private String nickname; // 닉네임
 
+	private int cNo;
+	private String cContent;
+	private Date cDate;
 //	BO_ID    NOT NULL VARCHAR2(30)   
 //	USER_ID           VARCHAR2(30)   
 //	BO_TITLE          VARCHAR2(120)  
