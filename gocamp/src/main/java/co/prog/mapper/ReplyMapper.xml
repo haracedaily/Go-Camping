@@ -25,11 +25,20 @@
 	<select id="getTotalCount" resultType="int">
 		select count(*) from pcom
 	</select>
+	
 	 <insert id="insertReply" parameterType="co.prog.vo.ReplyVO">
 		insert into pcom (sku, user_id, rep_num, rep_con)
    		 values(#{sku}, #{userId} , pcom_seq.nextval, #{repCon})
   	</insert>
-  	<delete id="deleteReply"  parameterType="co.prog.vo.ReplyVO">
-  	delete from pcom where rep_num = #{repNum};
+  	
+  	<delete id="deleteReply"  parameterType="int">
+  	delete from pcom where rep_num = #{nid}
   	</delete>
+  	
+  	<update id="updateReply" parameterType="co.prog.vo.ReplyVO">
+  	update pcom
+	set rep_con=#{repCon}
+	where rep_num=#{repNum} and user_id=#{userId}
+  	</update>
+  	
 </mapper>

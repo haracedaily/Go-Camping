@@ -13,21 +13,21 @@ public class LoginControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		String uri="users/login.tiles";
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
-		String uri = "users/login.tiles";
+
 		UsersVO vo = new UsersVO();
 		vo.setUserId(userId);
 		vo.setUserPw(userPw);
-
-		HttpSession session = request.getSession();
-
-		session.setAttribute("nid", vo.getUserId());
-
+		
 		UsersService service = new UsersServiceMybatis();
 		vo = service.login(vo);
+		
+		System.out.println("로그인 정보 : "+vo);
 
-		System.out.println(vo);
+		HttpSession session = request.getSession();
+		session.setAttribute("nid", vo.getUserId());
 
 		// 로그인 성공
 		// 로그인 실패
@@ -40,8 +40,9 @@ public class LoginControl implements Control {
 			session.setAttribute("user", vo);
 		} else {
 			System.out.println("실패");
-			request.setAttribute("message", "로그인 실패");
-			uri = "users/login.tiles";
+			request.setAttribute("message", "로그인에 실패했습니다. 로그인 정보를 다시 확인해주세요.");
+			uri="users/login.tiles";
+
 		}
 		return uri;
 	}

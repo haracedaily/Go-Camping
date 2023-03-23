@@ -12,7 +12,11 @@ public interface MessageMapper {
 	//회원 쪽지 리트스
 	public List<MessageVO>  messageListByUser(String userId);
 	//메시지 수신 상태 변경
-	
+	public int updateCheckUser(String mCheck);
 	//쪽지 삭제
 	public int messageRemove(int mNum);
+	//쪽지 보내기(insert 관리자)
+	public int insertMessage(MessageVO vo);
+	//쪽지 보내기(insert 유저)
+	public int insertMessageUser(MessageVO vo);
 }

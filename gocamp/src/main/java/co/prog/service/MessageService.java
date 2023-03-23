@@ -3,8 +3,11 @@ package co.prog.service;
 import java.util.List;
 
 import co.prog.vo.MessageVO;
+import co.prog.vo.UsersVO;
 
 public interface MessageService {
+	
+
 	
 	//쪽지 리스트 화면
 	public List<MessageVO> messageList();
@@ -16,6 +19,10 @@ public interface MessageService {
 	public MessageVO getMessage(int mNum); // 회원은 쪽지 번호는 숨기고 로우넘으로 쪽지 번호 처리 생각해보기
 	//쪽지 삭제
 	public int messageRemove(int mNum);
+	//쪽지 보내기 - insert 관리자
+	public boolean addMessage(MessageVO vo);
+	//쪽지 보내기 - insert 유저
+	public boolean addMessageUser(MessageVO vo);
 	
 	
 }
