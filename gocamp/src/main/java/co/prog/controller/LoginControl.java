@@ -16,7 +16,6 @@ public class LoginControl implements Control {
 		String uri="users/login.tiles";
 		String userId = request.getParameter("userId");
 		String userPw = request.getParameter("userPw");
-
 		UsersVO vo = new UsersVO();
 		vo.setUserId(userId);
 		vo.setUserPw(userPw);
@@ -25,24 +24,20 @@ public class LoginControl implements Control {
 		vo = service.login(vo);
 		
 		System.out.println("로그인 정보 : "+vo);
-
+		
+		 // 로그인 성공
+		 // 로그인 실패
+		//session 객체는 웹브라우저별로 계속 유지되는 정보를 담아둠
+		if(vo!=null) {
+		System.out.println("성공");
 		HttpSession session = request.getSession();
-		session.setAttribute("nid", vo.getUserId());
-
-		// 로그인 성공
-		// 로그인 실패
-		// session 객체는 웹브라우저별로 계속 유지되는 정보를 담아둠
-		if (vo != null) {
-			System.out.println("성공");
-			request.setAttribute("message", "로그인 되었습니다.");
-
-			session.setAttribute("userId", vo.getUserId());
-			session.setAttribute("user", vo);
-		} else {
+		session.setAttribute("userId", vo.getUserId());
+		session.setAttribute("user", vo);
+		request.setAttribute("message", "로그인 되었습니다.");
+		}else {
 			System.out.println("실패");
-			request.setAttribute("message", "로그인에 실패했습니다. 로그인 정보를 다시 확인해주세요.");
+			request.setAttribute("fmessage", "로그인에 실패했습니다. 로그인 정보를 다시 확인해주세요.");
 			uri="users/login.tiles";
-
 		}
 		return uri;
 	}

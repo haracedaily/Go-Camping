@@ -51,6 +51,7 @@ import co.prog.controller.ReservListAjax;
 import co.prog.controller.UserDeleteControl;
 import co.prog.controller.UserInfoControl;
 import co.prog.controller.UserInfoModControl;
+import co.prog.controller.UserListAjax;
 import co.prog.controller.UserListContol;
 import co.prog.controller.UserMessageListControl;
 
@@ -128,9 +129,6 @@ public class FrontController extends HttpServlet {
 		map.put("/userInfo.do", new UserInfoControl());
 		// 마이페이지 - 회원 정보 수정
 		map.put("/userInfoMod.do", new UserInfoModControl());
-
-
-
 		// 마이페이지 - 회원 탈퇴
 		map.put("/userDelete.do", new UserDeleteControl());
 		
@@ -151,17 +149,14 @@ public class FrontController extends HttpServlet {
 		//쪽지 - 쪽지 리스트 (회원)
 		map.put("/userMessageList.do", new UserMessageListControl());
 
-		// 쪽지 - 쪽지 읽기
 		//쪽지 - 쪽지 읽기 (회원)
-
 		map.put("/getMessage.do", new GetMessageControl());
-
 		// 쪽지 - 쪽지 삭제
 		map.put("/messageRemove.do", new MessageRemoveControl());
-
 		
 		//관리자 페이지 - 회원 관리
 		map.put("/userListControl.do", new UserListContol());
+		map.put("/userListAjax.do", new UserListAjax());
 
 		map.put("/loca.do", new LocaControl());
 
