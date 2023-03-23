@@ -37,8 +37,7 @@ public class MessageServiceMybatis implements MessageService{
 
 	@Override
 	public int messageRemove(int mNum) {
-//		return mapper.messageRemove(mNum);
-		return 0;
+		return mapper.messageRemove(mNum);
 	}
 
 	

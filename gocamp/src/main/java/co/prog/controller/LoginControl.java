@@ -37,7 +37,7 @@ public class LoginControl implements Control{
 		session.setAttribute("user", vo);
 		}else {
 			System.out.println("실패");
-			request.setAttribute("message", "로그인 실패");
+			request.setAttribute("message", "로그인에 실패했습니다. 로그인 정보를 다시 확인해주세요.");
 			uri="users/login.tiles";
 		}
 		return uri;

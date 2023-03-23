@@ -41,9 +41,9 @@ public class UserInfoModControl implements Control {
 		
 		UsersService service = new UsersServiceMybatis();
 		if(service.modifyUsers(user) == true) {
-			request.setAttribute("message", "ok");
+			request.setAttribute("message", "정보 수정이 완료되었습니다.");
 		}else {
-			request.setAttribute("message", "nope");
+			request.setAttribute("message", "정보 수정에 실패했습니다.");
 		}
 		return "users/myPage.tiles";
 	}

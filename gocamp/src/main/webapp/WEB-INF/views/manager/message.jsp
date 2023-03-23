@@ -26,8 +26,7 @@
 				    <!--  m_num, user_id, m_title, m_date, m_check -->
 				    <td>${message.getMNum() }</td>
 				    <td>${message.getUId()}</td>
-				    <td>${message.getMTitle() }</td>
-				    <td>${message.getMDate() }</td>
+					<td><a href="getMessage.do?mNum=${message.getMNum() }">${message.getMTitle() }</a></td>					    <td>${message.getMDate() }</td>
 				    <td>${message.getMCheck() }</td>
 				  </tr>
 				  </c:forEach>

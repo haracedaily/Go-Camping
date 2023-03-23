@@ -107,5 +107,10 @@
 	  }
 	  
   });
+	
+ if('${message}'){
+	  
+	  alert('${message}');
+ }
 </script>
 </body>

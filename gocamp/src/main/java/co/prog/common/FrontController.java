@@ -31,6 +31,7 @@ import co.prog.controller.ManageControl;
 import co.prog.controller.MessageListControl;
 import co.prog.controller.MessageRemoveControl;
 import co.prog.controller.MessageSendAjax;
+import co.prog.controller.MessageSendControl;
 import co.prog.controller.NoticeControl;
 import co.prog.controller.NoticeForm;
 import co.prog.controller.NoticeFormAddControl;
@@ -116,7 +117,7 @@ public class FrontController extends HttpServlet {
 		//쪽지 - 쪽지 리스트 (관리자)
 		map.put("/messageList.do", new MessageListControl());
 		//쪽지 - 쪽지 보내기 (관리자)
-		map.put("/messageSendAjax.do", new MessageSendAjax());
+		map.put("/messageSend.do", new MessageSendControl());
 		//쪽지 - 쪽지 리스트 (회원)
 		map.put("/userMessageList.do", new UserMessageListControl());
 		//쪽지 - 쪽지 읽기
