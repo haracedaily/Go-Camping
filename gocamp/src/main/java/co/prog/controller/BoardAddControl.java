@@ -41,7 +41,7 @@ public class BoardAddControl implements Control {
 					multi.getFilesystemName("attach");
 
 			HttpSession session = request.getSession();
-			session.setAttribute("userId", "a0002");
+			session.setAttribute("Id", "a0002");
 
 			vo.setUsage(usage);
 			vo.setBoTitle(title);
