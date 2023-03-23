@@ -13,6 +13,8 @@ public class CommentRemoveControl implements Control {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		String cNo = request.getParameter("cNo");
+		int boId = Integer.parseInt(request.getParameter("boId"));
+		
 		CommentService service = new CommentServiceMybatis();
 		
 		service.commentRemove(Integer.parseInt(cNo));
