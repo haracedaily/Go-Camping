@@ -16,7 +16,7 @@ public class MessageRemoveControl implements Control {
 		MessageService service = new MessageServiceMybatis();
 		int message = service.messageRemove(Integer.parseInt(mNum));
 		
-		return "users/userMessage.tiles";
+		return "message/userMessage.tiles";
 	}
 
 }

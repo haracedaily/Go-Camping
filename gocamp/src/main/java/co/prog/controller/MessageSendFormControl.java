@@ -9,7 +9,7 @@ public class MessageSendFormControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		return "manager/messageSend.jsp";
+		return "message/messageSend.tiles";
 	}
 
 }
