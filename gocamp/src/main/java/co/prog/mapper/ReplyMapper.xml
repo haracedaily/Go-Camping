@@ -38,7 +38,7 @@
   	<update id="updateReply" parameterType="co.prog.vo.ReplyVO">
   	update pcom
 	set rep_con=#{repCon}
-	where rep_num=#{repNum} and user_id=#{userId}
+	where rep_num=#{repNum}
   	</update>
   	
 </mapper>

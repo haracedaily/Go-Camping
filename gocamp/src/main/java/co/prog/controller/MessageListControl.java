@@ -20,7 +20,7 @@ public class MessageListControl implements Control{
 		
 		request.setAttribute("list", list);
 		
-		return "manager/message.tiles";
+		return "message/message.tiles";
 	}
 
 }

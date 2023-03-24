@@ -25,16 +25,13 @@ public class LoginControl implements Control {
 		
 		System.out.println("로그인 정보 : "+vo);
 		
-		 // 로그인 성공
-		 // 로그인 실패
-		//session 객체는 웹브라우저별로 계속 유지되는 정보를 담아둠
 		if(vo!=null) {
-		System.out.println("성공");
+		System.out.println("성공");// 로그인 성공
 		HttpSession session = request.getSession();
 		session.setAttribute("userId", vo.getUserId());
-		session.setAttribute("user", vo);
+		session.setAttribute("user", vo); //user에 웹브라우저별로 계속 유지되는 정보를 담아둠
 		request.setAttribute("message", "로그인 되었습니다.");
-		}else {
+		}else {// 로그인 실패
 			System.out.println("실패");
 			request.setAttribute("fmessage", "로그인에 실패했습니다. 로그인 정보를 다시 확인해주세요.");
 			uri="users/login.tiles";

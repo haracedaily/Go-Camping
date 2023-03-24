@@ -1,5 +1,7 @@
 package co.prog.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,34 +14,25 @@ public class MessageSendControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		int mNum = Integer.parseInt(request.getParameter("mNum"));
-		String uId = request.getParameter("uId");
+		String userId = request.getParameter("userId");
 		String mContent = request.getParameter("mContent");
-		String mDate = request.getParameter("mDate");
 		String mTitle = request.getParameter("mTitle");
-		String mCheck = request.getParameter("mCheck");
 		
 		MessageVO vo = new MessageVO();
-		vo.setMNum(mNum);
-		vo.setUId(uId);
+		vo.setUserId(userId);
 		vo.setMContent(mContent);
-		vo.setMDate(mDate);
 		vo.setMTitle(mTitle);
-		vo.setMCheck(mCheck);
 		
 		System.out.println("입력:"+vo);
 		MessageService service = new MessageServiceMybatis();
 		boolean result = service.addMessage(vo);
+		service.addMessageUser(vo);
 		System.out.println(result);
-		if(result) {
-			System.out.println("성공");
-			request.setAttribute("message", "쪽지 전송 완료");
-			request.setAttribute("mNum", vo.getMNum());
-		}else {
-			System.out.println("실패");
-			request.setAttribute("message", "쪽지 전송 실패");
-		}
-		return "manager/message.tiles";
+		
+		List<MessageVO> list = service.messageList();
+		
+		request.setAttribute("list", list);
+		return "message/message.tiles";
 	}
 
 }

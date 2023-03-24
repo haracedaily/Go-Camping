@@ -13,8 +13,10 @@ public class ReplyModifyControl implements Control {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		String code = request.getParameter("code");
+		
 		int repNum = Integer.parseInt(request.getParameter("repNum"));
-		String repCon=request.getParameter("repCon");
+		System.out.println(repNum);
+		String repCon=request.getParameter("comment");
 		
 		ReplyVO vo = new ReplyVO();
 		vo.setSku(code);
