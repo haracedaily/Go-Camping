@@ -22,4 +22,6 @@ public interface LocationMapper {
 	public int insertReserv(ReservVO vo);
 	
 	public List<ReservVO> getPerReserv(String userId);
+	
+	public int modifyReserv(ReservVO vo);
 }

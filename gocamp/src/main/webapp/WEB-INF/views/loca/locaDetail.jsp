@@ -351,7 +351,7 @@ document.querySelectorAll('#loca_menu a').forEach(atag=>{
 <img src="upload/${list.locaName }4.jpg">
 </div>
 </div>
-<button class="prev-button">&lt;</button> <button class="next-button"> &gt;</button>
+<button class="prev-button">&lt;</button><input type="text" id="imgpage" style="border:none;width:1vw;" value="1" readonly></input><button class="next-button"> &gt;</button>
 </div>
 <div id="blank"/>
 
@@ -418,28 +418,71 @@ if(confirm('예약자 이름 : '+nm+'\n\n연락처 : '+tel+'\n\n입실일자 : '
 const prevButton = document.querySelector('.prev-button');
 const nextButton = document.querySelector('.next-button');
 const imgContainer = document.querySelector('.img-container');
-
+const currImages = document.querySelectorAll('img');
 let imgcount = 0;
+let imgpc=0;
 
 prevButton.addEventListener('click', function(){
 	if(imgcount!=0){
 		imgcount -= 1;
 		console.log(imgcount);
+		imgpc = imgcount+1;
+		document.getElementById('imgpage').value=imgpc;
 	   imgContainer.style.transform = 'translate(-'+100*imgcount+'vw)';	
+	}else if(imgcount==0){
+		imgcount = 3;
+		imgpc = imgcount+1;
+		document.getElementById('imgpage').value=imgpc;
+		imgContainer.style.transform = 'translate(-'+100*imgcount+'vw)';
 	}
 });
 
 nextButton.addEventListener('click', function(){
 	if(imgcount==3){
-		imgcount=-1;
+		imgcount=0;
+		imgpc = imgcount+1;
+		document.getElementById('imgpage').value=imgpc;
+		imgContainer.style.transform ='translate(-'+100*imgcount+'vw)';
 	}
 	else if (imgcount>=-1){
 	   imgcount += 1;
+	   imgpc = imgcount+1;
 	   console.log(imgcount);
+	   document.getElementById('imgpage').value=imgpc;
 	   imgContainer.style.transform ='translate(-'+100*imgcount+'vw)';
 	   
 	}
 });
+var imm = setInterval(function(){imgMo()} ,1600);
+
+prevButton.onmouseout=function(){
+	imm = setInterval(function(){imgMo()},1600);
+}
+prevButton.onmouseover = function(){
+	clearInterval(imm);
+};
+nextButton.onmouseout = function(){
+	imm = setInterval(function(){imgMo()},1600);
+};
+nextButton.onmouseover = function(){
+	clearInterval(imm);
+};
+		
+function imgMo(){
+	if(imgcount==3){
+		imgcount=0;
+		imgpc = imgcount+1;
+		document.getElementById('imgpage').value=imgpc;
+		imgContainer.style.transform ='translate(-'+100*imgcount+'vw)';
+	}
+	else if (imgcount>=-1){
+	   imgcount += 1;
+	   imgpc = imgcount+1;
+	   document.getElementById('imgpage').value=imgpc;
+	   imgContainer.style.transform ='translate(-'+100*imgcount+'vw)';
+	}
+	
+};
 </script>
 
 

@@ -41,6 +41,7 @@ import co.prog.controller.NoticeControl;
 import co.prog.controller.NoticeForm;
 import co.prog.controller.NoticeFormAddControl;
 import co.prog.controller.PerReservControl;
+import co.prog.controller.PerReservModifyControl;
 import co.prog.controller.ProductInfoControl;
 import co.prog.controller.ProductListControl;
 import co.prog.controller.ReplyAddControl;
@@ -172,6 +173,8 @@ public class FrontController extends HttpServlet {
 		map.put("/locaDetail.do", new LocaListControl());
 		
 		map.put("/perReserv.do", new PerReservControl());
+		
+		map.put("/perReservModify.do", new PerReservModifyControl());
 	}
 
 	@Override
@@ -202,19 +205,12 @@ public class FrontController extends HttpServlet {
 			resp.getWriter().append(viewPage.substring(0, viewPage.length() - 5));
 			return;
 			
-		} else if (viewPage.endsWith(".do")) {
-			resp.sendRedirect(viewPage);
-			return;
-			
 		} else if (viewPage.indexOf(".do") != -1) {
 			// .do?code=006
 			resp.sendRedirect(viewPage);
 			return;
 		} else if (viewPage.endsWith(".gyuri")) {
 			resp.sendRedirect(viewPage.substring(0, viewPage.length() - 6));
-			return;
-		} else if (viewPage.indexOf(".do") != -1) {
-			resp.sendRedirect(viewPage);
 			return;
 		}
 		// 페이지 재지정.
