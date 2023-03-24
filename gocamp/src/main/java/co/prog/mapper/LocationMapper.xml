@@ -88,4 +88,8 @@ select loca_id,loca_name,loca_tel,loca_addr,res_id,room_id,user_id,res_name,res_
  to_char(res_edate,'yyyy-mm-dd') res_edate,res_state,res_date from reserv_view where user_id=#{userId}
 </select>
 
+<update id="modifyReserv">
+update reserv set res_sdate = ?, res_edate=?
+</update>
+
 </mapper>
