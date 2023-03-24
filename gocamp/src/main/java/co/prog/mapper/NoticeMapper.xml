@@ -29,7 +29,7 @@
 	</insert>
 	
 	<select id = "selectNotice" resultType="co.prog.vo.NoticeVO">
-		select * from board where bo_id = #{boId}
+		select * from board_view where bo_id = #{boId}
 	</select>
 	
 	<update id="updateCount" parameterType="int">

@@ -205,12 +205,16 @@ public class FrontController extends HttpServlet {
 			resp.getWriter().append(viewPage.substring(0, viewPage.length() - 5));
 			return;
 			
-		} else if (viewPage.indexOf(".do") != -1) {
-			// .do?code=006
+		} else if (viewPage.endsWith(".do")) {
 			resp.sendRedirect(viewPage);
 			return;
-		} else if (viewPage.endsWith(".gyuri")) {
+			
+		}else if (viewPage.endsWith(".gyuri")) {
 			resp.sendRedirect(viewPage.substring(0, viewPage.length() - 6));
+			return;
+			
+		} else if (viewPage.indexOf(".do") != -1) {
+			resp.sendRedirect(viewPage);
 			return;
 		}
 		// 페이지 재지정.

@@ -12,9 +12,6 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import co.prod.service.MemberService;
-import co.prod.service.MemberServiceMybatis;
-import co.prod.vo.MemberVO;
 import co.prog.common.Control;
 import co.prog.service.LocationService;
 import co.prog.service.LocationServiceMybatis;
