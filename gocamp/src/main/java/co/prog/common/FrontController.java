@@ -18,6 +18,7 @@ import co.prog.controller.BoardModifyControl;
 import co.prog.controller.BoardModifyFormControl;
 import co.prog.controller.BoardRemoveControl;
 import co.prog.controller.CalendarControl;
+
 import co.prog.controller.GetMessageControl;
 import co.prog.controller.GetMessageManagerControl;
 import co.prog.controller.InsertUserControl;
@@ -74,6 +75,8 @@ public class FrontController extends HttpServlet {
 		map.put("/replyModify.do", new ReplyModifyControl());
 		         
 		map.put("/replyRemove.do", new ReplyRemoveControl());
+		
+	
 
 		// 상품댓글)
 		// map.put("/replyList.do", new ReplyListControl());
@@ -208,6 +211,7 @@ public class FrontController extends HttpServlet {
 		} else if (viewPage.indexOf(".do") != -1) {
 			// .do?code=006
 			resp.sendRedirect(viewPage);
+			return;
 		} else if (viewPage.endsWith(".gyuri")) {
 			resp.sendRedirect(viewPage.substring(0, viewPage.length() - 6));
 			return;
