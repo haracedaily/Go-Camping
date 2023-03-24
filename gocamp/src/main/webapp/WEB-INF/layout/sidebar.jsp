@@ -14,15 +14,13 @@ text-align:center;
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Simple Sidebar - Start Bootstrap Template</title>
-        <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
-        <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
+    <div id="side">
+        <div class="d-flex" id="wrapper">
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
                 <div class="list-group list-group-flush">
@@ -39,3 +37,5 @@ text-align:center;
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="memberDeleteForm.do">회원삭제</a>
                 </div>
             </div>
+	</div>
+	</div>

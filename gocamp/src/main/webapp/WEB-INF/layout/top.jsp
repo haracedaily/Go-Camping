@@ -59,7 +59,15 @@
           <li>[ 손님 ] 반갑습니다!</li>
           </c:otherwise>
           </c:choose>
+          
+		  <c:if test="${user.getUserId() != null }">
 		  <li><a href="userMessageList.do">쪽지함</a></li>
+		  </c:if>
+		  <c:if test="${user.getUserId()=='admin' && user!=null }">
+		  <li><a href="messageList.do">[쪽지함]</a>
+		  </c:if>
+		  
+		  
 		  <c:choose>
 		  <c:when test="${user.getUserId() != null}">
           <li><a href="userInfo.do">마이페이지</a></li>
@@ -68,7 +76,7 @@
 		  </c:otherwise>
 		  </c:choose>
 		  <c:if test="${user.getUserId() == 'admin' && user != null }">
-		  <li><a href="#">관리자 페이지</a></li>
+		  <li><a href="userListControl.do">관리자 페이지</a></li>
 		  </c:if>		  
           <c:choose>
           <c:when test="${user != null}" >

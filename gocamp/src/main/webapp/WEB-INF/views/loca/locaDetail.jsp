@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang='en'>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset='utf-8' />
+	<meta charset="utf-8" />
+
 <link href='./calendar/main.css' rel='stylesheet' />
 <script src='calendar/main.js'></script>
 <script src='calendar/ko.js'></script>
@@ -55,9 +56,11 @@ document.addEventListener('DOMContentLoaded', function() {
 					alert('입실일 설정')
 					startDate = info.startStr;
 				} else {
-					//endDate.setTime(info.end.getTime()-(540*60*1000));
-					
-					endDate=info.endStr                               //여기서 end 수정하기 gmt -9 시간
+					endDate = info.endStr;
+					let test2 = endDate.substr(0,4);
+					let test3 = endDate.substr(5,2);
+					let test4 = endDate.substr(8,2)-1;//여기서 end 수정하기 gmt -9 시간
+					let test5 = (test2+"-"+test3+"-"+test4);
 					alert('퇴실일 설정');
 					// 여기서 startDate와 endDate를 처리할 수 있습니다.
 					if (new Date(startDate) < new Date(endDate)) {
@@ -76,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
 							textColor : '#000000'
 						});
 					document.getElementById('resSdate').value=startDate;
-					document.getElementById('resEdate').value=endDate;
+					document.getElementById('resEdate').value=test5;
 					} else {
 						alert('퇴실일은 입실일보다 빠를 수 없습니다.');
 						startDate = null;
@@ -244,6 +247,30 @@ list-style-type: none;
 .loca-sub-menu a:hover{
 color:black;
 }
+.img-container{
+width:400vw;
+margin : 0;
+transition : transform 0.5s;
+}
+.img-container *{
+margin : 0;
+}
+.img-content{
+width:100vw;
+float:left;
+}
+.img-cotent img{
+width:100%;
+}
+.img-boxer{
+overflow:hidden;
+}
+.next-button:hover{
+cursor:pointer;
+}
+.prev-button:hover{
+cursor:pointer;
+}
 </style>
 
  <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu" id="loca_menu">
@@ -295,12 +322,36 @@ document.querySelectorAll('#loca_menu a').forEach(atag=>{
 <td>소개</td>
 <td>${list.locaExp }</td>
 </tr>
-<c:if test="${user }!=null">
-<td><button onclick="document.getElementById('calMo').style.display='block'" style="width:auto;">예약하기</button></td>
-</c:if>
+<c:choose>
+<c:when test="${user != null }">
+<tr><td><button onclick="document.getElementById('calMo').style.display='block'" style="width:auto;">예약하기</button></td></tr>
+</c:when>
+<c:otherwise>
+<tr><td>로그인 후 이용해주세요</td></tr>
+</c:otherwise>
+</c:choose>
+<tr>
+</tr>
 </tbody>
 </table>
 </div>
+</div>
+<div class="img-boxer">
+<div class="img-container">
+<div class='img-content'>
+<img src="upload/${list.locaName }1.jpg">
+</div>
+<div class='img-content'>
+<img src="upload/${list.locaName }2.jpg">
+</div>
+<div class='img-content'>
+<img src="upload/${list.locaName }3.jpg">
+</div>
+<div class='img-content'>
+<img src="upload/${list.locaName }4.jpg">
+</div>
+</div>
+<button class="prev-button">&lt;</button> <button class="next-button"> &gt;</button>
 </div>
 <div id="blank"/>
 
@@ -310,7 +361,6 @@ document.querySelectorAll('#loca_menu a').forEach(atag=>{
 <form class="modal-content animate" id="resFrm">
 	<label for='resNm'>예약자 이름</label><input type='text' id='resNm'>
 	<label for='resTel'>예약자 연락처</label><input type='text' id='resTel'>
-	<label for='resPer'>방문인원</label><input type='text' id='resPer'>
 	<label for='resSdate'>입실일</label><input type='text' id='resSdate' readonly>
 	<label for='resEdate'>퇴실일</label><input type='text' id='resEdate' readonly>
 	<button type='submit'>예약</button>
@@ -324,11 +374,10 @@ document.querySelectorAll('#loca_menu a').forEach(atag=>{
 
 
 <form action="reserv.do" method="POST" id="reservFrm">
-<input type="hidden" name="resNm" id="reId">
+<input type="hidden" name="locaId" id="reId">
 <input type="hidden" name="usId" id="usId">
 <input type="hidden" name="resNm" id="reNm">
 <input type="hidden" name="resTel" id="reTe">
-<input type="hidden" name="resPer" id="rePe">
 <input type="hidden" name="resSdate" id="reSd">
 <input type="hidden" name="resEdate" id="reEd">
 </form>
@@ -337,34 +386,61 @@ document.querySelectorAll('#loca_menu a').forEach(atag=>{
 <script>
 document.querySelector('#resFrm').addEventListener('submit',function(e){
 e.preventDefault();
-	let reFrm = document.getElementById('reservFrm');
+	let reFrm = document.querySelector('#reservFrm');
 let run = true;
 	
 let nm = document.getElementById('resNm').value;
 let tel = document.getElementById('resTel').value;
-let per = document.getElementById('resPer').value;
 let sdate = document.getElementById('resSdate').value;
 let edate = document.getElementById('resEdate').value;
-if(!nm||!tel||!per||!sdate||!edate){
+
+if(!nm||!tel||!sdate||!edate){
 	alert('입력해주세요')
 	return run = false;
 }
 if(run){
 document.getElementById('reId').value='${locaId}';
+document.getElementById('usId').value='${userId}';
 document.getElementById('reNm').value=nm;
 document.getElementById('reTe').value=tel;
 document.getElementById('reSd').value=sdate;
 document.getElementById('reEd').value=edate;
 
 
-if(confirm('예약자 이름 : '+nm+'\n\n연락처 : '+tel+'\n\n인원 : '+per+'\n\n입실일자 : '+sdate+'\n퇴실일자 : '+edate+'\n\n 예약하시겠습니까?')){
-	this.submit();
+if(confirm('예약자 이름 : '+nm+'\n\n연락처 : '+tel+'\n\n입실일자 : '+sdate+'\n퇴실일자 : '+edate+'\n\n 예약하시겠습니까?')){
+	reFrm.submit();
 }
 }
 })
 
 </script>
+<script>
+const prevButton = document.querySelector('.prev-button');
+const nextButton = document.querySelector('.next-button');
+const imgContainer = document.querySelector('.img-container');
 
+let imgcount = 0;
+
+prevButton.addEventListener('click', function(){
+	if(imgcount!=0){
+		imgcount -= 1;
+		console.log(imgcount);
+	   imgContainer.style.transform = 'translate(-'+100*imgcount+'vw)';	
+	}
+});
+
+nextButton.addEventListener('click', function(){
+	if(imgcount==3){
+		imgcount=-1;
+	}
+	else if (imgcount>=-1){
+	   imgcount += 1;
+	   console.log(imgcount);
+	   imgContainer.style.transform ='translate(-'+100*imgcount+'vw)';
+	   
+	}
+});
+</script>
 
 
 

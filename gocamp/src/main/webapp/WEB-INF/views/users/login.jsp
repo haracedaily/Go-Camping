@@ -42,9 +42,10 @@
   <script>
   
   if('${message}'){
-	  
 	  alert('${message}');
 	  location.href="main.do";
+  }else if('${fmessage}'){
+	  alert('${fmessage}');
   }
   
   </script>

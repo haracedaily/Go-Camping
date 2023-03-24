@@ -18,13 +18,13 @@ public class GetMessageManagerControl implements Control {
 		String mNum = request.getParameter("mNum");
 
 		MessageService service = new MessageServiceMybatis();
-		MessageVO vo = service.getMessage(Integer.parseInt(mNum));
+		MessageVO vo = service.getMessageM(Integer.parseInt(mNum));
 		
 		System.out.println(vo);
 		
 		request.setAttribute("message", vo); //message 어트리뷰트에 vo 객체를 담아 넘김
 		
-		return "manager/getMessageManager.tiles";
+		return "message/getMessageManager.tiles";
 	}
 
 }

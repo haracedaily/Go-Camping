@@ -1,115 +1,363 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
+<!-- /*
+* Template Name: Property
+* Template Author: Untree.co
+* Template URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Untree.co">
+		<link rel="shortcut icon" href="favicon.png">
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap5" />
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="reservationModalLabel">예약 정보 입력</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="reservationForm">
-          <div class="mb-3">
-            <label for="name" class="form-label">이름</label>
-            <input type="text" class="form-control" id="name" name="name">
+	<link rel="stylesheet" href="fonts/Cstyle/style.css">
+	<link rel="stylesheet" href="fonts/Cstyle/flaticon.css">
+
+	<link rel="stylesheet" href="css/Cstyle/tiny-slider.css">
+	<link rel="stylesheet" href="css/Cstyle/aos.css">
+	<link rel="stylesheet" href="css/Cstyle/style.css">
+
+	<title>Property &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
+</head>
+<body>
+
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close">
+				<span class="icofont-close js-menu-toggle"></span>
+			</div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	</div>
+
+	<nav class="site-nav">
+		<div class="container">
+			<div class="menu-bg-wrap">
+				<div class="site-navigation">
+					<a href="index.html" class="logo m-0 float-start">Property</a>
+
+					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+						<li><a href="index.html">Home</a></li>
+						<li class="has-children">
+							<a href="properties.html">Properties</a>
+							<ul class="dropdown">
+								<li><a href="#">Buy Property</a></li>
+								<li><a href="#">Sell Property</a></li>
+								<li class="has-children">
+									<a href="#">Dropdown</a>
+									<ul class="dropdown">
+										<li><a href="#">Sub Menu One</a></li>
+										<li><a href="#">Sub Menu Two</a></li>
+										<li><a href="#">Sub Menu Three</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="active"><a href="services.html">Services</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="contact.html">Contact Us</a></li>
+					</ul>
+
+					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+						<span></span>
+					</a>
+
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="hero page-inner overlay" style="background-image: url('images/hero_bg_1.jpg');">
+
+		<div class="container">
+			<div class="row justify-content-center align-items-center">
+				<div class="col-lg-9 text-center mt-5">
+					<h1 class="heading" data-aos="fade-up">Services</h1>
+
+					<nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+						<ol class="breadcrumb text-center justify-content-center">
+							<li class="breadcrumb-item "><a href="index.html">Home</a></li>
+							<li class="breadcrumb-item active text-white-50" aria-current="page">Services</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="section bg-light">
+		<div class="container">
+			<div class="row">
+				<div class="col-6 col-lg-3"  data-aos="fade-up" data-aos-delay="300">
+					<div class="box-feature mb-4">
+						<span class="flaticon-house mb-4 d-block"></span>
+						<h3 class="text-black mb-3 font-weight-bold">Quality Properties</h3>
+						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p><a href="#" class="learn-more">Read more</a></p>
+					</div>
+				</div>
+				<div class="col-6 col-lg-3"  data-aos="fade-up" data-aos-delay="400">
+					<div class="box-feature mb-4">
+						<span class="flaticon-house-2 mb-4 d-block-3"></span>
+						<h3 class="text-black mb-3 font-weight-bold">Top Rated Agent</h3>
+						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p><a href="#" class="learn-more">Read more</a></p>
+					</div>
+				</div>
+				<div class="col-6 col-lg-3"  data-aos="fade-up" data-aos-delay="500">
+					<div class="box-feature mb-4">
+						<span class="flaticon-building mb-4 d-block"></span>
+						<h3 class="text-black mb-3 font-weight-bold">Property for Sale</h3>
+						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p><a href="#" class="learn-more">Read more</a></p>
+					</div>
+				</div>
+				<div class="col-6 col-lg-3"  data-aos="fade-up" data-aos-delay="600">
+					<div class="box-feature mb-4">
+						<span class="flaticon-house-3 mb-4 d-block-1"></span>
+						<h3 class="text-black mb-3 font-weight-bold">House for Sale</h3>
+						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p><a href="#" class="learn-more">Read more</a></p>
+					</div>
+				</div>	
+
+				<div class="col-6 col-lg-3"  data-aos="fade-up" data-aos-delay="300">
+					<div class="box-feature mb-4">
+						<span class="flaticon-house-4 mb-4 d-block"></span>
+						<h3 class="text-black mb-3 font-weight-bold">Quality Properties</h3>
+						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p><a href="#" class="learn-more">Read more</a></p>
+					</div>
+				</div>
+				<div class="col-6 col-lg-3"  data-aos="fade-up" data-aos-delay="400">
+					<div class="box-feature mb-4">
+						<span class="flaticon-building mb-4 d-block-3"></span>
+						<h3 class="text-black mb-3 font-weight-bold">Top Rated Agent</h3>
+						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p><a href="#" class="learn-more">Read more</a></p>
+					</div>
+				</div>
+				<div class="col-6 col-lg-3"  data-aos="fade-up" data-aos-delay="500">
+					<div class="box-feature mb-4">
+						<span class="flaticon-house mb-4 d-block"></span>
+						<h3 class="text-black mb-3 font-weight-bold">Property for Sale</h3>
+						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p><a href="#" class="learn-more">Read more</a></p>
+					</div>
+				</div>
+				<div class="col-6 col-lg-3"  data-aos="fade-up" data-aos-delay="600">
+					<div class="box-feature mb-4">
+						<span class="flaticon-house-1 mb-4 d-block-1"></span>
+						<h3 class="text-black mb-3 font-weight-bold">House for Sale</h3>
+						<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<p><a href="#" class="learn-more">Read more</a></p>
+					</div>
+				</div>	
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="section sec-testimonials">
+		<div class="container">
+			<div class="row mb-5 align-items-center">
+				<div class="col-md-6">
+					<h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">Customer Says</h2>
+				</div>
+				<div class="col-md-6 text-md-end">
+					<div id="testimonial-nav">
+						<span class="prev" data-controls="prev">Prev</span>
+						
+						<span class="next" data-controls="next">Next</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-4">
+					
+				</div>
+			</div>
+			<div class="testimonial-slider-wrap">
+				<div class="testimonial-slider">
+					<div class="item">
+						<div class="testimonial">
+							<img src="images/person_1-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+							<div class="rate">
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+							</div>
+							<h3 class="h5 text-primary mb-4">James Smith</h3>
+							<blockquote>
+								<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+							</blockquote>
+							<p class="text-black-50">Designer, Co-founder</p>
+						</div>
+					</div>
+
+					<div class="item">
+						<div class="testimonial">
+							<img src="images/person_2-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+							<div class="rate">
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+							</div>
+							<h3 class="h5 text-primary mb-4">Mike Houston</h3>
+							<blockquote>
+								<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+							</blockquote>
+							<p class="text-black-50">Designer, Co-founder</p>
+						</div>
+					</div>
+
+					<div class="item">
+						<div class="testimonial">
+							<img src="images/person_3-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+							<div class="rate">
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+							</div>
+							<h3 class="h5 text-primary mb-4">Cameron Webster</h3>
+							<blockquote>
+								<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+							</blockquote>
+							<p class="text-black-50">Designer, Co-founder</p>
+						</div>
+					</div>
+
+					<div class="item">
+						<div class="testimonial">
+							<img src="images/person_4-min.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+							<div class="rate">
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+								<span class="icon-star text-warning"></span>
+							</div>
+							<h3 class="h5 text-primary mb-4">Dave Smith</h3>
+							<blockquote>
+								<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+							</blockquote>
+							<p class="text-black-50">Designer, Co-founder</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="site-footer">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="widget">
+						<h3>Contact</h3>
+						<address>43 Raymouth Rd. Baltemoer, London 3910</address>
+						<ul class="list-unstyled links">
+							<li><a href="tel://11234567890">+1(123)-456-7890</a></li>
+							<li><a href="tel://11234567890">+1(123)-456-7890</a></li>
+							<li><a href="mailto:info@mydomain.com">info@mydomain.com</a></li>
+						</ul>
+					</div> <!-- /.widget -->
+				</div> <!-- /.col-lg-4 -->
+				<div class="col-lg-4">
+					<div class="widget">
+						<h3>Sources</h3>
+						<ul class="list-unstyled float-start links">
+							<li><a href="#">About us</a></li>
+							<li><a href="#">Services</a></li>
+							<li><a href="#">Vision</a></li>
+							<li><a href="#">Mission</a></li>
+							<li><a href="#">Terms</a></li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+						<ul class="list-unstyled float-start links">
+							<li><a href="#">Partners</a></li>
+							<li><a href="#">Business</a></li>
+							<li><a href="#">Careers</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">FAQ</a></li>
+							<li><a href="#">Creative</a></li>
+						</ul>
+					</div> <!-- /.widget -->
+				</div> <!-- /.col-lg-4 -->
+				<div class="col-lg-4">
+					<div class="widget">
+						<h3>Links</h3>
+						<ul class="list-unstyled links">
+							<li><a href="#">Our Vision</a></li>
+							<li><a href="#">About us</a></li>
+							<li><a href="#">Contact us</a></li>
+						</ul>
+
+						<ul class="list-unstyled social">
+							<li><a href="#"><span class="icon-instagram"></span></a></li>
+							<li><a href="#"><span class="icon-twitter"></span></a></li>
+							<li><a href="#"><span class="icon-facebook"></span></a></li>
+							<li><a href="#"><span class="icon-linkedin"></span></a></li>
+							<li><a href="#"><span class="icon-pinterest"></span></a></li>
+							<li><a href="#"><span class="icon-dribbble"></span></a></li>
+						</ul>
+					</div> <!-- /.widget -->
+				</div> <!-- /.col-lg-4 -->
+			</div> <!-- /.row -->
+
+			<div class="row mt-5">
+				<div class="col-12 text-center">
+					<!-- 
+              **==========
+              NOTE: 
+              Please don't remove this copyright link unless you buy the license here https://untree.co/license/  
+              **==========
+            -->
+
+            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+            </p>
+
           </div>
-          <div class="mb-3">
-            <label for="phone" class="form-label">연락처</label>
-            <input type="text" class="form-control" id="phone" name="phone">
-          </div>
-          <div class="mb-3">
-            <label for="people" class="form-label">인원수</label>
-            <input type="number" class="form-control" id="people" name="people" min="1">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-        <button type="button" class="btn btn-primary" id="submitReservation">확인</button>
-      </div>
+        </div>
+      </div> <!-- /.container -->
+    </div> <!-- /.site-footer -->
+
+
+    <!-- Preloader -->
+    <div id="overlayer"></div>
+    <div class="loader">
+    	<div class="spinner-border" role="status">
+    		<span class="visually-hidden">Loading...</span>
+    	</div>
     </div>
-  </div>
-</div>
 
 
-<script>
-var reservationModal = new bootstrap.Modal(document.getElementById('reservationModal'));
-var reservationForm = document.getElementById('reservationForm');
-var submitReservation = document.getElementById('submitReservation');
-
-submitReservation.addEventListener('click', function() {
-  var name = document.getElementById('name').value;
-  var phone = document.getElementById('phone').value;
-  var people = document.getElementById('people').value;
-
-  // 입력된 데이터가 유효한지 검증하는 코드가 필요합니다.
-  // 여기서는 단순히 빈 문자열인지 체크했습니다.
-  if (!name || !phone || !people) {
-    alert('모든 항목을 입력해주세요.');
-    return;
-  }
-
-  // 입력된 데이터를 서버에 전송합니다.
-  var event = calendar.getEvents()[calendar.getEvents().length - 1];
-  var reservation = {
-    title: name,
-    start: event.startStr,
-    end: event.endStr,
-    backgroundColor: '#007bff',
-    borderColor: '#007bff',
-    textColor: '#fff',
-    name: name,
-    phone: phone,
-    people: people
-  };
-
-  fetch('addReservationAjax.do', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(reservation)
-  })
-  .then(function(resolve) {
-    return resolve.json();
- 
-
-$('#reserve-btn').on('click', function() {
-	  var name = $('#name-input').val();
-	  var phone = $('#phone-input').val();
-	  var people = $('#people-input').val();
-	  
-	  $.ajax({
-	    url: 'reserve.do',
-	    method: 'POST',
-	    data: {
-	      name: name,
-	      phone: phone,
-	      people: people,
-	      startDate: startDate,
-	      endDate: endDate
-	    },
-	    success: function(response) {
-	      // 서버로부터의 응답 처리
-	      if (response.result === 'success') {
-	        alert('예약이 완료되었습니다.');
-	        // 예약이 완료된 후에는 모달창을 닫고, 캘린더를 새로고침하여 예약된 일정을 반영합니다.
-	        $('#reserve-modal').modal('hide');
-	        $('#calendar').fullCalendar('refetchEvents');
-	      } else {
-	        alert('예약에 실패했습니다. 다시 시도해주세요.');
-	      }
-	    },
-	    error: function(xhr, status, error) {
-	      // 통신 오류 처리
-	      console.error(error);
-	      alert('통신 오류가 발생했습니다.');
-	    }
-	  });
-	});
-
-</script>
-</html>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/tiny-slider.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/custom.js"></script>
+  </body>
+  </html>

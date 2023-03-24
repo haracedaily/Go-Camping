@@ -55,7 +55,7 @@
               <input type="text" class="form-control" id="userAddr" name="userAddr" value="${user.getUserAddr()}">
             </div>
 			</form>
-				<button id="modBtn" type="submit" class="btn btn-primary mb-4">정보수정</button>
+				<button id="modBtn" type="submit" class="btn btn-primary">정보수정</button>
 				<button id="delBtn" type="submit" class="btn btn-warning">회원 탈퇴</button>
 		</div>
 	</div>

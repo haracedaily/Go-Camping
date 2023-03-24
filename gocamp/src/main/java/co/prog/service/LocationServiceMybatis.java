@@ -50,4 +50,16 @@ public class LocationServiceMybatis implements LocationService{
 		return mapper.getLocaNm(vo);
 	}
 
+	@Override
+	public int insertReserv(ReservVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.insertReserv(vo);
+	}
+
+	@Override
+	public List<ReservVO> getPerReserv(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.getPerReserv(userId);
+	}
+
 }

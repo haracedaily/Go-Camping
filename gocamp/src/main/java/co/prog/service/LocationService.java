@@ -2,7 +2,6 @@ package co.prog.service;
 
 import java.util.List;
 
-import co.prog.vo.LocaVO;
 import co.prog.vo.LocationVO;
 import co.prog.vo.ReservVO;
 
@@ -18,4 +17,8 @@ public interface LocationService {
 	public String getLocaAddr(LocationVO vo);
 	
 	public String getLocaNm(LocationVO vo);
+	
+	public int insertReserv(ReservVO vo);
+	
+	public List<ReservVO> getPerReserv(String userId);
 }
