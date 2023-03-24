@@ -26,13 +26,16 @@ public class MessageServiceMybatis implements MessageService{
 
 	@Override
 	public MessageVO getMessage(int mNum) { //쪽지 상세 조회
-		mapper.updateCheckUser(null);
 		return mapper.selectMessage(mNum);
 	}
 
 	@Override
+	public MessageVO getMessageM(int mNum) { //쪽지 상세 조회(관리자)
+		return mapper.selectMessageM(mNum);
+	}
+	
+	@Override
 	public List<MessageVO> messageListByUser(String userId) {//회원별 쪽지 리트스 만들기
-		// TODO Auto-generated method stub
 		return mapper.messageListByUser(userId);
 	}
 
@@ -53,7 +56,18 @@ public class MessageServiceMybatis implements MessageService{
 		return r == 1;
 	}
 
+	@Override
+	public boolean updateMessageCheck(int mNum) { //쪽지 열람 후 상태 변경
+		return mapper.updateCheckUser(mNum)==1;
+	}
 
+	@Override
+	public boolean updateMessageCheckM(int mNum) {//회원 쪽지 열람 시 관리자 페이지 상태 변경
+		return mapper.updateCheckM(mNum)==1;
+	}
+
+
+	
 	
 
 	

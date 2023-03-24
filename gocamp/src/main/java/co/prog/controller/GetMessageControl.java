@@ -19,12 +19,16 @@ public class GetMessageControl implements Control {
 
 		MessageService service = new MessageServiceMybatis();
 		MessageVO vo = service.getMessage(Integer.parseInt(mNum));
-		
 		System.out.println(vo);
-		
 		request.setAttribute("message", vo); //message 어트리뷰트에 vo 객체를 담아 넘김
 		
-		return "users/getMessage.tiles";
+		service.updateMessageCheck(Integer.parseInt(mNum));
+		if(service.updateMessageCheck(Integer.parseInt(mNum))) {
+			//관리자 쪽 메시지 체크도 업데이트
+			service.updateMessageCheckM(Integer.parseInt(mNum));
+		}
+		
+		return "message/getMessage.tiles";
 	}
 
 }
