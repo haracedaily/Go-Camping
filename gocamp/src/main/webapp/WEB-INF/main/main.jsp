@@ -83,18 +83,18 @@ font-weight:bold;
 		<div id="top-container">
 		
 			<ul class="navbar-nav ms-auto" id="personal">
-				<li class="nav-item"><a class="nav-link" href="#about">쪽지함</a></li>
+				<li class="nav-item"><a class="nav-link" href="userInfo.do">마이페이지</a></li>
 				<li class="nav-item"><a class="nav-link" href="#projects">쪽지함</a></li>
 				<li class="nav-item"><a class="nav-link" href="#signup">쪽지함</a></li>
 				<li class="nav-item"><a class="nav-link" href="#signup">쪽지함</a></li>
 				<li class="nav-item"><a class="nav-link" href="#signup">쪽지함</a></li>
 			</ul>
 			<ul id="menu">
-				<li class="nav-item"><a class="nav-link" href="#about">쪽지함1</a></li>
 				<li class="nav-item"><a class="nav-link" href="#projects">쪽지함1</a></li>
 				<li class="nav-item"><a class="nav-link" href="#signup">쪽지함1</a></li>
 				<li class="nav-item"><a class="nav-link" href="#signup">쪽지함1</a></li>
 				<li class="nav-item"><a class="nav-link" href="#signup">쪽지함1</a></li>
+				<li class="nav-item"><a class="nav-link" href="loca.do">Location</a></li>
 			</ul>
 		
 		</div>
@@ -318,10 +318,7 @@ font-weight:bold;
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="js/scripts.js"></script>
-	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-	<!-- * *                               SB Forms JS                               * *-->
-	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+
 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

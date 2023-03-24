@@ -18,4 +18,10 @@ public interface LocationMapper {
 	public String getLocaAddr(LocationVO vo);
 	
 	public String getLocaNm(LocationVO vo);
+	
+	public int insertReserv(ReservVO vo);
+	
+	public List<ReservVO> getPerReserv(String userId);
+	
+	public int modifyReserv(ReservVO vo);
 }

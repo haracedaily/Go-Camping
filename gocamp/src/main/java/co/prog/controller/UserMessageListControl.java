@@ -23,7 +23,7 @@ public class UserMessageListControl implements Control {
 		System.out.println(list);
 		request.setAttribute("list", list);
 		
-		return "users/userMessage.tiles";
+		return "message/userMessage.tiles";
 	}
 
 }

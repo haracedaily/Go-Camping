@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<style>
+#messageMid{
+margin: 0 auto;
+}
+</style>
+
 <div>
-
-	<%@ include file="/WEB-INF/layout/myPageSidebar.jsp"%>
-
-
-<section class="py-5">
+<sidebar>
+	<%@ include file="/WEB-INF/layout/managerSidebar.jsp"%>
+</sidebar>
+<body>
+<section class="py-5" id="messageMid">
 	<div class="row justify-content-center">
 		<div>
 
@@ -24,8 +30,8 @@
 				    <td><input type="checkbox"></td>
 				    <!--  m_num, user_id, m_title, m_date, m_check -->
 				    <td>${message.getMNum() }</td>
-				    <td>${message.getUId()}</td>
-					<td><a href="getMessage.do?mNum=${message.getMNum() }">${message.getMTitle() }</a></td>					    <td>${message.getMDate() }</td>
+				    <td>${message.getUserId()}</td>
+					<td><a href="getMessageManager.do?mNum=${message.getMNum() }">${message.getMTitle() }</a></td><td>${message.getMDate() }</td>
 				    <td>${message.getMCheck() }</td>
 				  </tr>
 				  </c:forEach>
@@ -45,18 +51,19 @@
 
 		</div>
 	</div>
-</section>
 
+</section>
+</div>
 
 
 <script>
+//회원정보 수정삭제 했던 곳 참고해서 확인해보는 걸로
 document.querySelector('#sendBtn').addEventListener('click', function() {
 	
     let mFrm = document.querySelector('#mFrm');
     
-    mFrm.action = 'messageSend.do';
+    mFrm.action = 'messageSendForm.do';
     mFrm.submit();
 });
 </script>
-</div>
-
+</body>

@@ -198,8 +198,10 @@
 					<td>${reply.userId }</td>
 					<td class="content">${reply.repCon}</td>
 					<td>${reply.repDate }</td>
+							<c:if test="${reply.userId == userId }">
 					<td><button class="modBtn">수정</button></td>
 					<td><button class="delBtn">삭제</button></td>
+						</c:if>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -299,41 +301,44 @@
 		})
 	});
 	
+/* 			let myMdl = document.querySelector('#myModal');
+			myMdl.querySelector('h2').innerText = "New Header";
+			console.log() */
 	//수정
-	document.querySelector('#save').addEventListener('click', function () {
-			console.log(this.parentElement.parentElement.id);
-			let mid = document.querySelector('repNum');
-			let co = document.querySelector('comment');			
-			 let myFrm = document.querySelector('#myFrm');
-			myFrm.append('input[name="repNum"]').value;
-			myFrm.append('input[name="comment"]').value;
-			
-			myFrm.submit();
-			/* let modId = this.parentElement.parentElement.id;
-			let comment = this.parentElement.parentElement.querySelector('.comment').value;
- 			 let myFrm = document.querySelector('#myFrm');
-			myFrm.action = 'replyModify.do';
-			myFrm.code.value = '${vo.sku}';
-			
-			myFrm.querySelector('.repNum').innerText = modId;
-			let repNum = myFrm.querySelector('input[name="repNum"]');
-			myFrm.repNum.value= 76;
-			myFrm.comment.value = comment;
-			
-			myFrm.submit();  */
+	document.querySelector('#save').addEventListener('click', function (btn) { 			
+		
+		
+		let typeCo=this.parentElement.previousElementSibling.children[0].value;
+		let modId= this.parentElement.parentElement.children[0].innerText;
+		let myFrm=document.querySelector('#myFrm');
+		
+		myFrm.code.value = '${vo.sku}';
+		myFrm.repNum.value = modId;
+		myFrm.comment.value=typeCo;
+		myFrm.submit();
+		//document.querySelector('.repNum').value = modId;
+		//document.querySelector('.comment').value = typeCo;
+		 
+		//myFrm.submit();
+		
+		
+		/* myFrm.repCom.value = typeCo; */
+
 	});
 
 
 	// 삭제.
 	document.querySelectorAll('.delBtn').forEach(function (btn) {
+			
 		btn.addEventListener('click', function () {
 			console.log(this.parentElement.parentElement.id);
 			let delId = this.parentElement.parentElement.id;
 			let myFrm = document.querySelector('#myFrm');
-			myFrm.action = 'replyRemove.do';
-			myFrm.code.value = '${vo.sku}';
+			myFrm.action = 'replyRemove.do'; //강제로 action 값을 바꾸기위한 목적이다.
+			myFrm.code.value = '${vo.sku}'; //mrFrmcode안에 sku값을 넣어 주기 위한 목적이다
 			myFrm.repNum.value = delId;
-			myFrm.submit();
+			
+			myFrm.submit(); 
 		})
 	});
 </script>

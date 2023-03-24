@@ -21,12 +21,14 @@ public class ProductListControl implements Control {
 		String cat = request.getParameter("cat");
 		String order = request.getParameter("order");
 		
+		
 		cat = cat == null ? "all" : cat; // 조건없을 경우. 
 		order = order == null ? "price" : order; // 정렬조건이 없을 경우.
 
 		SearchCondition con = new SearchCondition();
 		con.setCat(cat);
 		con.setOrder(order);
+		
 
 		ProductService service = new ProductServiceMybatis();
 		List<ProductVO> list = service.products(con);
@@ -36,7 +38,6 @@ public class ProductListControl implements Control {
 		request.setAttribute("list", list);
 		
 		String page = request.getParameter("page");
-		
 		if (page == null) {
 			page = "1";
 		}

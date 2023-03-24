@@ -17,4 +17,9 @@ public class ManagerServiceMybatis implements ManagerService {
 		return mapper.getUsers();
 	}
 
+	@Override
+	public boolean removeUser(String userId) {
+		return mapper.deleteUser(userId) == 1;
+	}
+
 }

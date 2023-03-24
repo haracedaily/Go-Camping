@@ -17,9 +17,9 @@ public class UserListContol implements Control {
 		ManagerService service = new ManagerServiceMybatis();
 		List<UsersVO> list = service.userList();
 		
-		request.setAttribute("user", list);
+		request.setAttribute("mangeUserList", list);
 		
-		return null;
+		return "manager/userList.tiles";
 	}
 
 }

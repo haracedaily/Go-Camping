@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <style>
 #sidebar-wrapper{
-float:right;
-width:310px;
+display:block;
+left:0;
 text-align:center;
+width:310px;
 }
 </style>
 <html lang="en">
@@ -28,9 +29,11 @@ text-align:center;
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="userInfo.do">내 정보 확인</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">장바구니</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">예약 정보</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="perReserv.do">예약 정보</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">상품 구매 내역</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">쿠폰함</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="userMessageList.do">쪽지함</a>
                 </div>
             </div>
+            
+            

@@ -40,6 +40,8 @@ import co.prog.controller.MessageSendFormControl;
 import co.prog.controller.NoticeControl;
 import co.prog.controller.NoticeForm;
 import co.prog.controller.NoticeFormAddControl;
+import co.prog.controller.PerReservControl;
+import co.prog.controller.PerReservModifyControl;
 import co.prog.controller.ProductInfoControl;
 import co.prog.controller.ProductListControl;
 import co.prog.controller.ReplyAddControl;
@@ -50,8 +52,10 @@ import co.prog.controller.ReservListAjax;
 import co.prog.controller.UserDeleteControl;
 import co.prog.controller.UserInfoControl;
 import co.prog.controller.UserInfoModControl;
+import co.prog.controller.UserListAjax;
 import co.prog.controller.UserListContol;
 import co.prog.controller.UserMessageListControl;
+import co.prog.controller.UserRemoveAjax;
 
 public class FrontController extends HttpServlet {
 	private Map<String, Control> map;
@@ -77,6 +81,8 @@ public class FrontController extends HttpServlet {
 		map.put("/replyModify.do", new ReplyModifyControl());
 		         
 		map.put("/replyRemove.do", new ReplyRemoveControl());
+		
+	
 
 		// 상품댓글)
 		// map.put("/replyList.do", new ReplyListControl());
@@ -112,10 +118,6 @@ public class FrontController extends HttpServlet {
 		// 회원가입
 		map.put("/insertUser.do", new InsertUserControl());
 		// 회원가입 폼
-
-		// 회원가입
-		map.put("/insertUser.do", new InsertUserControl());
-		// 회원가입 폼
 		map.put("/join.do", new JoinControl());
 		// 로그인 폼
 		map.put("/loginForm.do", new LoginFormControl());
@@ -127,16 +129,12 @@ public class FrontController extends HttpServlet {
 		map.put("/userInfo.do", new UserInfoControl());
 		// 마이페이지 - 회원 정보 수정
 		map.put("/userInfoMod.do", new UserInfoModControl());
-
-
-
 		// 마이페이지 - 회원 탈퇴
 		map.put("/userDelete.do", new UserDeleteControl());
 		
 		//쪽지 관련
 		//쪽지 - 쪽지 리스트 (관리자)
 		map.put("/messageList.do", new MessageListControl());
-
 		// 쪽지 - 쪽지 보내기 (관리자)
 		map.put("/messageSendAjax.do", new MessageSendAjax());
 		//쪽지 - 쪽지 읽기 ( 관리자)
@@ -149,18 +147,15 @@ public class FrontController extends HttpServlet {
 		map.put("/messageRemove.do", new MessageRemoveControl());
 		//쪽지 - 쪽지 리스트 (회원)
 		map.put("/userMessageList.do", new UserMessageListControl());
-
-		// 쪽지 - 쪽지 읽기
 		//쪽지 - 쪽지 읽기 (회원)
-
 		map.put("/getMessage.do", new GetMessageControl());
-
 		// 쪽지 - 쪽지 삭제
 		map.put("/messageRemove.do", new MessageRemoveControl());
-
 		
 		//관리자 페이지 - 회원 관리
 		map.put("/userListControl.do", new UserListContol());
+		map.put("/userListAjax.do", new UserListAjax());
+		map.put("/userRemoveAjax.do", new UserRemoveAjax());
 
 		map.put("/loca.do", new LocaControl());
 
@@ -176,7 +171,10 @@ public class FrontController extends HttpServlet {
 		
 
 		map.put("/locaDetail.do", new LocaListControl());
-
+		
+		map.put("/perReserv.do", new PerReservControl());
+		
+		map.put("/perReservModify.do", new PerReservModifyControl());
 	}
 
 	@Override
@@ -211,7 +209,7 @@ public class FrontController extends HttpServlet {
 			resp.sendRedirect(viewPage);
 			return;
 			
-		} else if (viewPage.endsWith(".gyuri")) {
+		}else if (viewPage.endsWith(".gyuri")) {
 			resp.sendRedirect(viewPage.substring(0, viewPage.length() - 6));
 			return;
 			
