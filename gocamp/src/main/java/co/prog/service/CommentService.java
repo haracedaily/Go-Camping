@@ -12,7 +12,7 @@ public interface CommentService {
 	public int getTotalCount (String usage);
 	
 	public boolean addComment(CommentVO vo);//댓글등록
-	public boolean commentRemove(int cNo);
+	public boolean commentRemove(int cNo); //삭제
 	
 	public List<CommentVO> getComm(int boId);
 	

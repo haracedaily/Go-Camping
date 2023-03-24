@@ -89,6 +89,7 @@ font-size : 20pt;
 								<li><a href="boardList.do?usage=c">중고게시판</a></li>
 								<li><a href="boardList.do?usage=d">문의게시판</a></li>
 								<li><a href="boardList.do?usage=e">건의게시판</a></li>
+								<li><a href="boardList.do?usage=f">Event</a></li>
 							</ul>
 						</li>
 					</ul>

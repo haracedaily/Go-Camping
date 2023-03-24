@@ -211,12 +211,10 @@ public class FrontController extends HttpServlet {
 			resp.sendRedirect(viewPage);
 			return;
 			
-		} else if (viewPage.indexOf(".do") != -1) {
-			// .do?code=006
-			resp.sendRedirect(viewPage);
 		} else if (viewPage.endsWith(".gyuri")) {
 			resp.sendRedirect(viewPage.substring(0, viewPage.length() - 6));
 			return;
+			
 		} else if (viewPage.indexOf(".do") != -1) {
 			resp.sendRedirect(viewPage);
 			return;

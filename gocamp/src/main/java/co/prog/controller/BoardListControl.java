@@ -31,6 +31,8 @@ public class BoardListControl implements Control {
 			request.setAttribute("usageName", "문의");
 		} else if (usage.equals("e")) {
 			request.setAttribute("usageName", "건의");
+		} else if (usage.equals("f")) {
+			request.setAttribute("usageName", "Event");
 		} else if (usage.equals("a")) {
 			request.setAttribute("usageName", "공지사항");
 		}

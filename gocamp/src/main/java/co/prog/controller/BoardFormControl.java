@@ -23,6 +23,8 @@ public class BoardFormControl implements Control {
 			req.setAttribute("usageName", "문의게시판");
 		} else if (usage.equals("e")) {
 			req.setAttribute("usageName", "건의게시판");
+		} else if (usage.equals("f")) {
+			req.setAttribute("usageName", "Event");
 		} else if (usage.equals("a")) {
 			req.setAttribute("usageName", "공지사항");
 		}

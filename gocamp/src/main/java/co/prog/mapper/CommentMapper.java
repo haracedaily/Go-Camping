@@ -12,7 +12,7 @@ public interface CommentMapper {
 	public int getTotalCount(String usage);
 	
 	public int insertComment (CommentVO vo);//등록
-	public int deleteComment (int cNo);
+	public int deleteComment (int cNo); //삭제
 	
 	public List<CommentVO> getComm(int boId);
 }
