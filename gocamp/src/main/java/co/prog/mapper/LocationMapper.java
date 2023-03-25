@@ -24,4 +24,10 @@ public interface LocationMapper {
 	public List<ReservVO> getPerReserv(String userId);
 	
 	public int modifyReserv(ReservVO vo);
+	
+	public ReservVO getPReserv(int resId);
+	
+	public List<ReservVO> getPReservList(ReservVO vo);
+	
+	public int deleteReserv(int resId);
 }

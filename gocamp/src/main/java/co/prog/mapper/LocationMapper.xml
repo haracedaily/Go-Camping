@@ -83,13 +83,26 @@ loca_id=#{choice}
 insert into reserv(res_id,room_id,user_id,res_name,res_tel,res_sdate,res_edate) values(reserv_seq.nextval,#{roomId},#{userId},#{resName},#{resTel},#{resSdate},#{resEdate})
 </insert>
 
-<select id="getPerReserv">
-select loca_id,loca_name,loca_tel,loca_addr,res_id,room_id,user_id,res_name,res_tel,to_char(res_sdate,'yyyy-mm-dd') res_sdate,
- to_char(res_edate,'yyyy-mm-dd') res_edate,res_state,res_date from reserv_view where user_id=#{userId}
+<select id="getPerReserv" parameterType="String">
+select res_id,loca_id,room_id,loca_name,loca_tel,loca_addr,res_id,room_id,user_id,res_name,res_tel,to_char(res_sdate,'yyyy-mm-dd') res_sdate,
+ to_char(res_edate,'yyyy-mm-dd') res_edate,res_state,res_date,loca_price,(res_edate-res_sdate)*loca_price res_price from reserv_view where user_id=#{userId}
 </select>
 
 <update id="modifyReserv">
-update reserv set res_sdate = ?, res_edate=?
+update reserv set res_sdate = ?, res_edate=?, res_name =?,res_tel=? where res_id=?
 </update>
 
+<select id="getPReserv" parameterType="int">
+select * from reserv where res_id = #{resId}
+</select>
+
+<select id="getPReservList" parameterType="co.prog.vo.ReservVO">
+<![CDATA[select res_id,room_id,user_id,res_name,res_tel,res_per,to_char(res_sdate,'yyyy-mm-dd') res_sdate,
+ to_char(res_edate+1,'yyyy-mm-dd') res_edate,res_state,res_date from reserv where room_id=#{roomId} and res_id<>#{resId} and req='N']]>
+</select>
+
+
+<delete id="deleteReserv">
+delete reserv where res_id=#{resId}
+</delete>
 </mapper>

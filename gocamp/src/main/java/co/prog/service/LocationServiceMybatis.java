@@ -62,4 +62,24 @@ public class LocationServiceMybatis implements LocationService{
 		return mapper.getPerReserv(userId);
 	}
 
+	@Override
+	public ReservVO getPReserv(int resId) {
+		// TODO Auto-generated method stub
+		return mapper.getPReserv(resId);
+	}
+
+	@Override
+	public List<ReservVO> getPReservList(ReservVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.getPReservList(vo);
+	}
+
+	@Override
+	public boolean deleteReserv(int resId) {
+		// TODO Auto-generated method stub
+		return mapper.deleteReserv(resId)==1;
+	}
+	
+	
+
 }

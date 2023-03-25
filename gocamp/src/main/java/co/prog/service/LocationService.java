@@ -21,4 +21,10 @@ public interface LocationService {
 	public int insertReserv(ReservVO vo);
 	
 	public List<ReservVO> getPerReserv(String userId);
+	
+	public ReservVO getPReserv(int resId);
+	
+	public List<ReservVO> getPReservList(ReservVO vo);
+	
+	public boolean deleteReserv(int resId);
 }

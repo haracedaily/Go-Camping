@@ -21,6 +21,7 @@ import co.prog.controller.CalendarControl;
 import co.prog.controller.CommentAddControl;
 import co.prog.controller.CommentListControl;
 import co.prog.controller.CommentRemoveControl;
+import co.prog.controller.DelPerReservControl;
 import co.prog.controller.GetMessageControl;
 import co.prog.controller.GetMessageManagerControl;
 import co.prog.controller.InsertUserControl;
@@ -56,6 +57,8 @@ import co.prog.controller.UserListAjax;
 import co.prog.controller.UserListContol;
 import co.prog.controller.UserMessageListControl;
 import co.prog.controller.UserRemoveAjax;
+import co.prog.controller.getPerReservControl;
+import co.prog.controller.getPerReservListAjax;
 
 public class FrontController extends HttpServlet {
 	private Map<String, Control> map;
@@ -175,6 +178,12 @@ public class FrontController extends HttpServlet {
 		map.put("/perReserv.do", new PerReservControl());
 		
 		map.put("/perReservModify.do", new PerReservModifyControl());
+		
+		map.put("/getPerReserv.do", new getPerReservControl());
+		
+		map.put("/getPerReservListAjax.do", new getPerReservListAjax());
+		
+		map.put("/delPerReserv.do", new DelPerReservControl());
 	}
 
 	@Override
