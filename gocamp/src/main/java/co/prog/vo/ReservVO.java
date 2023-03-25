@@ -28,6 +28,10 @@ public class ReservVO {
 	private String resEdate;
 	private String resState;
 	private Date resDate;
+	private int locaPrice;
+	private int resPrice;
+	
+	
 	
 	private String locaName;
 	private String locaTel;
