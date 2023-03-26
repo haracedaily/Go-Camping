@@ -75,7 +75,7 @@ font-size : 20pt;
 		<div class="container">
 			<div class="site-navigation">
 				<div id="main-menu">
-				<a href="index.html" class="logo m-0" id="hometag">Home
+				<a href="main.do" class="logo m-0" id="hometag">Home
 				<span
 					class="">.</span></a>
 					<ul

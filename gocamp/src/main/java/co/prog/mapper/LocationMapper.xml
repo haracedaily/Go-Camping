@@ -118,6 +118,12 @@ update reserv set req='N' where res_id=#{resId}
 </update>
 
 <select id="getAllReserv">
-select * from reserv_view order by res_sdate
+select res_id,loca_id,room_id,loca_name,loca_tel,loca_addr,res_id,room_id,user_id,res_name,res_tel,to_char(res_sdate,'yyyy-mm-dd') res_sdate,
+ to_char(res_edate,'yyyy-mm-dd') res_edate,res_state,res_date,loca_price,(res_edate-res_sdate)*loca_price res_price,req from reserv_view order by res_sdate
 </select>
+
+<update id="acceptReq">
+update resserv set req='C' where res_id=#{resId}
+</update>
+
 </mapper>

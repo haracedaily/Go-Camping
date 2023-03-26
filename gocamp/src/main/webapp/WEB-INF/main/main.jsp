@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,6 +75,7 @@ background-blend-mode: multiply;
 font-size:60pt;
 font-weight:bold;
 }
+
 </style>
 </head>
 <body id="page-top">
@@ -90,10 +92,8 @@ font-weight:bold;
 				<li class="nav-item"><a class="nav-link" href="#signup">쪽지함</a></li>
 			</ul>
 			<ul id="menu">
-				<li class="nav-item"><a class="nav-link" href="#projects">쪽지함1</a></li>
-				<li class="nav-item"><a class="nav-link" href="#signup">쪽지함1</a></li>
-				<li class="nav-item"><a class="nav-link" href="#signup">쪽지함1</a></li>
-				<li class="nav-item"><a class="nav-link" href="#signup">쪽지함1</a></li>
+				<li class="nav-item"><a class="nav-link" href="noticeList.do">Notice</a></li>
+				<li class="nav-item"><a class="nav-link" href="product.do">Product</a></li>
 				<li class="nav-item"><a class="nav-link" href="loca.do">Location</a></li>
 			</ul>
 		
@@ -101,14 +101,7 @@ font-weight:bold;
 		
 		<div id="blank">
 		</div>
-			<!-- 
-				<a class="navbar-brand" href="#page-top">Go Camp</a>
-				<button type="button" data-bs-toggle="collapse"
-					data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-					aria-expanded="false" aria-label="Toggle navigation">
-					Menu <i class="fas fa-bars"></i>
-				</button>
-				 -->
+
 
 		
 	</nav>
@@ -121,12 +114,12 @@ font-weight:bold;
 			<div class="text-center">
 				<p class="text-white-50 mx-auto my-0 text-uppercase" id="headFont">go Camping</p>
 				<h3 class="text-white-50 mx-auto mt-2 mb-5">당신의 자유를 저희와 함께 하시죠</h3>
-				<a class="btn btn-primary" href="#about">Sign in</a>
-				
 			</div>
+			
 		</div>
 		
 	</div>
+	<a class="hoverSign" href="loginForm.do">Sign in</a>
 	</section>
 	<!-- About-->
 	<section class="about-section text-center" id="about">

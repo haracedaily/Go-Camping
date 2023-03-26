@@ -270,12 +270,21 @@ width:100%;
 .img-boxer{
 overflow:hidden;
 }
-.next-button:hover{
-cursor:pointer;
+button {
+transition: color 0.4s ease;
+transition: background-color 0.4s ease;
+transition: border-radius 0.4s ease;
+color:#000000;
+background-color:#ffffff;
 }
-.prev-button:hover{
+button:hover{
 cursor:pointer;
+border-radius:50%;
+background-color:rgba(10,230,180,0.4);
+color:#000000;
+border:1px;
 }
+
 </style>
 
  <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu" id="loca_menu">

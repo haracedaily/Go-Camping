@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.prog.controller.AcceptReqReservControl;
+import co.prog.controller.AllCancleReservControl;
 import co.prog.controller.AllReservControl;
 import co.prog.controller.BoardAddControl;
 import co.prog.controller.BoardControl;
@@ -196,6 +198,10 @@ public class FrontController extends HttpServlet {
 		map.put("/reReserv.do", new ReReservControl());
 		
 		map.put("/allreserv.do", new AllReservControl());
+		
+		map.put("/acceptReqReserv.do", new AcceptReqReservControl());
+		
+		map.put("/allCancleReserv.do", new AllCancleReservControl());
 	}
 
 	@Override

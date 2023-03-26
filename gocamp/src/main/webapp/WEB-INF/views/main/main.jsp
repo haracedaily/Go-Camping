@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +33,34 @@ background-blend-mode: multiply;
 font-size:60pt;
 font-weight:bold;
 }
+.hoverSign {
+transition: color 0.4s ease;
+transition: opacity 0.4s ease;
+transition: background-color 0.4s ease;
+transition: border-radius 0.4s ease;
+box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+    padding: 1.25rem 2rem;
+    font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 80%;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    border: 0;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color:#ffffff;
+}
+.hoverSign:hover{
+color:#ffffff;
+opacity:0.4;
+background-color:#0088dd;
+border-radius:40%;
+}
 </style>
 </head>
 <body id="page-top">
@@ -47,15 +76,16 @@ font-weight:bold;
 			<div class="text-center">
 				<p class="text-white-50 mx-auto my-0 text-uppercase" id="headFont">go Camping</p>
 				<h3 class="text-white-50 mx-auto mt-2 mb-5">당신의 자유를 저희와 함께 하시죠</h3>
-				<a class="btn btn-primary" href="#about">Sign in</a>
-				
+				<c:if test="${user==null }">
+				<a class="hoverSign" href="loginForm.do">Sign in</a>
+				</c:if>
 			</div>
 		</div>
 		
 	</div>
 	</section>
 	<!-- About-->
-	<section class="about-section text-center" id="about">
+<!-- 	<section class="about-section text-center" id="about">
 		<div class="container px-4 px-lg-5">
 			<div class="row gx-4 gx-lg-5 justify-content-center">
 				<div class="col-lg-8">
@@ -71,7 +101,7 @@ font-weight:bold;
 			</div>
 			<img class="img-fluid" src="assets/img/ipad.png" alt="..." />
 		</div>
-	</section>
+	</section> -->
 	<!-- Projects-->
 	<section class="projects-section bg-light" id="projects">
 		<div class="container px-4 px-lg-5">
@@ -245,6 +275,5 @@ font-weight:bold;
 	<!-- Core theme JS-->
 	<script src="js/scripts.js"></script>
 
-	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

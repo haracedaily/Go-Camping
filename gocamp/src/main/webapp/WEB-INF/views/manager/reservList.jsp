@@ -75,10 +75,9 @@ input {
 								<td>${list.getResPrice() }</td>
 								<td><button class="modBtn" value="${list.getResId() }">수정</button></td>
 								<td><button class="delBtn" value="${list.getResId() }">예약취소</button></td>
-								<td size="1px"></td>
 							</tr>
 							<tr>
-								<td colspan='11'><hr></td>
+								<td colspan='10'><hr></td>
 							</tr>
 
 						</c:if>
@@ -92,13 +91,14 @@ input {
 				<thead>
 					<tr>
 						<th colspan='4'>예약 목록</th>
-						<th colspan='4'>예약완료</th>
+						<th colspan='5'>예약완료</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${List }" var="list" varStatus="locaIndexes">
 						<c:if test="${list.getResState() =='예약완료' }">
 							<tr>
+								<th>선택</th>
 								<th>숙소이름</th>
 								<th>숙소주소</th>
 								<th>숙소연락처</th>
@@ -108,6 +108,8 @@ input {
 								<th>총 금액</th>
 								<th>환불승인</th>
 							<tr>
+							<td><input type="checkbox" name="resCheck"
+									value="${list.getResPrice() }" data-resId="${list.getResId() }" data-locName="${list.getLocaName() }" onclick='getCheckbox()'></td>
 								<td><a href="locaDetail.do?locaId=${list.getRoomId() }">${list.getLocaName() }</a></td>
 								<td>${list.getLocaAddr() }</td>
 								<td>${list.getLocaTel() }</td>
@@ -115,12 +117,17 @@ input {
 								<td>${list.getResEdate() }</td>
 								<td>${list.getLocaPrice() }</td>
 								<td>${list.getResPrice() }</td>
-								<c:if test='${list.getReq().equals("Y") }'>
+								<c:choose>
+								<c:when test='${list.getReq().equals("Y") }'>
 								<td><button class="reqBtn" value="${list.getResId() }">환불승인</button></td>
-								</c:if>
+								</c:when>
+								<c:otherwise>
+								<td></td>
+								</c:otherwise>
+								</c:choose>
 							</tr>
 							<tr>
-								<td colspan='8'><hr></td>
+								<td colspan='9'><hr></td>
 							</tr>
 						</c:if>
 					</c:forEach>
@@ -139,13 +146,14 @@ input {
 					<tr>
 						<td><input type="checkbox" onclick='getAllCheckBox(this)'
 							id="aRC" name="aRC"></td>
-						<td><button onclick='requestPay(this)' class="cBtn" id="charge">예약취소</button></td>
+						<td><button onclick='requestPay(this)' class="cBtn" id="cancle">예약취소</button></td>
 					</tr>
 				</tbody>
 			</table>
 
 
-
+<a href="https://classic-admin.portone.io/payments">환불처리</a>
+			
 			<form action="getPerReserv.do" method="POST" id="modifyReFrm">
 			<input type="hidden" name="resId">
 			</form>
@@ -173,15 +181,16 @@ function getCheckbox()  {
 	      document.querySelectorAll(resCheckBox);
 	  const selectedBoxes = document.querySelectorAll(resCheckedBox);
 	  const aRC=document.getElementById('aRC');
-	  let result=0;
-	  selectedBoxes.forEach((res) => {
-	    result += Number(res.value);
+	  let result="";
+	  selectedBoxes.forEach((res,index) => {
+	    result += res.getAttribute("data-resId");
+	    if(index<selectedBoxes.length-1){
+	    	result +=",";
+	    }
 	  });
-	  
 	  console.log("result : "+result);
 	  // 출력
-	  document.getElementById('totalPrice').value = result;
-	  document.querySelector('.cBtn').value = result;
+	  document.querySelector('#cancle').value = result;
 	  if(selectedRes.length == selectedBoxes.length){
 		  aRC.checked=true;
 	  }else{
@@ -223,12 +232,24 @@ document.querySelectorAll('.reqBtn').forEach(button => {
 		console.log(resId);
 		if(confirm('환불을 승인하시겠습니까?')){
 	    	document.querySelector('input[name="resId"]').value=resId;
-	    	moFrm.action="reqReserv.do";
+	    	moFrm.action="acceptReqReserv.do";
 	    	
 	    	moFrm.submit();
 		}
-	})
-})
+	});
+});
+
+document.querySelector('#cancle').addEventListener('click',()=>{
+	let moFrm = document.querySelector('#modifyReFrm');
+	console.log(document.querySelector('#cancle').value);
+	document.querySelector('input[name="resId"]').value=document.querySelector('#cancle').value;
+	
+	moFrm.action="allCancleReserv.do";
+	
+	moFrm.submit();
+	
+});
+
 </script>
 
 

@@ -37,4 +37,6 @@ public interface LocationService {
 	public boolean modifyReserv(ReservVO vo);
 	
 	public List<ReservVO> getAllReserv();
+	
+	public boolean acceptReq(int resId);
 }
