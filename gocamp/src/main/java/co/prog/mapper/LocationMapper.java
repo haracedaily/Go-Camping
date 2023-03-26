@@ -30,4 +30,12 @@ public interface LocationMapper {
 	public List<ReservVO> getPReservList(ReservVO vo);
 	
 	public int deleteReserv(int resId);
+	
+	public int chargeReserv(int resId);
+	
+	public int reqReserv(int resId);
+	
+	public int reReserv(int resId);
+	
+	public List<ReservVO> getAllReserv();
 }

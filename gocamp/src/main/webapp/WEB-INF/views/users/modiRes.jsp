@@ -149,6 +149,23 @@ height:40%;
 	max-width: 60%;
 	max-height:100%;
 }
+button{
+transition:	transition: color 0.4s ease;
+transition: background-color 0.4s ease;
+transition: border-radius 0.4s ease;
+	color: #ffffff;
+	background-color: #000000;
+}
+button:hover{
+	color: #000000;
+	background-color: #ffffff;
+	border-radius: 32%;
+}
+button:active{
+ color:#4389df;
+ background-color:#cccccc;
+ border-radius:50%;
+}
 </style>
 <div>
 	<sidebar>
@@ -161,16 +178,18 @@ height:40%;
 
 <div id='calendar'><button id='reset'>선택 취소</button></div>
 
+<form action="perReservModify.do">
 <table>
 <tbody>
-<tr><th>예약번호</th><td><input type="text" value="${ Pres.resId }" readonly>예약고유번호로 변경불가합니다</td><td rowspan="5"></td></tr>
-<tr><th>예약자명</th><td><input type="text" value="${ Pres.resName }"></td></tr>
-<tr><th>예약자연락처</th><td><input type="text" value="${ Pres.resTel }"></td></tr>
-<tr><th>입실일</th><td><input type="text" value="${ Pres.resSdate }" id="resSdate" readonly></td></tr>
-<tr><th>퇴실일</th><td><input type="text" value="${ Pres.resEdate }" id="resEdate" readonly></td></tr>
+<tr><th>예약번호</th><td><input type="text" name="resId" value="${ Pres.resId }" readonly>예약고유번호로 변경불가합니다</td><td rowspan="5"></td></tr>
+<tr><th>예약자명</th><td><input type="text" name="resName" value="${ Pres.resName }"></td></tr>
+<tr><th>예약자연락처</th><td><input type="text" name="resTel" value="${ Pres.resTel }"></td></tr>
+<tr><th>입실일</th><td><input type="text" name="resSdate" value="${ Pres.resSdate }" id="resSdate" readonly></td></tr>
+<tr><th>퇴실일</th><td><input type="text" name="resEdate" value="${ Pres.resEdate }" id="resEdate" readonly></td></tr>
+<tr><td colspan="2"><button value="submit">수정</button></td></tr>
 </tbody>
 </table>
-
+</form>
 
 
 </section>

@@ -30,7 +30,7 @@ public class ReservVO {
 	private Date resDate;
 	private int locaPrice;
 	private int resPrice;
-	
+	private String req;
 	
 	
 	private String locaName;
