@@ -38,4 +38,6 @@ public interface LocationMapper {
 	public int reReserv(int resId);
 	
 	public List<ReservVO> getAllReserv();
+	
+	public int acceptReq(int resId);
 }

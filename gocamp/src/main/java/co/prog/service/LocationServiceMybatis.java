@@ -109,6 +109,12 @@ public class LocationServiceMybatis implements LocationService{
 		// TODO Auto-generated method stub
 		return mapper.getAllReserv();
 	}
+
+	@Override
+	public boolean acceptReq(int resId) {
+		// TODO Auto-generated method stub
+		return mapper.acceptReq(resId)==1;
+	}
 	
 	
 
