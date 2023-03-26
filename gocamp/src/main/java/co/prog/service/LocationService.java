@@ -27,4 +27,14 @@ public interface LocationService {
 	public List<ReservVO> getPReservList(ReservVO vo);
 	
 	public boolean deleteReserv(int resId);
+	
+	public int chargeReserv(int resId);
+	
+	public int reqReserv(int resId);
+	
+	public int reReserv(int resId);
+	
+	public boolean modifyReserv(ReservVO vo);
+	
+	public List<ReservVO> getAllReserv();
 }

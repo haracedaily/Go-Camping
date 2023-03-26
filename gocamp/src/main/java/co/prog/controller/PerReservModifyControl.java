@@ -27,29 +27,26 @@ public class PerReservModifyControl implements Control {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("userId"));
+		String uri="main.do";
 		LocationService service = new LocationServiceMybatis();
-		List<ReservVO> list = service.getPerReserv((String)session.getAttribute("userId"));
 		ReservVO vo=new ReservVO();
-		//vo.setId(request.getParameter("id"));
-		//vo.setName(request.getParameter("name"));
-		//vo.setPasswd(request.getParameter("passwd"));
-		//vo.setMail(request.getParameter("email"));
-		//vo.setAuth(request.getParameter("auth"));
-		Map<String,Object> map = new HashMap<>();
+		vo.setResId(Integer.parseInt(request.getParameter("resId")));
+		vo.setResSdate(request.getParameter("resSdate"));
+		vo.setResEdate(request.getParameter("resEdate"));
+		vo.setResName(request.getParameter("resName"));
+		vo.setResTel(request.getParameter("resTel"));
+		if(service.modifyReserv(vo)) {
+			HttpSession session = request.getSession();
+			
+			System.out.println(session.getAttribute("userId"));
+			List<ReservVO> list = service.getPerReserv((String)session.getAttribute("userId"));
 		
-		Gson gson = new GsonBuilder().create();
-		String json="";
-//		if(service.addMember(vo)) {
-//			map.put("retCode","Success");
-//			map.put("member", vo);
-//		}else {
-//			map.put("retCode","Fail");
-//			map.put("member", null);
-//		}
-		json = gson.toJson(map);//자바의 객체 타입을 문자열로 넘기겠다(?)
-		return json+".ajax";
+		request.setAttribute("List", list);
+		System.out.println("===============================");
+		System.out.println(list);
+		uri="users/reserved.tiles";
+		}
+		return uri;
 	}
 
 }
