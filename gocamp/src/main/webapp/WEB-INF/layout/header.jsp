@@ -75,21 +75,21 @@ font-size : 20pt;
 		<div class="container">
 			<div class="site-navigation">
 				<div id="main-menu">
-				<a href="index.html" class="logo m-0" id="hometag">Home
+				<a href="main.do" class="logo m-0" id="hometag">Home
 				<span
 					class="">.</span></a>
 					<ul
 						class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu" id="menuals">
 						<li><a href="loca.do">Location</a></li>
 						<li><a href="product.do">Product</a></li>
-						<li><a href="noticeList.do">Notice</a></li>
+						<li><a href="noticeList.do">Notice</a></li>		
 						<li class="has-children"><a href="#">게시판</a>
 							<ul class="dropdown">
 								<li><a href="boardList.do?usage=b">자유게시판</a></li>
 								<li><a href="boardList.do?usage=c">중고게시판</a></li>
 								<li><a href="boardList.do?usage=d">문의게시판</a></li>
 								<li><a href="boardList.do?usage=e">건의게시판</a></li>
-								<li><a href="boardList.do?usage=f">Event</a></li>
+								<li><a href="boardList.do?usage=f">Event</a></li>						
 							</ul>
 						</li>
 					</ul>

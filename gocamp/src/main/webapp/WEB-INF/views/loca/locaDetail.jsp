@@ -7,6 +7,77 @@
 	<meta charset="utf-8" />
 
 <link href='./calendar/main.css' rel='stylesheet' />
+
+
+<style>
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+#calendar {
+position:relative;
+left:10%;
+top:20%;
+width:40%;
+height:80%;
+	max-width: 60%;
+	max-height:100%;
+}
+#calMo{
+display:none;
+background-color: rgb(255,255,255);
+overflow:auto;
+z-index:1;
+left:0;
+top:0;
+position:absolute;
+width:100%;
+height:100%;
+}
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+.close{
+position:absolute;
+top:10%;
+right:10%;
+}
+.modal-content {
+position:absolute;
+top:20%;
+right:10%;
+  background-color: #fefefe;
+  border: 1px solid #888;
+  width: 20%; /* Could be more or less, depending on screen size */
+  padding: 15px;
+}
+#clBtn{
+position:absolute;
+right:10%;
+bottom:20%;
+}
+.modal-content input{
+margin-bottom:5px;
+}
+.modal-content button{
+margin-bottom:5px;
+}
+</style>
+</head>
+<body>
 <script src='calendar/main.js'></script>
 <script src='calendar/ko.js'></script>
 <script>
@@ -60,7 +131,12 @@ document.addEventListener('DOMContentLoaded', function() {
 					let test2 = endDate.substr(0,4);
 					let test3 = endDate.substr(5,2);
 					let test4 = endDate.substr(8,2)-1;//여기서 end 수정하기 gmt -9 시간
-					let test5 = (test2+"-"+test3+"-"+test4);
+					let test5;
+					if(test4<10){
+					test5 = (test2+"-"+test3+"-0"+test4);
+					}else if(test4>9){
+					test5 = (test2+"-"+test3+"-"+test4);
+					};
 					alert('퇴실일 설정');
 					// 여기서 startDate와 endDate를 처리할 수 있습니다.
 					if (new Date(startDate) < new Date(endDate)) {
@@ -140,77 +216,6 @@ resetButton.addEventListener('click',function(){
 	})
 	});
 </script>
-
-<style>
-html, body {
-	margin: 0;
-	padding: 0;
-	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-	font-size: 14px;
-}
-
-#calendar {
-position:absolute;
-left:10%;
-top:20%;
-width:40%;
-height:80%;
-	max-width: 60%;
-	max-height:100%;
-}
-#calMo{
-display:none;
-background-color: rgb(255,255,255);
-overflow:auto;
-z-index:1;
-left:0;
-top:0;
-position:absolute;
-width:100%;
-height:100%;
-}
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
-.close{
-position:absolute;
-top:10%;
-right:10%;
-}
-.modal-content {
-position:absolute;
-top:20%;
-right:10%;
-  background-color: #fefefe;
-  border: 1px solid #888;
-  width: 20%; /* Could be more or less, depending on screen size */
-  padding: 15px;
-}
-#clBtn{
-position:absolute;
-right:10%;
-bottom:20%;
-}
-.modal-content input{
-margin-bottom:5px;
-}
-.modal-content button{
-margin-bottom:5px;
-}
-</style>
-</head>
-<body>
-
 <style>
 #loca_menu{
 list-style-type: none;
@@ -265,12 +270,21 @@ width:100%;
 .img-boxer{
 overflow:hidden;
 }
-.next-button:hover{
-cursor:pointer;
+button {
+transition: color 0.4s ease;
+transition: background-color 0.4s ease;
+transition: border-radius 0.4s ease;
+color:#000000;
+background-color:#ffffff;
 }
-.prev-button:hover{
+button:hover{
 cursor:pointer;
+border-radius:50%;
+background-color:rgba(10,230,180,0.4);
+color:#000000;
+border:1px;
 }
+
 </style>
 
  <ul class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu" id="loca_menu">
@@ -324,7 +338,7 @@ document.querySelectorAll('#loca_menu a').forEach(atag=>{
 </tr>
 <c:choose>
 <c:when test="${user != null }">
-<tr><td><button onclick="document.getElementById('calMo').style.display='block'" style="width:auto;">예약하기</button></td></tr>
+<tr><td><button onclick="document.getElementById('calMo').style.display='table-row'" style="width:auto;">예약하기</button></td></tr>
 </c:when>
 <c:otherwise>
 <tr><td>로그인 후 이용해주세요</td></tr>
@@ -412,7 +426,6 @@ if(confirm('예약자 이름 : '+nm+'\n\n연락처 : '+tel+'\n\n입실일자 : '
 }
 }
 })
-
 </script>
 <script>
 const prevButton = document.querySelector('.prev-button');

@@ -15,20 +15,20 @@ public class CommentServiceMybatis implements CommentService{
 	SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	CommentMapper mapper = sqlSession.getMapper(CommentMapper.class);
 	@Override
-	public List<CommentVO> commentList() {
+	public List<CommentVO> commentList(String userId) {
 		// TODO Auto-generated method stub
-		return mapper.commentList();
+		return mapper.commentList(userId);
 	}
-	@Override
-	public List<CommentVO> commentListPage(NoticeDTO dto) {
+	//@Override
+	//public List<CommentVO> commentListPage(NoticeDTO dto) {
 		// TODO Auto-generated method stub
-		return mapper.commentListPaging(dto);
-	}
-	@Override
-	public int getTotalCount(String usage) {
+		//return mapper.commentListPaging(dto);
+	//}
+	//@Override
+	//public int getTotalCount(String usage) {
 		// TODO Auto-generated method stub
-		return mapper.getTotalCount(usage);
-	}
+		//return mapper.getTotalCount(usage);
+	//}
 	@Override
 	public boolean addComment(CommentVO vo) {
 		int r = mapper.insertComment(vo);
