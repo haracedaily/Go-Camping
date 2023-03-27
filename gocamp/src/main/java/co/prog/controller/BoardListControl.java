@@ -18,7 +18,8 @@ public class BoardListControl implements Control {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		String uri = "board/boardList.tiles";
 		String usage = request.getParameter("usage");
-
+		
+		
 		if (usage == null) {
 			usage = "b";
 		}

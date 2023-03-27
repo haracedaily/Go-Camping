@@ -9,8 +9,9 @@ public class BoardFormControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-		String uri = "board/boardForm.tiles";
 		String usage = req.getParameter("usage");
+		String uri = "board/boardForm.tiles";
+		
 		if (usage == null) {
 			usage = "b";
 		}

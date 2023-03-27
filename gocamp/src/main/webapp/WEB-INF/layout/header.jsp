@@ -82,14 +82,14 @@ font-size : 20pt;
 						class="js-clone-nav d-none d-lg-inline-block text-left float-right site-menu" id="menuals">
 						<li><a href="loca.do">Location</a></li>
 						<li><a href="product.do">Product</a></li>
-						<li><a href="noticeList.do">Notice</a></li>
+						<li><a href="noticeList.do">Notice</a></li>		
 						<li class="has-children"><a href="#">게시판</a>
 							<ul class="dropdown">
 								<li><a href="boardList.do?usage=b">자유게시판</a></li>
 								<li><a href="boardList.do?usage=c">중고게시판</a></li>
 								<li><a href="boardList.do?usage=d">문의게시판</a></li>
 								<li><a href="boardList.do?usage=e">건의게시판</a></li>
-								<li><a href="boardList.do?usage=f">Event</a></li>
+								<li><a href="boardList.do?usage=f">Event</a></li>						
 							</ul>
 						</li>
 					</ul>

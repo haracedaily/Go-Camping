@@ -6,12 +6,9 @@
 
 <style>
   #cbar {
-
     margin-left: 20%;
     margin-right: 20%;
-
   }
-
   #wbtn {
     background-color: #bfd5f3;
     border: none;
@@ -25,15 +22,12 @@
     left: 75%;
     margin-bottom: 10px;
   }
-
   .pagination {
     display: inline-block;
     position: relative;
     left: 50%;
     margin-bottom: 10px;
-
   }
-
   .pagination a {
     color: black;
     float: center;
@@ -43,16 +37,15 @@
     border: 1px solid #ddd;
     margin: 0 4px;
   }
-
   .pagination a.active {
     background-color: #bfd5f3;
     color: white;
     border: 1px solid #bfd5f3;
   }
-
   .pagination a:hover:not(.active) {
     background-color: #ddd;
   }
+ 
 </style>
 
 <div class="untree_co-section">
@@ -64,7 +57,18 @@
     </div>
   </div>
 </div>
-<button id="wbtn"><a href="/gocamp/boardform.do?usage=${usage }">글쓰기</a></button>
+<c:choose>
+<c:when test='${usageName.equals("Event") }'>
+<c:if test = '${userId.equals("admin") }'>
+<button id="wbtn"><a href="/gocamp/boardform.do?usage=${usage }" >글쓰기</a></button>
+</c:if>
+</c:when>
+<c:otherwise>
+<c:if test="${userId !=null }">
+<button id="wbtn"><a href="/gocamp/boardform.do?usage=${usage }" >글쓰기</a></button>
+</c:if>
+</c:otherwise>
+</c:choose>
 <nav class="bar" id="cbar">
   <table class="table">
     <thead>

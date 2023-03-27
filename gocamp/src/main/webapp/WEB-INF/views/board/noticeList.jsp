@@ -27,8 +27,8 @@ margin-right:20%;
 .pagination {
   display: inline-block;
   position: relative;
-  left: 50%;
-  margin-bottom: 10px;
+  left: 42%;
+  margin-bottom: 20px;
   
 }
 .pagination a {
@@ -58,7 +58,9 @@ margin-right:20%;
       </div>
     </div>
   </div>
+ <c:if test = "${user.getUserId() == 'admin'}">
 <button id="wbtn"><a href="/gocamp/noticeform.do">±Û¾²±â</a></button>
+</c:if>
 <nav class ="bar" id="cbar">
 	<table class="table">
 	<thead>
