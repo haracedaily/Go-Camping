@@ -109,6 +109,14 @@
 			background-color: #5cb85c;
 			color: white;
 		}
+		.container.img{
+			flex-direction: row;
+	/* flex-direction: column; 
+	float:left
+		}
+		.container #detail{
+		float:right
+		}
 	</style>
 </head>
 
@@ -122,11 +130,11 @@
 	</div>
 
 	<div class="container">
-		<div class="row">
+		<div class="column">
 			<div class="img">
-				<img alt="여행 패키지 상품 이미지" src="img/${vo.prodImga}" style="width: 400px; height: 200px;">
+				<img alt="여행 패키지 상품 이미지" src="./upload/${vo.prodImga}" style="width: 400px; height: 400px; float:left">
 			</div>
-			<div class="col-md-6" id="detail">
+			<div class="col-md-6" id="detail" style="float:right">
 				<h3>${vo.prodName }</h3>
 				<p>${vo.prodDes }
 					<p>
@@ -136,7 +144,7 @@
 					<p>
 						<b>세일가격</b> : ${vo.prodSalePrice}원
 					</p>
-					<b>선택수량</b> : <input type="text" value="${vo.prodQuantity }">
+					
 					<c:choose>
 						<c:when test="${vo.prodSalePrice == 0}">
 							<h4>${vo.prodPrice }원</h4>
@@ -152,13 +160,13 @@
 			</div>
 		</div>
 	</div>
-
-	<div id="reply">
+<div>
+	<div id="reply" >
 
 		<c:if test="${userId == null }">
-			<p>
+			<section valign="bottom">
 				소감을 남기시려면 <a href="loginForm.do">로그인</a>해주세요
-			</p>
+			</section>
 		</c:if>
 
 		<c:if test="${userId != null}">
@@ -179,7 +187,7 @@
 		</c:if>
 
 	</div>
-
+</div>
 	<table class="table">
 		<thead>
 			<tr>
