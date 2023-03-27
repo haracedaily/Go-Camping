@@ -20,7 +20,6 @@ import co.prog.controller.BoardListControl;
 import co.prog.controller.BoardModifyControl;
 import co.prog.controller.BoardModifyFormControl;
 import co.prog.controller.BoardRemoveControl;
-import co.prog.controller.CalendarControl;
 import co.prog.controller.CheckIdAjax;
 import co.prog.controller.CheckIdControl;
 import co.prog.controller.CheckIdFormControl;
@@ -35,6 +34,7 @@ import co.prog.controller.InsertUserControl;
 import co.prog.controller.JoinControl;
 import co.prog.controller.LocaControl;
 import co.prog.controller.LocaListControl;
+import co.prog.controller.LocaReservControl;
 import co.prog.controller.LogOutControl;
 import co.prog.controller.LoginControl;
 import co.prog.controller.LoginFormControl;
@@ -187,7 +187,6 @@ public class FrontController extends HttpServlet {
 
 		map.put("/loca.do", new LocaControl());
 
-		map.put("/calendar.do", new CalendarControl());
 
 		map.put("/getReservListAjax.do", new ReservListAjax());
 
@@ -221,6 +220,8 @@ public class FrontController extends HttpServlet {
 		map.put("/acceptReqReserv.do", new AcceptReqReservControl());
 		
 		map.put("/allCancleReserv.do", new AllCancleReservControl());
+		
+		map.put("/locaReserv.do", new LocaReservControl());
 	}
 
 	@Override

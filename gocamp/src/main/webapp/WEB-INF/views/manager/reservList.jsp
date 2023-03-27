@@ -139,6 +139,7 @@ input {
 				<thead>
 					<tr>
 						<th>전체</th>
+						<th>환불처리</th>
 						<th>예약취소</th>
 					</tr>
 				</thead>
@@ -146,13 +147,14 @@ input {
 					<tr>
 						<td><input type="checkbox" onclick='getAllCheckBox(this)'
 							id="aRC" name="aRC"></td>
+							<td><a class="btn" href="https://classic-admin.portone.io/payments">환불처리</a></td>
 						<td><button onclick='requestPay(this)' class="cBtn" id="cancle">예약취소</button></td>
 					</tr>
 				</tbody>
 			</table>
 
 
-<a href="https://classic-admin.portone.io/payments">환불처리</a>
+
 			
 			<form action="getPerReserv.do" method="POST" id="modifyReFrm">
 			<input type="hidden" name="resId">

@@ -123,7 +123,7 @@ select res_id,loca_id,room_id,loca_name,loca_tel,loca_addr,res_id,room_id,user_i
 </select>
 
 <update id="acceptReq">
-update resserv set req='C' where res_id=#{resId}
+update reserv set req='C' where res_id=#{resId}
 </update>
 
 </mapper>
