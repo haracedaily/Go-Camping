@@ -19,20 +19,21 @@ margin: 0 auto;
 			<table class="table">
 				<thead>
 				  <tr>
-				    <th><input type="checkbox"></th><th>쪽지 번호</th><th>회원 아이디</th>
-				    <th>보낸 쪽지</th><th>발신일</th><th>확인 여부</th>
+				    <!-- <th><input type="checkbox"></th><th>쪽지 번호</th> --><th>회원 아이디</th>
+				    <th>보낸 쪽지</th><th>발신일</th><th>확인 여부</th><th>삭제</th>
 				  </tr>
 				</thead>
 				
 				<tbody >
 				  <c:forEach items="${list }" var="message">
 				  <tr>
-				    <td><input type="checkbox"></td>
-				    <!--  m_num, user_id, m_title, m_date, m_check -->
-				    <td>${message.getMNum() }</td>
+				    <!-- <td><input type="checkbox"></td>  -->
+				    <!--  m_num, user_id, m_title, m_date, m_check 
+				    <td>${message.getMNum() }</td>-->
 				    <td>${message.getUserId()}</td>
 					<td><a href="getMessageManager.do?mNum=${message.getMNum() }">${message.getMTitle() }</a></td><td>${message.getMDate() }</td>
 				    <td>${message.getMCheck() }</td>
+				    <td><button id="delBtn" type="submit" >삭제</button></td>
 				  </tr>
 				  </c:forEach>
 				</tbody>
@@ -65,5 +66,27 @@ document.querySelector('#sendBtn').addEventListener('click', function() {
     mFrm.action = 'messageSendForm.do';
     mFrm.submit();
 });
+
+//삭제
+document.querySelectorAll('#delBtn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        let tr = this.parentElement.parentElement;
+        let mNum = tr.querySelector('td:first-child').innerText;
+        
+        // 서버로 삭제 요청 보내기
+        fetch('messageRemoveAjax.do', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'mNum=' + mNum
+        })
+        .then(function(response) {
+            if (response.ok) {
+                // 삭제 완료 후, 행 삭제
+                tr.remove();
+            }
+        });
+    });
+});
+
 </script>
 </body>

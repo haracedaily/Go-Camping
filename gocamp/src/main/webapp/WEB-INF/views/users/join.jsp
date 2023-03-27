@@ -23,7 +23,6 @@
             <div class="col-12">
               <div class="form-group">
                 <label for="id">아이디</label>
-                <!--   <button type="button" onclick="checkIdDuplicate()">중복확인</button>-->
                 <input type="text" class="form-control" id="id" name="userId">
               </div>
             </div>
@@ -76,60 +75,25 @@
   <input type="hidden" id="nN" name="nickname">
   <input type="hidden" id="uT" name="userTel">
   <input type="hidden" id="uA" name="userAddr"><!-- 컨트롤에 get parameter 이름과 동일한 이름 -->
+
 </form>
 
 
-
+<!-- 중복 확인 버튼 추가 
+<button type="button" id="chkId">중복확인</button>
+<!-- 중복 확인 결과를 저장할 hidden input 태그 추가 -->
+<!--  <input type="hidden" id="idDuplication" value="idUncheck">-->
 
 <script>
-  //아이디 중복 확인
-  // function checkIdDuplicate() {
-  //   var userId = document.getElementById("id").value;
-  //   var xhr = new XMLHttpRequest();
-  //   xhr.onreadystatechange = function () {
-  //     if (xhr.readyState === XMLHttpRequest.DONE) {
-  //       if (xhr.status === 200) {
-  //         var result = xhr.responseText;
-  //         if (result === "exist") {
-  //           alert("이미 사용 중인 아이디입니다.");
-  //         } else {
-  //           alert("사용 가능한 아이디입니다.");
-  //         }
-  //       } else {
-  //         alert("서버 오류가 발생했습니다.");
-  //       }
-  //     }
-  //   };
-  //   xhr.open("POST", "checkIdDuplicate.do", true);
-  //   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  //   xhr.send("userId=" + userId);
-  // }
 
-  //등록버튼
-  //
-  // 클릭 이벤트
-  // document.querySelector('#addBtn').addEventListener('click', function (e) {
-  //   e.preventDefault();
-  //   let run = true;
-  //   let inFrm = document.querySelector('#insertFrm');
-  //   let name = document.getElementById('nm').value;
-  //   let id = document.getElementById('id').value;
-  //   let passwd = document.getElementById('pw').value;
-  //   let nickname = document.getElementById('nN').value;
-  //   let tel = document.getElementById('uT').value;
-  //   let addr = document.getElementById('uA').value;
-  //   document.getElementById('nm').value = '';
-  //   document.getElementById('id').value = '';
-  //   document.getElementById('pw').value = '';
-  //   document.getElementById('nN').value = '';
-  //   document.getElementById('uT').value = '';
-  //   if (run) {
-  //     document.getElementById('insertFrm').submit();
-  //   }
-  // });
+
 
   if ("${message }") {
     alert("${message}");
     location.href = "main.do";
   }
+  
+
 </script>
+
+</body>
