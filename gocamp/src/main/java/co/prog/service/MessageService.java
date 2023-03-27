@@ -17,8 +17,10 @@ public interface MessageService {
 	public MessageVO getMessage(int mNum);
 	//쪽지 상세 조회 (읽기- 관리자)
 	public MessageVO getMessageM(int mNum);
-	//쪽지 삭제
+	//쪽지 삭제(회원)
 	public int messageRemove(int mNum);
+	//쪽지 삭제(관리자)
+	public int messageRemoveManager(int mNUm);
 	//쪽지 보내기 - insert 관리자
 	public boolean addMessage(MessageVO vo);
 	//쪽지 보내기 - insert 유저

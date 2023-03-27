@@ -31,7 +31,6 @@ text-align:center;
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">상품 관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">주문 배송 관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">예약 관리</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">쿠폰 관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="messageList.do">쪽지 관리</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#">구매 후기 관리</a>
                 </div>

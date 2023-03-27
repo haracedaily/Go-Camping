@@ -39,14 +39,14 @@
        update user_message set mcheck = 'Y' where mnum=#{mNum}
    </update>
    
-   
-   
-   <!-- 쪽지 삭제 -->
+   <!-- 쪽지 삭제 (회원)-->
    <delete id="messageRemove" parameterType="int">
      delete from user_message where mnum=#{mNum}
    </delete>
-   
-   
+    <!-- 쪽지 삭제 (관리자)-->
+   <delete id="messageRemoveManager" parameterType="int">
+     delete from message where mnum=#{mNum}
+   </delete>
    
    <!-- 쪽지 보내기 insert mesage(관리자)-->
    <insert id="insertMessage" parameterType="MessageVO">

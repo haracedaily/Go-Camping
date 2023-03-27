@@ -28,7 +28,6 @@
                         </tr>
                         <tr>
                             <td align="center" colspan="2">
-                                <button id="cloBtn" type="submit" class="btn btn-primary">뒤로가기</button>
                                 <button id="delBtn" type="submit" class="btn btn-warning">삭제</button>
 
                         </tr>
@@ -47,7 +46,7 @@ document.querySelector('#delBtn').addEventListener('click', function() {
     let mNum = document.querySelector('#mNum').value;
     let mFrm = document.querySelector('#mFrm');
     
-    mFrm.action = 'messageRemove.do';
+    mFrm.action = 'messageRemoveManager.do';
     mFrm.submit();
 });
 </script>

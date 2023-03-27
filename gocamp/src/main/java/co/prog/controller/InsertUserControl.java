@@ -33,7 +33,7 @@ public class InsertUserControl implements Control {
 		
 		/*
 		// 아이디 중복 확인
-		String userId = request.getParameter("userId");
+		String id = request.getParameter("userId");
 		boolean isDuplicated = service.checkId(userId);
 		if (isDuplicated) {
 		    request.setAttribute("message", "duplicated");
@@ -51,7 +51,7 @@ public class InsertUserControl implements Control {
 			request.setAttribute("id", vo.getUserId());
 		}else {
 			System.out.println("예외");
-			request.setAttribute("message", "회원 가입에 실패했습니다. 다시 시도해주세");
+			request.setAttribute("message", "회원 가입에 실패했습니다. 다시 시도해주세요.");
 		}
 		return "users/join.tiles";
 	}

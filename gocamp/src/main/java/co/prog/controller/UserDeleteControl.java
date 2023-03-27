@@ -2,6 +2,7 @@ package co.prog.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.prog.common.Control;
 import co.prog.service.UsersService;
@@ -11,7 +12,7 @@ public class UserDeleteControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		
+		HttpSession session = request.getSession();
 		String userId = request.getParameter("userId");
 		
 		UsersService service = new UsersServiceMybatis();
@@ -24,6 +25,7 @@ public class UserDeleteControl implements Control {
 			request.setAttribute("message", "탈퇴에 실패했습니다. 다시 시도해주세요.");
 		}
 		
+		session.invalidate();
 		return "users/myPage.tiles";
 	}
 
