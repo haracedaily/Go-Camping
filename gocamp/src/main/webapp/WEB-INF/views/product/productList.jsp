@@ -93,11 +93,13 @@
 				<div class="col mb-5">
 					<div class="card h-100">
 						<!-- Sale badge-->
+						<c:if test="${product.prodSalePrice!=0 }">
 						<div class="badge bg-dark text-white position-absolute"
 							style="top: 0.5rem; right: 0.5rem">Sale</div>
+							</c:if>
 						<!-- Product image-->
 						 <img class="card-img-top"
-							src="./img/${product.prodImga }" alt="..." />
+							src="./upload/${product.prodImga }" alt="..." />
 						</a>
 						<!-- Product details-->
 						<div class="card-body p-4">
@@ -105,14 +107,22 @@
 								<!-- Product name-->
 								<h5 class="fw-bolder"><a href='productInfo.do?code=${product.sku}'>${product.prodName }</a></h5>
 								<!-- Product reviews-->
-
+								
 								<!-- Product price-->
+								<c:choose><c:when test="${product.prodSalePrice==0 }">
+										<fmt:formatNumber value="${product.prodPrice }"
+									pattern="#,###" />
+								원
+								</c:when>
+								<c:otherwise>
 								<span class="text-muted text-decoration-line-through"> <fmt:formatNumber
 										value="${product.prodPrice }" pattern="#,###" /> 원
 								</span>
 								<fmt:formatNumber value="${product.prodSalePrice }"
 									pattern="#,###" />
 								원
+								</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 						<!-- Product actions-->
@@ -127,26 +137,10 @@
 				</div>
 			</c:forEach>
 			<div class="center">
-  <div class="pagination">
-    <c:if test="${page.prev }">
-       <a href="product.do?page=${page.startPage -1 }"> &laquo; </a>
-    </c:if>
-    <c:forEach begin="${page.startPage }" end="${page.endPage }" var="i"> <!-- step 따로 선언하지 않으면 1씩 증가 -->
-      <c:choose>
-        <c:when test="${i == page.page }">
-           <a class="active" href="product.do?page=${i }">${i }</a>
-        </c:when>
-        <c:otherwise>
-           <a href="product.do?page=${i }" >${i }</a>
-        </c:otherwise>
-      </c:choose>
-    </c:forEach>
-    <c:if test="${page.next }">
-       <a href="product.do?page=${page.endPage +1 }"> &raquo;</a>
-    </c:if>
+
     
   </div>
 	</div>
 		</div>
-	</div>
+
 </section>
