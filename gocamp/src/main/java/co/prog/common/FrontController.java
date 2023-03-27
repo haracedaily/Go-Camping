@@ -20,6 +20,9 @@ import co.prog.controller.BoardListControl;
 import co.prog.controller.BoardModifyControl;
 import co.prog.controller.BoardModifyFormControl;
 import co.prog.controller.BoardRemoveControl;
+import co.prog.controller.CheckIdAjax;
+import co.prog.controller.CheckIdControl;
+import co.prog.controller.CheckIdFormControl;
 import co.prog.controller.ChargeReservControl;
 import co.prog.controller.CommentAddControl;
 import co.prog.controller.CommentListControl;
@@ -39,7 +42,7 @@ import co.prog.controller.MainControl;
 import co.prog.controller.ManageControl;
 import co.prog.controller.MessageListControl;
 import co.prog.controller.MessageRemoveControl;
-import co.prog.controller.MessageSendAjax;
+import co.prog.controller.MessageRemoveAjax;
 import co.prog.controller.MessageSendControl;
 import co.prog.controller.MessageSendFormControl;
 import co.prog.controller.NoticeControl;
@@ -62,7 +65,9 @@ import co.prog.controller.UserInfoModControl;
 import co.prog.controller.UserListAjax;
 import co.prog.controller.UserListContol;
 import co.prog.controller.UserMessageListControl;
-import co.prog.controller.UserRemoveAjax;
+import co.prog.controller.UserUpdateCheckControl;
+import co.prog.controller.UserUpdateFormControl;
+import co.prog.controller.messageRemoveManagerControl;
 import co.prog.controller.getPerReservControl;
 import co.prog.controller.getPerReservListAjax;
 
@@ -127,12 +132,22 @@ public class FrontController extends HttpServlet {
 		map.put("/insertUser.do", new InsertUserControl());
 		// 회원가입 폼
 		map.put("/join.do", new JoinControl());
+		//회원가입 - ID 중복 체크폼
+		map.put("/checkIdForm.do", new CheckIdFormControl());
+		//회원가입 - ID 중복 체크
+		map.put("/checkIdAjax.do", new CheckIdAjax());
+		//회원가입 - ID 중복 체크
+		map.put("/checkId.do", new CheckIdControl());
 		// 로그인 폼
 		map.put("/loginForm.do", new LoginFormControl());
 		// 로그인
 		map.put("/login.do", new LoginControl());
 		// 로그아웃
 		map.put("/logOut.do", new LogOutControl());
+		// 마이페이지 - 회원 정보 체크 폼
+		map.put("/userUpdateForm.do", new UserUpdateFormControl());
+		// 마이페이지 - 회원 정보 체크
+		map.put("/userUpdateCheck.do", new UserUpdateCheckControl());
 		// 마이페이지 - 회원 정보 조회
 		map.put("/userInfo.do", new UserInfoControl());
 		// 마이페이지 - 회원 정보 수정
@@ -146,7 +161,7 @@ public class FrontController extends HttpServlet {
 		//쪽지 - 쪽지 리스트 (관리자)
 		map.put("/messageList.do", new MessageListControl());
 		// 쪽지 - 쪽지 보내기 (관리자)
-		map.put("/messageSendAjax.do", new MessageSendAjax());
+		map.put("/messageSendAjax.do", new MessageRemoveAjax());
 		//쪽지 - 쪽지 읽기 ( 관리자)
 		map.put("/getMessageManager.do", new GetMessageManagerControl());
 		//쪽지 - 쪽지 보내기 폼 (관리자)
@@ -155,17 +170,20 @@ public class FrontController extends HttpServlet {
 		map.put("/messageSend.do", new MessageSendControl());
 		//쪽지 - 쪽지 삭제 (관리자)
 		map.put("/messageRemove.do", new MessageRemoveControl());
+		//쪽지 - 쪽지 삭제 아작스(관리자)
+		map.put("/messageRemoveAjax.do", new MessageRemoveAjax());
 		//쪽지 - 쪽지 리스트 (회원)
 		map.put("/userMessageList.do", new UserMessageListControl());
 		//쪽지 - 쪽지 읽기 (회원)
 		map.put("/getMessage.do", new GetMessageControl());
-		// 쪽지 - 쪽지 삭제
+		//쪽지 - 쪽지 삭제
 		map.put("/messageRemove.do", new MessageRemoveControl());
+		//쪽지 - 쪽지 삭제 (관리자)
+		map.put("/messageRemoveManager.do", new messageRemoveManagerControl());
 		
 		//관리자 페이지 - 회원 관리
 		map.put("/userListControl.do", new UserListContol());
 		map.put("/userListAjax.do", new UserListAjax());
-		map.put("/userRemoveAjax.do", new UserRemoveAjax());
 
 		map.put("/loca.do", new LocaControl());
 

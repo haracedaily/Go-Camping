@@ -40,10 +40,15 @@ public class MessageServiceMybatis implements MessageService{
 	}
 
 	@Override
-	public int messageRemove(int mNum) { //쪽지 삭제
+	public int messageRemove(int mNum) { //쪽지 삭제(회원)
 		return mapper.messageRemove(mNum);
 	}
 
+	@Override
+	public int messageRemoveManager(int mNUm) { //관리자 쪽지 삭제
+		return mapper.messageRemoveManager(mNUm);
+	}
+	
 	@Override
 	public boolean addMessage(MessageVO vo) { //쪽지 보내기 - 관리자insert
 		int r = mapper.insertMessage(vo);
@@ -65,6 +70,7 @@ public class MessageServiceMybatis implements MessageService{
 	public boolean updateMessageCheckM(int mNum) {//회원 쪽지 열람 시 관리자 페이지 상태 변경
 		return mapper.updateCheckM(mNum)==1;
 	}
+
 
 
 	

@@ -17,8 +17,10 @@ public interface MessageMapper {
 	public int updateCheckUser(int mNum);
 	//회원 쪽지 열람 시 관리자 페이지 상태 변경 
 	public int updateCheckM(int mNum);
-	//쪽지 삭제
+	//쪽지 삭제(회원)
 	public int messageRemove(int mNum);
+	//쪽지 삭제(관리자)
+	public int messageRemoveManager(int mNum);
 	//쪽지 보내기(insert 관리자)
 	public int insertMessage(MessageVO vo);
 	//쪽지 보내기(insert 유저)

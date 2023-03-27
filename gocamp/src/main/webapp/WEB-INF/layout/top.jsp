@@ -60,17 +60,21 @@
           </c:otherwise>
           </c:choose>
           
-		  <c:if test="${user.getUserId() != null }">
-		  <li><a href="userMessageList.do">쪽지함</a></li>
-		  </c:if>
-		  <c:if test="${user.getUserId()=='admin' && user!=null }">
-		  <li><a href="messageList.do">[쪽지함]</a>
-		  </c:if>
+			<c:choose>
+		  <c:when test="${user.getUserId() != null && user.getUserId() != 'admin'}">
+		    <li><a href="userMessageList.do">쪽지함</a></li>
+		  </c:when>
+		  <c:otherwise>
+		  </c:otherwise>
+		</c:choose>
+		<c:if test="${user.getUserId()=='admin' && user!=null }">
+		  <li><a href="messageList.do">[쪽지함]</a></li>
+		</c:if>
 		  
 		  
 		  <c:choose>
 		  <c:when test="${user.getUserId() != null}">
-          <li><a href="userInfo.do">마이페이지</a></li>
+          <li><a href="userUpdateForm.do">마이페이지</a></li>
 		  </c:when>
 		  <c:otherwise>
 		  </c:otherwise>

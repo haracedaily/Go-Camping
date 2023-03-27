@@ -12,7 +12,7 @@
 	
 	<!-- 아이디 중복확인 -->
 	<select id="selectUserId" resultType="int">
-		select count(*) from users where user_id = #{userId}
+		select count(*) from users where user_id = #{id}
 	</select>
 	
 	<!-- 로그인 -->

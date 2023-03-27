@@ -25,7 +25,6 @@
                         </tr>
                         <tr>
                             <td align="center" colspan="2">
-                                <button id="cloBtn" type="submit" class="btn btn-primary">뒤로가기</button>
                                 <button id="delBtn" type="submit" class="btn btn-warning">삭제</button>
 
                         </tr>
