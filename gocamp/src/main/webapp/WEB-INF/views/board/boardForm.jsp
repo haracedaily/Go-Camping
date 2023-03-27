@@ -72,7 +72,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<button type="submit" id="subBtn">저장</button>
+				<button type="submit" id="subBtn" >저장</button>
 			</td>
 		</tr>
 	</table>
@@ -99,4 +99,5 @@
 	console.log(this);
 
 })
+
 </script>

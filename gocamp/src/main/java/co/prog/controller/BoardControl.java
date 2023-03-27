@@ -19,10 +19,34 @@ public class BoardControl implements Control {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 
 		String boId = request.getParameter("boId");
-
+		
+		
 		NoticeService service = new NoticeServiceMybatis();
+		
 		NoticeVO vo = service.getNotice(Integer.parseInt(boId));
+		System.out.println(vo);
 		request.setAttribute("notice", vo);
+		
+		String usage = vo.getUsage();
+		
+		
+		if (usage == null) {
+			usage = "b";
+		}
+		request.setAttribute("usage", usage);
+		if (usage.equals("b")) {
+			request.setAttribute("usageName", "자유");
+		} else if (usage.equals("c")) {
+			request.setAttribute("usageName", "중고");
+		} else if (usage.equals("d")) {
+			request.setAttribute("usageName", "문의");
+		} else if (usage.equals("e")) {
+			request.setAttribute("usageName", "건의");
+		} else if (usage.equals("f")) {
+			request.setAttribute("usageName", "Event");
+		} else if (usage.equals("a")) {
+			request.setAttribute("usageName", "공지사항");
+		}
 
 		CommentService serv = new CommentServiceMybatis();
 		List<CommentVO> list = serv.getComm(Integer.parseInt(boId));

@@ -108,8 +108,7 @@ public class FrontController extends HttpServlet {
 		// 삭제
 		map.put("/boardRemove.do", new BoardRemoveControl());
 
-		// 댓글목록
-		map.put("/commentList.do", new CommentListControl());
+		
 		// 댓글등록
 		map.put("/commentAdd.do", new CommentAddControl());
 		// 댓글삭제
@@ -131,6 +130,8 @@ public class FrontController extends HttpServlet {
 		map.put("/userInfoMod.do", new UserInfoModControl());
 		// 마이페이지 - 회원 탈퇴
 		map.put("/userDelete.do", new UserDeleteControl());
+		// 댓글목록
+		map.put("/commentList.do", new CommentListControl());
 		
 		//쪽지 관련
 		//쪽지 - 쪽지 리스트 (관리자)

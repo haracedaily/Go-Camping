@@ -3,14 +3,11 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.prog.mapper.CommentMapper">
-
+ 
 	<select id="commentList">
- <![CDATA[
- 	select rownum, user_id, bo_id, c_content, c_date, usage
-	from (select rownum,user_id,bo_id,c_content,c_date,usage 
-	from bcommv order by bo_date)]]>
+ 	select * from bcomment where user_id = #{boId}
 	</select>
-
+<!--
 	<select id="commentListPaging" resultType="co.prog.vo.NoticeVO"
 		parameterType="co.prog.vo.NoticeDTO">
  	<![CDATA[
@@ -24,6 +21,8 @@
 		where b.rn>(${page}-1)*10
 		]]>
 	</select>
+-->
+
 
 	<select id="getComm" parameterType="int" resultType="co.prog.vo.CommentVO">
 		select * from bcomment where bo_id=#{boId} order by 1 desc

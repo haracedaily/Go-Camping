@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.prog.common.Control;
 import co.prog.service.NoticeService;
@@ -16,6 +17,9 @@ public class BoardRemoveControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		String userId = session.getId();
+		
 		String boId = request.getParameter("boId");
 		NoticeService service = new NoticeServiceMybatis();
 		
