@@ -12,5 +12,6 @@ public class CommentVO {
 	private int boId;
 	private String coContent;
 	private Date coDate;
+	
 
 }

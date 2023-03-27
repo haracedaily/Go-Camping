@@ -15,6 +15,8 @@ public class CommentRemoveControl implements Control {
 		String boId = request.getParameter("boId");
 
 		CommentService service = new CommentServiceMybatis();
+		System.out.println("coNo" + coNo );
+		System.out.println("boId" + boId);
 
 		service.commentRemove(Integer.parseInt(coNo));
 

@@ -7,9 +7,9 @@ import co.prog.vo.NoticeDTO;
 import co.prog.vo.NoticeVO;
 
 public interface CommentMapper {
-	public List<CommentVO> commentList();//목록
-	public List<CommentVO> commentListPaging(NoticeDTO dto);
-	public int getTotalCount(String usage);
+	public List<CommentVO> commentList(String userId);//목록
+	//public List<CommentVO> commentListPaging(NoticeDTO dto);
+	//public int getTotalCount(String usage);
 	
 	public int insertComment (CommentVO vo);//등록
 	public int deleteComment (int cNo); //삭제
