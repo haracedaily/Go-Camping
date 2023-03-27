@@ -80,142 +80,7 @@ margin-bottom:5px;
 <body>
 <script src='calendar/main.js'></script>
 <script src='calendar/ko.js'></script>
-<script>
-var startDate=null;
-var endDate=null;
 
-document.addEventListener('DOMContentLoaded', function() {
-	var calendarEl = document.getElementById('calendar');
-	startDate = null;
-	var resetButton = document.getElementById('reset');
-	var calendar = new FullCalendar.Calendar(calendarEl, {
-		timeZone : 'local',
-		selectable : true,
-		initialView : 'dayGridMonth',
-		locale : 'ko',
-		headerToolbar : {
-			left : 'prev',
-			center : 'title',
-			right : 'next'
-		},
-			selectAllow: function(selectInfo) {
-				  var today = new Date();
-				  var events = calendar.getEvents();
-				  if(selectInfo.start==selectInfo.end){
-					  return false;
-				  }
-				  for (var i = 0; i < events.length; i++) {
-				    // Check if the event has the title '예약완료'
-				    if (events[i].title === '예약완료') {
-				      // Check if the selected date range overlaps with the event
-				      if (selectInfo.start < events[i].end && selectInfo.end > events[i].start) {
-				        return false;
-				      }
-				      if(selectInfo.start >= events[i].start &&
-				              selectInfo.end <= events[i].end) {
-				            return false;
-				        }
-				      if(selectInfo.start <events[i].start&&selectInfo.end>events[i].end){
-				    	  return false;
-				      }
-				    }
-				  }
-				  return selectInfo.start > today;
-				},
-			select : function(info) {
-				if (startDate == null) {
-					alert('입실일 설정')
-					startDate = info.startStr;
-				} else {
-					endDate = info.endStr;
-					let test2 = endDate.substr(0,4);
-					let test3 = endDate.substr(5,2);
-					let test4 = endDate.substr(8,2)-1;//여기서 end 수정하기 gmt -9 시간
-					let test5;
-					if(test4<10){
-					test5 = (test2+"-"+test3+"-0"+test4);
-					}else if(test4>9){
-					test5 = (test2+"-"+test3+"-"+test4);
-					};
-					alert('퇴실일 설정');
-					// 여기서 startDate와 endDate를 처리할 수 있습니다.
-					if (new Date(startDate) < new Date(endDate)) {
-						calendar.addEvent({
-							start : startDate,
-							end : endDate,
-							display : 'background',
-							color : '#0044cc'
-						})
-						calendar.addEvent({
-							title : '선택한 기간',
-							start : startDate,
-							end : endDate,
-							backgroundColor : '#1288dc',
-							borderColor : '#0044cc',
-							textColor : '#000000'
-						});
-					document.getElementById('resSdate').value=startDate;
-					document.getElementById('resEdate').value=test5;
-					} else {
-						alert('퇴실일은 입실일보다 빠를 수 없습니다.');
-						startDate = null;
-					}
-				}
-			}
-		});
-					startDate = null;
-					endDate=null;
-		fetch('getReservListAjax.do',{
-			method:'post',
-			headers:{'Content-type':'application/x-www-form-urlencoded'},
-			body: 'roomId='+'${locaId}'
-		})
-		.then(function(resolve){
-			return resolve.json(); 
-		})
-		.then(function(result){
-			console.log(result);
-			for (let i=0; i<result.length; i++){
-				let event = result[i];
-				let title = '예약완료';
-				let start = event.resSdate;
-				let end = event.resEdate;
-				
-				console.log(end)
-					calendar.addEvent({
-						start : start,
-						end : end,
-						display : 'background',
-						color : '#ff0000'
-					});
-					calendar.addEvent({
-					title : title,
-					start : start,
-					end : end,
-					textColor : '#000000',
-					backgroundColor : '#ff0000',
-					borderColor : '#ff0000'
-				});
-			}
-		})
-		.catch(function (reject){
-			console.error(reject);
-		});
-			calendar.render();
-//reset 버튼에 대한 이벤트 핸들러 등록
-resetButton.addEventListener('click',function(){
-	var events = calendar.getEvents();
-	 console.log(events);
-	for(var i=0; i< events.length;i++){
-		if(events[i].title==='선택한 기간'){
-			events[i].remove();
-		}
-	}
-	startDate=null;
-	endDate=null;
-	})
-	});
-</script>
 <style>
 #loca_menu{
 list-style-type: none;
@@ -338,7 +203,7 @@ document.querySelectorAll('#loca_menu a').forEach(atag=>{
 </tr>
 <c:choose>
 <c:when test="${user != null }">
-<tr><td><button onclick="document.getElementById('calMo').style.display='table-row'" style="width:auto;">예약하기</button></td></tr>
+<tr><td><button id="reserBtn" value="${list.locaId }" style="width:auto;">예약하기</button></td></tr>
 </c:when>
 <c:otherwise>
 <tr><td>로그인 후 이용해주세요</td></tr>
@@ -369,62 +234,23 @@ document.querySelectorAll('#loca_menu a').forEach(atag=>{
 </div>
 <div id="blank"/>
 
-<div class='modal animate' id='calMo'>
- <span onclick="document.getElementById('calMo').style.display='none'" class="close" title="Close Modal">&times;</span>
-	<div id='calendar'><button id='reset'>선택 취소</button></div>
-<form class="modal-content animate" id="resFrm">
-	<label for='resNm'>예약자 이름</label><input type='text' id='resNm'>
-	<label for='resTel'>예약자 연락처</label><input type='text' id='resTel'>
-	<label for='resSdate'>입실일</label><input type='text' id='resSdate' readonly>
-	<label for='resEdate'>퇴실일</label><input type='text' id='resEdate' readonly>
-	<button type='submit'>예약</button>
-	<button type='reset'>취소</button>
-</form>
-	<button onclick="document.getElementById('calMo').style.display='none'" id='clBtn'>창닫기</button>
-</div>
 
 
 
 
-
-<form action="reserv.do" method="POST" id="reservFrm">
+<form action="locaReserv.do" method="POST" id="reservFrm">
 <input type="hidden" name="locaId" id="reId">
-<input type="hidden" name="usId" id="usId">
-<input type="hidden" name="resNm" id="reNm">
-<input type="hidden" name="resTel" id="reTe">
-<input type="hidden" name="resSdate" id="reSd">
-<input type="hidden" name="resEdate" id="reEd">
 </form>
 
 
 <script>
-document.querySelector('#resFrm').addEventListener('submit',function(e){
+document.querySelector('#reserBtn').addEventListener('click',function(e){
 e.preventDefault();
 	let reFrm = document.querySelector('#reservFrm');
-let run = true;
-	
-let nm = document.getElementById('resNm').value;
-let tel = document.getElementById('resTel').value;
-let sdate = document.getElementById('resSdate').value;
-let edate = document.getElementById('resEdate').value;
 
-if(!nm||!tel||!sdate||!edate){
-	alert('입력해주세요')
-	return run = false;
-}
-if(run){
 document.getElementById('reId').value='${locaId}';
-document.getElementById('usId').value='${userId}';
-document.getElementById('reNm').value=nm;
-document.getElementById('reTe').value=tel;
-document.getElementById('reSd').value=sdate;
-document.getElementById('reEd').value=edate;
 
-
-if(confirm('예약자 이름 : '+nm+'\n\n연락처 : '+tel+'\n\n입실일자 : '+sdate+'\n퇴실일자 : '+edate+'\n\n 예약하시겠습니까?')){
 	reFrm.submit();
-}
-}
 })
 </script>
 <script>
