@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.prog.controller.AcceptReqReservControl;
+import co.prog.controller.AllCancleReservControl;
+import co.prog.controller.AllReservControl;
 import co.prog.controller.BoardAddControl;
 import co.prog.controller.BoardControl;
 import co.prog.controller.BoardFormControl;
@@ -18,9 +21,11 @@ import co.prog.controller.BoardModifyControl;
 import co.prog.controller.BoardModifyFormControl;
 import co.prog.controller.BoardRemoveControl;
 import co.prog.controller.CalendarControl;
+import co.prog.controller.ChargeReservControl;
 import co.prog.controller.CommentAddControl;
 import co.prog.controller.CommentListControl;
 import co.prog.controller.CommentRemoveControl;
+import co.prog.controller.DelPerReservControl;
 import co.prog.controller.GetMessageControl;
 import co.prog.controller.GetMessageManagerControl;
 import co.prog.controller.InsertUserControl;
@@ -44,9 +49,11 @@ import co.prog.controller.PerReservControl;
 import co.prog.controller.PerReservModifyControl;
 import co.prog.controller.ProductInfoControl;
 import co.prog.controller.ProductListControl;
+import co.prog.controller.ReReservControl;
 import co.prog.controller.ReplyAddControl;
 import co.prog.controller.ReplyModifyControl;
 import co.prog.controller.ReplyRemoveControl;
+import co.prog.controller.ReqReservControl;
 import co.prog.controller.ReservControl;
 import co.prog.controller.ReservListAjax;
 import co.prog.controller.UserDeleteControl;
@@ -56,6 +63,8 @@ import co.prog.controller.UserListAjax;
 import co.prog.controller.UserListContol;
 import co.prog.controller.UserMessageListControl;
 import co.prog.controller.UserRemoveAjax;
+import co.prog.controller.getPerReservControl;
+import co.prog.controller.getPerReservListAjax;
 
 public class FrontController extends HttpServlet {
 	private Map<String, Control> map;
@@ -176,6 +185,24 @@ public class FrontController extends HttpServlet {
 		map.put("/perReserv.do", new PerReservControl());
 		
 		map.put("/perReservModify.do", new PerReservModifyControl());
+		
+		map.put("/getPerReserv.do", new getPerReservControl());
+		
+		map.put("/getPerReservListAjax.do", new getPerReservListAjax());
+		
+		map.put("/delPerReserv.do", new DelPerReservControl());
+		
+		map.put("/ChargeReserv.do", new ChargeReservControl());
+		
+		map.put("/reqReserv.do", new ReqReservControl());
+		
+		map.put("/reReserv.do", new ReReservControl());
+		
+		map.put("/allreserv.do", new AllReservControl());
+		
+		map.put("/acceptReqReserv.do", new AcceptReqReservControl());
+		
+		map.put("/allCancleReserv.do", new AllCancleReservControl());
 	}
 
 	@Override

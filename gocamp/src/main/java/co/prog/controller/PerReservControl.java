@@ -21,6 +21,8 @@ public class PerReservControl implements Control {
 		List<ReservVO> list = service.getPerReserv((String)session.getAttribute("userId"));
 		
 		request.setAttribute("List", list);
+		System.out.println("===============================");
+		System.out.println(list);
 		
 		return "users/reserved.tiles";
 	}
