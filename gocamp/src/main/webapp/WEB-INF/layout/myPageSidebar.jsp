@@ -5,6 +5,8 @@
 #sidebar-wrapper{
 display:block;
 left:0;
+text-align:center;
+width:310px;
 }
 </style>
 <html lang="en">
@@ -33,3 +35,5 @@ left:0;
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="userMessageList.do">쪽지함</a>
                 </div>
             </div>
+            
+            

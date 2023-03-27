@@ -2,11 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <style>
-#sidebar-wrapper{
-float:right;
-width:310px;
-text-align:center;
-}
+
 </style>
 <html lang="en">
     <head>

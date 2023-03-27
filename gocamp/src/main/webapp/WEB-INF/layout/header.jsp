@@ -75,7 +75,7 @@ font-size : 20pt;
 		<div class="container">
 			<div class="site-navigation">
 				<div id="main-menu">
-				<a href="index.html" class="logo m-0" id="hometag">Home
+				<a href="main.do" class="logo m-0" id="hometag">Home
 				<span
 					class="">.</span></a>
 					<ul
@@ -89,6 +89,7 @@ font-size : 20pt;
 								<li><a href="boardList.do?usage=c">중고게시판</a></li>
 								<li><a href="boardList.do?usage=d">문의게시판</a></li>
 								<li><a href="boardList.do?usage=e">건의게시판</a></li>
+								<li><a href="boardList.do?usage=f">Event</a></li>
 							</ul>
 						</li>
 					</ul>

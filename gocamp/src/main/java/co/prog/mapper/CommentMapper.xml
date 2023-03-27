@@ -33,5 +33,9 @@
 		insert into bcomment(co_no, user_id, bo_id, co_content, co_date)
 		values(bcomm_seq.NEXTVAL, #{userId}, #{boId}, #{coContent}, sysdate)
 	</insert>
+	
+	<delete id="deleteComment" parameterType="int">
+		delete from bcomment where co_no = #{coNo}
+	</delete>
 
 </mapper>

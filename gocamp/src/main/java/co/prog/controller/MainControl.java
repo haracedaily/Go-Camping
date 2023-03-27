@@ -11,7 +11,7 @@ public class MainControl implements Control {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
-		String uri="main/main.jsp";
+		String uri="main/main.tiles";
 		
 		
 		return uri;
