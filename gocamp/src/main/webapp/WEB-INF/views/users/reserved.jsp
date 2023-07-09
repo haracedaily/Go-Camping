@@ -36,8 +36,8 @@ input {
 		file="/WEB-INF/layout/myPageSidebar.jsp"%> </sidebar>
 	<body>
 		<section class="py-5" id="positionMid">
-<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 	
 			<table class="table">
 				<thead>
@@ -285,9 +285,9 @@ function requestPay(cB) {
 	console.log(resepr);
 	
   IMP.request_pay({
-    pg: "INIpayTest",
+    pg: "html5_inicis.INIpayTest",
     pay_method: "card",
-    merchant_uid: "ORD20180131-0000021",   // 주문번호
+    merchant_uid: "ORD-"+new Date().getTime(),   // 주문번호
     name: (resnm),
     amount: respr,                         // 숫자 타입
     res_id: (resId),
